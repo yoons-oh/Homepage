@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Local visual QA screenshots
+/about-page-check.png
+/desktop*.png
+/mobile*.png
+/redesign*.png
+/work-*.png
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
