@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "apps": "Apps",
+    "writing": "Writing",
+    "youtube": "YouTube",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "AI-Native Developer",
+    "headline1": "I build what",
+    "headline2": "I imagine",
+    "headline3": "with AI.",
+    "sub": "From idea to deployed product, fast.",
+    "long_sub": "A personal test home for checking my portfolio and in-progress web/app builds in one place.",
+    "visual_left": "A lab for turning ideas into live apps fast",
+    "visual_right": "A workspace where apps, content, and writing move together",
+    "cta_work": "See my work",
+    "cta_github": "GitHub"
+  },
+  "floating": {
+    "idea": "Idea",
+    "build": "Build",
+    "deploy": "Deploy",
+    "ship": "Ship"
+  },
+  "projects": {
+    "title": "What I've built",
+    "subtitle": "Real apps, actually deployed, actually used.",
+    "description": "A working board for quickly opening my web apps, content channel, and serialized writing.",
+    "page_all_title": "All projects",
+    "page_all_description": "A single view of the apps, YouTube channel, and serialized writing currently live.",
+    "page_apps_title": "App projects",
+    "page_apps_description": "Web and app experiments for learning, math, English practice, and AI reading.",
+    "page_youtube_title": "YouTube channel",
+    "page_youtube_description": "Short, clear market notes published as a focused content channel.",
+    "page_writing_title": "Serialized writing",
+    "page_writing_description": "Web novel work published on Munpia under the pen name Doyunjae.",
+    "launch": "Open",
+    "code": "Code"
+  },
+  "how": {
+    "title": "How I work",
+    "subtitle": "AI is not a shortcut. It's the workflow.",
+    "step1_title": "Idea",
+    "step1_desc": "Something I need. Something useful.",
+    "step2_title": "AI Pair",
+    "step2_desc": "AI helps design, architect, and write.",
+    "step3_title": "Build",
+    "step3_desc": "React, TypeScript, real product.",
+    "step4_title": "Deploy",
+    "step4_desc": "Vercel. Live. Global."
+  },
+  "stats": {
+    "apps": "Apps Built",
+    "deployed": "Deployed",
+    "speed": "Idea to Live",
+    "speed_value": "< 1 day"
+  },
+  "about": {
+    "title": "About me",
+    "p1": "I'm a developer who builds with AI as a core tool, not an afterthought. When I have an idea, I don't wait - I build it.",
+    "p2": "Every app here was designed, built, and deployed by me, powered by AI collaboration.",
+    "location": "Based in Korea, building globally.",
+    "read_more": "Read intro"
+  },
+  "footer": {
+    "made": "Built with AI. Deployed with intention.",
+    "rights": "All rights reserved."
+  },
+  "project_list": {
+    "kids_english": {
+      "name": "Kids English",
+      "desc": "AI-powered English learning app for children"
+    },
+    "photo_reader": {
+      "name": "English Photo Reader",
+      "desc": "Read English from any photo with AI"
+    },
+    "opic_stepup": {
+      "name": "Opic Stepup",
+      "desc": "AI coach for English speaking tests"
+    },
+    "daily_english": {
+      "name": "Daily English",
+      "desc": "Daily English practice, AI-curated"
+    },
+    "daily_math": {
+      "name": "Daily Math",
+      "desc": "Math practice app for kids"
+    },
+    "auto_shots": {
+      "name": "Auto Shots",
+      "desc": "Automated screenshot and reporting tool"
+    },
+    "market_snapshot": {
+      "name": "Market Snapshot",
+      "desc": "A YouTube channel for quick market notes"
+    },
+    "munpia_novel": {
+      "name": "Doyunjae Web Novel",
+      "desc": "Serialized fiction published on Munpia"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "홈",
+    "projects": "프로젝트",
+    "apps": "앱",
+    "writing": "글쓰기",
+    "youtube": "유튜브",
+    "work": "작업물",
+    "about": "소개",
+    "contact": "연락처"
+  },
+  "hero": {
+    "badge": "AI 네이티브 개발자",
+    "headline1": "AI로 만들고",
+    "headline2": "바로 테스트하는",
+    "headline3": "개발자",
+    "sub": "아이디어에서 배포까지 빠르게.",
+    "long_sub": "포트폴리오와 개발 중인 웹/앱을 한 곳에서 빠르게 확인하는 개인 테스트 홈입니다.",
+    "visual_left": "아이디어를 빠르게 앱으로 만드는 실험실",
+    "visual_right": "앱, 콘텐츠, 글쓰기를 함께 움직이는 작업 공간",
+    "cta_work": "작업물 보기",
+    "cta_github": "GitHub"
+  },
+  "floating": {
+    "idea": "아이디어",
+    "build": "개발",
+    "deploy": "배포",
+    "ship": "출시"
+  },
+  "projects": {
+    "title": "만든 것들",
+    "subtitle": "실제로 배포하고, 실제로 사용하는 것들.",
+    "description": "테스트 중인 앱, 콘텐츠 채널, 연재 작업을 빠르게 열어볼 수 있는 작업 보드입니다.",
+    "page_all_title": "모든 프로젝트",
+    "page_all_description": "앱, 유튜브 채널, 웹소설까지 현재 공개된 작업을 한 화면에서 확인합니다.",
+    "page_apps_title": "앱 프로젝트",
+    "page_apps_description": "학습, 수학, 영어 리딩처럼 직접 만들고 테스트 중인 웹/앱만 모았습니다.",
+    "page_youtube_title": "유튜브 채널",
+    "page_youtube_description": "시장 흐름을 짧고 선명하게 정리하는 콘텐츠 채널입니다.",
+    "page_writing_title": "웹소설 연재",
+    "page_writing_description": "도윤재라는 필명으로 이어가는 문피아 웹소설 작업입니다.",
+    "launch": "열기",
+    "code": "코드"
+  },
+  "how": {
+    "title": "작업 방식",
+    "subtitle": "AI는 단순한 도구가 아니라 워크플로우 그 자체입니다.",
+    "step1_title": "아이디어",
+    "step1_desc": "필요한 것, 쓸모 있는 것을 떠올립니다.",
+    "step2_title": "AI 협업",
+    "step2_desc": "AI와 함께 설계하고 구현합니다.",
+    "step3_title": "개발",
+    "step3_desc": "React와 TypeScript로 실제 제품을 만듭니다.",
+    "step4_title": "배포",
+    "step4_desc": "Vercel로 바로 배포하고 확인합니다."
+  },
+  "stats": {
+    "apps": "개발한 앱",
+    "deployed": "배포 완료",
+    "speed": "아이디어에서 배포",
+    "speed_value": "1일 이내"
+  },
+  "about": {
+    "title": "소개",
+    "p1": "AI를 핵심 도구로 사용하는 개발자입니다. 아이디어가 생기면 기다리지 않고 바로 만들고 테스트합니다.",
+    "p2": "이곳의 작업물은 AI와 협업해 직접 설계하고, 개발하고, 배포한 결과입니다.",
+    "location": "한국에서 만들고, 글로벌하게 테스트합니다.",
+    "read_more": "소개글 읽기"
+  },
+  "footer": {
+    "made": "AI로 만들고, 의도를 담아 배포합니다.",
+    "rights": "All rights reserved."
+  },
+  "project_list": {
+    "kids_english": {
+      "name": "Kids English",
+      "desc": "아이들을 위한 AI 영어 학습 앱"
+    },
+    "photo_reader": {
+      "name": "English Photo Reader",
+      "desc": "사진 속 영어를 AI로 읽어주는 앱"
+    },
+    "opic_stepup": {
+      "name": "Opic Stepup",
+      "desc": "영어 말하기 시험을 위한 AI 코치"
+    },
+    "daily_english": {
+      "name": "Daily English",
+      "desc": "AI가 큐레이션하는 매일 영어 학습"
+    },
+    "daily_math": {
+      "name": "Daily Math",
+      "desc": "아이들을 위한 수학 연습 앱"
+    },
+    "auto_shots": {
+      "name": "Auto Shots",
+      "desc": "자동 스크린샷과 리포트 도구"
+    },
+    "market_snapshot": {
+      "name": "시장 한 컷",
+      "desc": "시장 흐름을 짧게 정리하는 유튜브 채널"
+    },
+    "munpia_novel": {
+      "name": "도윤재 웹소설 연재",
+      "desc": "문피아에서 연재 중인 웹소설 작업"
+    }
+  }
+}

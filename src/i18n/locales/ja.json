@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "projects": "プロジェクト",
+    "apps": "アプリ",
+    "writing": "執筆",
+    "work": "作品",
+    "about": "について",
+    "contact": "連絡"
+  },
+  "hero": {
+    "badge": "AIネイティブ開発者",
+    "headline1": "想像したものを",
+    "headline2": "作り上げる",
+    "headline3": "— AIと共に。",
+    "sub": "アイデアからデプロイまで、素早く。",
+    "long_sub": "ポートフォリオと開発中のWeb/アプリを一か所で素早く確認できる個人テストホームです。",
+    "visual_left": "アイデアを素早くアプリにする実験室",
+    "visual_right": "アプリ、コンテンツ、執筆が一緒に動く作業空間",
+    "cta_work": "作品を見る",
+    "cta_github": "GitHub"
+  },
+  "floating": {
+    "idea": "アイデア",
+    "build": "開発",
+    "deploy": "デプロイ",
+    "ship": "リリース"
+  },
+  "projects": {
+    "title": "作ったもの",
+    "subtitle": "実際にデプロイされ、実際に使われているアプリ。",
+    "description": "Webアプリ、コンテンツチャンネル、連載作品をすぐに開ける作業ボードです。",
+    "launch": "アプリを開く →",
+    "code": "コード"
+  },
+  "how": {
+    "title": "作業方法",
+    "subtitle": "AIはショートカットではなく、ワークフローそのものです。",
+    "step1_title": "アイデア",
+    "step1_desc": "必要なもの、役立つものを考えます。",
+    "step2_title": "AIペア",
+    "step2_desc": "Claudeと一緒に設計・実装します。",
+    "step3_title": "開発",
+    "step3_desc": "React・TypeScriptで本物の製品を。",
+    "step4_title": "デプロイ",
+    "step4_desc": "Vercelで即座にグローバル展開。"
+  },
+  "stats": {
+    "apps": "開発アプリ数",
+    "deployed": "デプロイ済み",
+    "speed": "アイデア → 公開",
+    "speed_value": "1日以内"
+  },
+  "about": {
+    "title": "について",
+    "p1": "AIをコアツールとして活用する開発者です。アイデアが浮かんだら、すぐに作ります。",
+    "p2": "ここにある全てのアプリはAIとの協働で設計・開発・デプロイしました。",
+    "location": "韓国から、グローバルに作っています。",
+    "read_more": "紹介文を読む"
+  },
+  "footer": {
+    "made": "AIで作り、意図を持ってデプロイ。",
+    "rights": "All rights reserved."
+  },
+  "project_list": {
+    "kids_english": {
+      "name": "Kids English",
+      "desc": "子供向けAI英語学習アプリ"
+    },
+    "photo_reader": {
+      "name": "English Photo Reader",
+      "desc": "写真の英語をAIで読むアプリ"
+    },
+    "opic_stepup": {
+      "name": "Opic Stepup",
+      "desc": "英語スピーキングテストAIコーチ"
+    },
+    "daily_english": {
+      "name": "Daily English",
+      "desc": "AIキュレーションの毎日英語学習"
+    },
+    "daily_math": {
+      "name": "Daily Math",
+      "desc": "子供向け算数練習アプリ"
+    },
+    "auto_shots": {
+      "name": "Auto Shots",
+      "desc": "自動スクリーンショット・レポートツール"
+    },
+    "market_snapshot": {
+      "name": "市場一枚",
+      "desc": "市場の流れを短くまとめるYouTubeチャンネル"
+    },
+    "munpia_novel": {
+      "name": "ドユンジェ Web小説",
+      "desc": "Munpiaで連載中のWeb小説"
+    }
+  }
+}
