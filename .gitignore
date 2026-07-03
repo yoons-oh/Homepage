@@ -17,6 +17,7 @@ dist-ssr
 /desktop*.png
 /mobile*.png
 /redesign*.png
+/vercel*.png
 /work-*.png
 
 # Editor directories and files
