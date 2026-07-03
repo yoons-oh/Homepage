@@ -39,7 +39,7 @@ const projects = [
     type: 'Website',
     accent: 'blue',
     image: kidsEnglishIcon,
-    media: 'icon',
+    media: 'banner',
     span: 'standard',
   },
   {
