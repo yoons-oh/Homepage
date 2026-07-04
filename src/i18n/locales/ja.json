@@ -91,6 +91,10 @@
       "name": "市場一枚",
       "desc": "市場の流れを短くまとめるYouTubeチャンネル"
     },
+    "arrow_way_out": {
+      "name": "Arrow Way Out",
+      "desc": "タップして道を開く方向パズルゲーム"
+    },
     "munpia_novel": {
       "name": "ドユンジェ Web小説",
       "desc": "Munpiaで連載中のWeb小説"

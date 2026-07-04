@@ -5,6 +5,7 @@ import kidsEnglishIcon from '../assets/project-icons/kids-english.png'
 import dailyMathIcon from '../assets/project-icons/daily-math.png'
 import dailyEnglishIcon from '../assets/project-icons/daily-english.png'
 import photoReaderIcon from '../assets/project-icons/english-photo-reader.png'
+import arrowWayOutIcon from '../assets/project-icons/arrow-way-out.svg?url'
 import marketSnapshotIcon from '../assets/project-icons/market-snapshot.png'
 import munpiaNovelIcon from '../assets/project-icons/munpia-novel.png'
 
@@ -76,6 +77,18 @@ const projects = [
     accent: 'mint',
     image: photoReaderIcon,
     media: 'app',
+    span: 'standard',
+  },
+  {
+    key: 'arrow_way_out',
+    category: 'apps',
+    tag: 'Puzzle / Game',
+    url: 'https://arrow-way-out.vercel.app/',
+    status: 'Live',
+    type: 'Game',
+    accent: 'paper',
+    image: arrowWayOutIcon,
+    media: 'banner',
     span: 'standard',
   },
   {

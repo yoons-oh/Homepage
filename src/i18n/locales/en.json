@@ -100,6 +100,10 @@
       "name": "Market Snapshot",
       "desc": "A YouTube channel for quick market notes"
     },
+    "arrow_way_out": {
+      "name": "Arrow Way Out",
+      "desc": "A direction puzzle game where you tap to open the way"
+    },
     "munpia_novel": {
       "name": "Doyunjae Web Novel",
       "desc": "Serialized fiction published on Munpia"
