@@ -1,8 +1,9 @@
+import { FirebaseError } from 'firebase/app'
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import { onAuthStateChanged, signOut, type User } from 'firebase/auth'
 import { collection, getDocs, query, Timestamp, where } from 'firebase/firestore'
 import { ArrowUpRight, BarChart3, Eye, LogOut, Plus, Save, Trash2 } from 'lucide-react'
-import { auth, db } from '../lib/firebase'
+import { adminEmail, auth, db } from '../lib/firebase'
 import { createRestaurant, fetchAdminRestaurants, removeRestaurant, updateRestaurant } from '../lib/restaurants'
 import { emptyRestaurantForm, type Restaurant, type RestaurantForm } from '../types/restaurant'
 
@@ -26,6 +27,22 @@ const toForm = (restaurant: Restaurant): RestaurantForm => ({
   sortOrder: restaurant.sortOrder,
 })
 
+const getErrorMessage = (error: unknown) => {
+  if (error instanceof FirebaseError) {
+    if (error.code === 'permission-denied') {
+      return 'Firebase 권한이 거부되었습니다. Firestore Rules가 적용됐는지, 관리자 이메일이 맞는지 확인해주세요.'
+    }
+    if (error.code === 'failed-precondition') {
+      return 'Firestore 설정 또는 인덱스가 필요합니다. Firebase Console의 안내를 확인해주세요.'
+    }
+    if (error.code === 'unavailable') {
+      return 'Firebase에 연결할 수 없습니다. 네트워크 또는 Firebase 상태를 확인해주세요.'
+    }
+    return `${error.code}: ${error.message}`
+  }
+  return '알 수 없는 오류가 발생했습니다.'
+}
+
 const startOfDay = (date = new Date()) => new Date(date.getFullYear(), date.getMonth(), date.getDate())
 const startOfWeek = () => {
   const date = startOfDay()
@@ -46,6 +63,8 @@ export default function AdminDashboard() {
   const [form, setForm] = useState<RestaurantForm>(emptyRestaurantForm)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
+  const [notice, setNotice] = useState('')
 
   useEffect(() => {
     return onAuthStateChanged(auth, (currentUser) => {
@@ -55,19 +74,28 @@ export default function AdminDashboard() {
   }, [])
 
   const refreshRestaurants = async () => {
-    const items = await fetchAdminRestaurants()
-    setRestaurants(items)
+    try {
+      const items = await fetchAdminRestaurants()
+      setRestaurants(items)
+    } catch (err) {
+      setError(getErrorMessage(err))
+    }
   }
 
   const refreshVisits = async () => {
-    const since = new Date()
-    since.setDate(since.getDate() - 31)
-    const snapshot = await getDocs(query(collection(db, 'visit_events'), where('visitedAt', '>=', Timestamp.fromDate(since))))
-    setVisits(snapshot.docs.map((item) => item.data() as VisitEvent))
+    try {
+      const since = new Date()
+      since.setDate(since.getDate() - 31)
+      const snapshot = await getDocs(query(collection(db, 'visit_events'), where('visitedAt', '>=', Timestamp.fromDate(since))))
+      setVisits(snapshot.docs.map((item) => item.data() as VisitEvent))
+    } catch (err) {
+      setError(getErrorMessage(err))
+    }
   }
 
   useEffect(() => {
     if (!user) return
+    setError('')
     refreshRestaurants()
     refreshVisits()
   }, [user])
@@ -105,13 +133,31 @@ export default function AdminDashboard() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setBusy(true)
+    setError('')
+    setNotice('')
+
     try {
       if (editingId) await updateRestaurant(editingId, form)
       else await createRestaurant(form)
       resetForm()
       await refreshRestaurants()
+      setNotice('맛집이 저장되었습니다.')
+    } catch (err) {
+      setError(getErrorMessage(err))
     } finally {
       setBusy(false)
+    }
+  }
+
+  const handleRemove = async (id: string) => {
+    setError('')
+    setNotice('')
+    try {
+      await removeRestaurant(id)
+      await refreshRestaurants()
+      setNotice('맛집이 삭제되었습니다.')
+    } catch (err) {
+      setError(getErrorMessage(err))
     }
   }
 
@@ -130,6 +176,8 @@ export default function AdminDashboard() {
     )
   }
 
+  const emailMismatch = user.email && user.email !== adminEmail
+
   return (
     <main className="admin-page">
       <div className="admin-header">
@@ -143,6 +191,14 @@ export default function AdminDashboard() {
           로그아웃
         </button>
       </div>
+
+      {emailMismatch && (
+        <div className="admin-alert">
+          현재 로그인 이메일은 {user.email} 입니다. 관리자 권한은 {adminEmail} 기준으로 설정되어 있습니다.
+        </div>
+      )}
+      {error && <div className="admin-alert error">{error}</div>}
+      {notice && <div className="admin-alert success">{notice}</div>}
 
       <section className="admin-stat-grid" aria-label="Visit statistics">
         <article>
@@ -213,35 +269,39 @@ export default function AdminDashboard() {
           <div className="form-actions">
             <button type="submit" disabled={busy}>
               {editingId ? <Save size={14} aria-hidden="true" /> : <Plus size={14} aria-hidden="true" />}
-              {editingId ? '수정 저장' : '맛집 추가'}
+              {busy ? '저장 중...' : editingId ? '수정 저장' : '맛집 추가'}
             </button>
             {editingId && <button type="button" onClick={resetForm}>취소</button>}
           </div>
         </form>
 
         <div className="admin-table">
-          {restaurants.map((restaurant) => (
-            <div className="admin-table-row" key={restaurant.id}>
-              <div>
-                <strong>{restaurant.name}</strong>
-                <span>{restaurant.area} · {restaurant.category} · {restaurant.isVisible ? '공개' : '비공개'}</span>
+          {restaurants.length === 0 ? (
+            <div className="empty-state">아직 등록된 맛집이 없습니다.</div>
+          ) : (
+            restaurants.map((restaurant) => (
+              <div className="admin-table-row" key={restaurant.id}>
+                <div>
+                  <strong>{restaurant.name}</strong>
+                  <span>{restaurant.area} · {restaurant.category} · {restaurant.isVisible ? '공개' : '비공개'}</span>
+                </div>
+                <div>
+                  <a href={restaurant.naverMapUrl} target="_blank" rel="noreferrer" title="네이버지도 열기">
+                    <Eye size={14} aria-hidden="true" />
+                  </a>
+                  <button type="button" onClick={() => {
+                    setEditingId(restaurant.id)
+                    setForm(toForm(restaurant))
+                  }}>
+                    수정
+                  </button>
+                  <button type="button" className="danger" onClick={() => handleRemove(restaurant.id)}>
+                    <Trash2 size={14} aria-hidden="true" />
+                  </button>
+                </div>
               </div>
-              <div>
-                <a href={restaurant.naverMapUrl} target="_blank" rel="noreferrer" title="네이버지도 열기">
-                  <Eye size={14} aria-hidden="true" />
-                </a>
-                <button type="button" onClick={() => {
-                  setEditingId(restaurant.id)
-                  setForm(toForm(restaurant))
-                }}>
-                  수정
-                </button>
-                <button type="button" className="danger" onClick={() => removeRestaurant(restaurant.id).then(refreshRestaurants)}>
-                  <Trash2 size={14} aria-hidden="true" />
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
     </main>

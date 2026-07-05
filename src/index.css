@@ -1270,6 +1270,29 @@ button {
   margin-bottom: 12px;
 }
 
+.admin-alert {
+  margin-bottom: 12px;
+  border: 1px solid #f0d48b;
+  background: #fff8df;
+  padding: 12px 14px;
+  color: #755c0a;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.admin-alert.error {
+  border-color: #f0b8b8;
+  background: #fff0f0;
+  color: #a52323;
+}
+
+.admin-alert.success {
+  border-color: #b7dfc0;
+  background: #effaf1;
+  color: #1d6d32;
+}
+
 .admin-stat-grid article {
   border: 1px solid var(--line);
   background: #111217;
