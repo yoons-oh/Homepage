@@ -14,6 +14,26 @@ type VisitEvent = {
   visitedAt?: Timestamp
 }
 
+class RequestTimeoutError extends Error {
+  constructor(label: string) {
+    super(`${label} 요청 시간이 초과되었습니다.`)
+    this.name = 'RequestTimeoutError'
+  }
+}
+
+const withTimeout = async <T,>(promise: Promise<T>, label: string, ms = 15000) => {
+  let timeoutId: ReturnType<typeof setTimeout> | undefined
+  const timeout = new Promise<never>((_, reject) => {
+    timeoutId = setTimeout(() => reject(new RequestTimeoutError(label)), ms)
+  })
+
+  try {
+    return await Promise.race([promise, timeout])
+  } finally {
+    if (timeoutId) clearTimeout(timeoutId)
+  }
+}
+
 const toForm = (restaurant: Restaurant): RestaurantForm => ({
   name: restaurant.name,
   category: restaurant.category,
@@ -28,6 +48,10 @@ const toForm = (restaurant: Restaurant): RestaurantForm => ({
 })
 
 const getErrorMessage = (error: unknown) => {
+  if (error instanceof RequestTimeoutError) {
+    return `${error.message} Firestore Database가 생성됐는지, Rules가 게시됐는지, 네트워크가 Firebase를 막고 있지 않은지 확인해주세요.`
+  }
+
   if (error instanceof FirebaseError) {
     if (error.code === 'permission-denied') {
       return 'Firebase 권한이 거부되었습니다. Firestore Rules가 적용됐는지, 관리자 이메일이 맞는지 확인해주세요.'
@@ -40,6 +64,8 @@ const getErrorMessage = (error: unknown) => {
     }
     return `${error.code}: ${error.message}`
   }
+
+  if (error instanceof Error) return error.message
   return '알 수 없는 오류가 발생했습니다.'
 }
 
@@ -75,7 +101,7 @@ export default function AdminDashboard() {
 
   const refreshRestaurants = async () => {
     try {
-      const items = await fetchAdminRestaurants()
+      const items = await withTimeout(fetchAdminRestaurants(), '맛집 목록 불러오기', 10000)
       setRestaurants(items)
     } catch (err) {
       setError(getErrorMessage(err))
@@ -86,7 +112,11 @@ export default function AdminDashboard() {
     try {
       const since = new Date()
       since.setDate(since.getDate() - 31)
-      const snapshot = await getDocs(query(collection(db, 'visit_events'), where('visitedAt', '>=', Timestamp.fromDate(since))))
+      const snapshot = await withTimeout(
+        getDocs(query(collection(db, 'visit_events'), where('visitedAt', '>=', Timestamp.fromDate(since)))),
+        '방문 통계 불러오기',
+        10000,
+      )
       setVisits(snapshot.docs.map((item) => item.data() as VisitEvent))
     } catch (err) {
       setError(getErrorMessage(err))
@@ -96,8 +126,8 @@ export default function AdminDashboard() {
   useEffect(() => {
     if (!user) return
     setError('')
-    refreshRestaurants()
-    refreshVisits()
+    void refreshRestaurants()
+    void refreshVisits()
   }, [user])
 
   const stats = useMemo(() => {
@@ -137,11 +167,11 @@ export default function AdminDashboard() {
     setNotice('')
 
     try {
-      if (editingId) await updateRestaurant(editingId, form)
-      else await createRestaurant(form)
+      const request = editingId ? updateRestaurant(editingId, form) : createRestaurant(form)
+      await withTimeout(request, '맛집 저장', 15000)
       resetForm()
-      await refreshRestaurants()
-      setNotice('맛집이 저장되었습니다.')
+      setNotice('맛집이 저장되었습니다. 목록을 새로고침합니다.')
+      void refreshRestaurants()
     } catch (err) {
       setError(getErrorMessage(err))
     } finally {
@@ -153,9 +183,9 @@ export default function AdminDashboard() {
     setError('')
     setNotice('')
     try {
-      await removeRestaurant(id)
-      await refreshRestaurants()
+      await withTimeout(removeRestaurant(id), '맛집 삭제', 15000)
       setNotice('맛집이 삭제되었습니다.')
+      void refreshRestaurants()
     } catch (err) {
       setError(getErrorMessage(err))
     }
@@ -194,7 +224,7 @@ export default function AdminDashboard() {
 
       {emailMismatch && (
         <div className="admin-alert">
-          현재 로그인 이메일은 {user.email} 입니다. 관리자 권한은 {adminEmail} 기준으로 설정되어 있습니다.
+          현재 로그인 이메일은 {user.email}입니다. 관리자 권한은 {adminEmail} 기준으로 설정되어 있습니다.
         </div>
       )}
       {error && <div className="admin-alert error">{error}</div>}
