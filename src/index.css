@@ -1083,6 +1083,33 @@ button {
   line-height: 1.62;
 }
 
+.restaurant-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.restaurant-photo-grid.count-1 {
+  grid-template-columns: 1fr;
+}
+
+.restaurant-photo-grid.count-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.restaurant-photo-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid #e4e8f2;
+  background: #edf3ff;
+  object-fit: cover;
+}
+
+.restaurant-photo-grid.count-1 img {
+  aspect-ratio: 16 / 9;
+}
+
 .restaurant-card dl {
   display: grid;
   gap: 8px;

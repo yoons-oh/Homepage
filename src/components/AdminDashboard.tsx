@@ -40,6 +40,9 @@ const toForm = (restaurant: Restaurant): RestaurantForm => ({
   area: restaurant.area,
   address: restaurant.address,
   naverMapUrl: restaurant.naverMapUrl,
+  imageUrl1: restaurant.imageUrls[0] ?? '',
+  imageUrl2: restaurant.imageUrls[1] ?? '',
+  imageUrl3: restaurant.imageUrls[2] ?? '',
   recommendedMenu: restaurant.recommendedMenu,
   memo: restaurant.memo,
   tags: restaurant.tags.join(', '),
@@ -289,6 +292,9 @@ export default function AdminDashboard() {
           <input placeholder="추천 메뉴" value={form.recommendedMenu} onChange={(event) => updateField('recommendedMenu', event.target.value)} />
           <input className="wide" placeholder="주소" value={form.address} onChange={(event) => updateField('address', event.target.value)} />
           <input className="wide" placeholder="네이버지도 링크" value={form.naverMapUrl} onChange={(event) => updateField('naverMapUrl', event.target.value)} required />
+          <input className="wide" placeholder="사진 URL 1" value={form.imageUrl1} onChange={(event) => updateField('imageUrl1', event.target.value)} />
+          <input className="wide" placeholder="사진 URL 2" value={form.imageUrl2} onChange={(event) => updateField('imageUrl2', event.target.value)} />
+          <input className="wide" placeholder="사진 URL 3" value={form.imageUrl3} onChange={(event) => updateField('imageUrl3', event.target.value)} />
           <textarea className="wide" placeholder="메모" value={form.memo} onChange={(event) => updateField('memo', event.target.value)} />
           <input placeholder="태그, 쉼표로 구분" value={form.tags} onChange={(event) => updateField('tags', event.target.value)} />
           <input type="number" placeholder="정렬 순서" value={form.sortOrder} onChange={(event) => updateField('sortOrder', Number(event.target.value))} />

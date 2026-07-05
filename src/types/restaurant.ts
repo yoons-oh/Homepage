@@ -7,6 +7,7 @@ export type Restaurant = {
   area: string
   address: string
   naverMapUrl: string
+  imageUrls: string[]
   recommendedMenu: string
   memo: string
   tags: string[]
@@ -16,8 +17,11 @@ export type Restaurant = {
   updatedAt?: Timestamp
 }
 
-export type RestaurantForm = Omit<Restaurant, 'id' | 'createdAt' | 'updatedAt' | 'tags'> & {
+export type RestaurantForm = Omit<Restaurant, 'id' | 'createdAt' | 'updatedAt' | 'tags' | 'imageUrls'> & {
   tags: string
+  imageUrl1: string
+  imageUrl2: string
+  imageUrl3: string
 }
 
 export const emptyRestaurantForm: RestaurantForm = {
@@ -26,6 +30,9 @@ export const emptyRestaurantForm: RestaurantForm = {
   area: '',
   address: '',
   naverMapUrl: '',
+  imageUrl1: '',
+  imageUrl2: '',
+  imageUrl3: '',
   recommendedMenu: '',
   memo: '',
   tags: '',

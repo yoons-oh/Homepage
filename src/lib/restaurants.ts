@@ -21,6 +21,9 @@ const normalizeTags = (tags: string) =>
     .map((tag) => tag.trim())
     .filter(Boolean)
 
+const normalizeImageUrls = (form: RestaurantForm) =>
+  [form.imageUrl1, form.imageUrl2, form.imageUrl3].map((url) => url.trim()).filter(Boolean)
+
 const toRestaurant = (id: string, data: Record<string, unknown>): Restaurant => ({
   id,
   name: String(data.name ?? ''),
@@ -28,6 +31,7 @@ const toRestaurant = (id: string, data: Record<string, unknown>): Restaurant => 
   area: String(data.area ?? ''),
   address: String(data.address ?? ''),
   naverMapUrl: String(data.naverMapUrl ?? ''),
+  imageUrls: Array.isArray(data.imageUrls) ? data.imageUrls.map(String).filter(Boolean) : [],
   recommendedMenu: String(data.recommendedMenu ?? ''),
   memo: String(data.memo ?? ''),
   tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
@@ -43,6 +47,7 @@ const toPayload = (form: RestaurantForm) => ({
   area: form.area.trim(),
   address: form.address.trim(),
   naverMapUrl: form.naverMapUrl.trim(),
+  imageUrls: normalizeImageUrls(form),
   recommendedMenu: form.recommendedMenu.trim(),
   memo: form.memo.trim(),
   tags: normalizeTags(form.tags),

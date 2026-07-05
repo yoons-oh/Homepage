@@ -64,6 +64,18 @@ export default function RestaurantsPage() {
                 <span>{restaurant.category || '맛집'}</span>
                 <small>{restaurant.area}</small>
               </div>
+              {restaurant.imageUrls.length > 0 && (
+                <div className={`restaurant-photo-grid count-${Math.min(restaurant.imageUrls.length, 3)}`}>
+                  {restaurant.imageUrls.slice(0, 3).map((url, index) => (
+                    <img
+                      key={`${restaurant.id}-${url}`}
+                      src={url}
+                      alt={`${restaurant.name} 사진 ${index + 1}`}
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              )}
               <h3>{restaurant.name}</h3>
               <p>{restaurant.memo}</p>
               <dl>
