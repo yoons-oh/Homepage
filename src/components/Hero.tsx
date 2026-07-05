@@ -24,10 +24,16 @@ export default function Hero() {
           <span>{t('hero.badge')}</span>
           <p>{t('hero.long_sub')}</p>
         </div>
-        <a className="hero-mail-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=yoonseukoh@gmail.com&su=%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A5%BC%20%EB%B3%B4%EA%B3%A0%20%EC%97%B0%EB%9D%BD%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4" target="_blank" rel="noreferrer">
-          Contact
-          <ArrowUpRight size={15} aria-hidden="true" />
-        </a>
+        <div className="hero-quick-actions">
+          <a className="hero-mail-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=yoonseukoh@gmail.com&su=%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A5%BC%20%EB%B3%B4%EA%B3%A0%20%EC%97%B0%EB%9D%BD%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4" target="_blank" rel="noreferrer">
+            Contact
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+          <a className="hero-admin-link" href="/admin/login">
+            Admin
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        </div>
       </div>
 
       <motion.h1

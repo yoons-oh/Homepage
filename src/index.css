@@ -263,24 +263,45 @@ button {
   word-break: keep-all;
 }
 
-.hero-mail-link {
+.hero-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-mail-link,
+.hero-admin-link {
   display: inline-flex;
   min-height: 42px;
   align-items: center;
   justify-content: center;
   gap: 8px;
   border-radius: 10px;
-  background: #5974dc;
   padding: 0 18px;
-  color: white;
   font-size: 13px;
   font-weight: 900;
   white-space: nowrap;
+}
+
+.hero-mail-link {
+  background: #5974dc;
+  color: white;
   box-shadow: 0 12px 28px rgb(89 116 220 / 0.26);
 }
 
 .hero-mail-link:hover {
   background: var(--blue);
+}
+
+.hero-admin-link {
+  border: 1px solid #d9ddea;
+  background: white;
+  color: #4b5563;
+}
+
+.hero-admin-link:hover {
+  border-color: var(--blue);
+  color: var(--blue);
 }
 
 .portfolio-title {
@@ -1912,7 +1933,13 @@ button {
     word-break: keep-all;
   }
 
-  .hero-mail-link {
+  .hero-quick-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-mail-link,
+  .hero-admin-link {
     width: 100%;
     min-height: 40px;
   }
