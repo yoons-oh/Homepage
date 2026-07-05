@@ -726,6 +726,16 @@ button {
   background: white;
 }
 
+.listing-shell,
+.admin-page,
+.admin-auth-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  background: white;
+  padding: 132px 18px 78px;
+  border-top: 1px solid var(--line);
+}
+
 .project-page {
   padding-top: 132px;
 }
@@ -948,6 +958,426 @@ button {
   position: absolute;
   right: 16px;
   bottom: 16px;
+}
+
+.restaurant-page {
+  min-height: 760px;
+}
+
+.restaurant-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.restaurant-toolbar button,
+.admin-panel-heading button,
+.admin-header button,
+.form-actions button,
+.admin-table-row button,
+.admin-table-row a {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 0 12px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.restaurant-toolbar button.active,
+.restaurant-toolbar button:hover,
+.admin-panel-heading button:hover,
+.admin-header button:hover,
+.form-actions button:hover,
+.admin-table-row button:hover,
+.admin-table-row a:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.restaurant-card,
+.admin-panel,
+.admin-auth-card {
+  border: 1px solid var(--line);
+  background: #fbfcff;
+}
+
+.restaurant-card {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.restaurant-card-top,
+.admin-panel-heading,
+.admin-header,
+.admin-table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.restaurant-card-top span,
+.admin-header span,
+.admin-panel-heading span,
+.admin-auth-card > span {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.restaurant-card-top small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.restaurant-card h3 {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1.08;
+}
+
+.restaurant-card p {
+  margin-top: 10px;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.62;
+}
+
+.restaurant-card dl {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+  color: #4b5563;
+  font-size: 12px;
+}
+
+.restaurant-card dl div {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.restaurant-card dt {
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.restaurant-card dd {
+  font-weight: 750;
+  word-break: keep-all;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.tag-row span {
+  border: 1px solid #d8deed;
+  background: white;
+  padding: 5px 8px;
+  color: #586174;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.map-link {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 18px;
+  background: var(--blue);
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.map-link:hover {
+  background: var(--blue-dark);
+}
+
+.empty-state {
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px dashed #cfd6e6;
+  background: #fbfcff;
+  color: #596173;
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.admin-auth-page {
+  display: grid;
+  min-height: 720px;
+  place-items: center;
+}
+
+.admin-auth-card {
+  display: grid;
+  width: min(100%, 430px);
+  gap: 14px;
+  padding: 28px;
+}
+
+.admin-auth-card > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.admin-auth-card h1 {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.admin-auth-card p {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.admin-auth-card label,
+.restaurant-form label {
+  display: grid;
+  gap: 7px;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.admin-auth-card input,
+.restaurant-form input,
+.restaurant-form textarea {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 0 12px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.restaurant-form textarea {
+  min-height: 94px;
+  padding-top: 12px;
+  resize: vertical;
+}
+
+.admin-auth-card button,
+.form-actions button:first-child {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  background: var(--blue);
+  color: white;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.admin-auth-card button:disabled,
+.form-actions button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.form-error {
+  color: #d12b2b;
+  font-size: 12px;
+}
+
+.admin-page {
+  min-height: 780px;
+}
+
+.admin-header {
+  margin-bottom: 20px;
+}
+
+.admin-header h1 {
+  margin-top: 8px;
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.admin-header p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.admin-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.admin-stat-grid article {
+  border: 1px solid var(--line);
+  background: #111217;
+  padding: 18px;
+  color: white;
+}
+
+.admin-stat-grid span {
+  display: block;
+  margin-top: 14px;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.admin-stat-grid strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.admin-panel {
+  margin-top: 12px;
+  padding: 18px;
+}
+
+.admin-panel-heading {
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.admin-panel-heading h2 {
+  margin-top: 6px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.admin-panel-heading a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.page-count-list {
+  display: grid;
+  gap: 8px;
+}
+
+.page-count-list div {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e4e8f2;
+  background: white;
+  padding: 11px 12px;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.restaurant-form {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.restaurant-form .wide {
+  grid-column: span 2;
+}
+
+.check-field {
+  min-height: 42px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 0 12px;
+}
+
+.check-field input {
+  width: 16px;
+  min-height: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-table {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-table-row {
+  border: 1px solid #e4e8f2;
+  background: white;
+  padding: 12px;
+}
+
+.admin-table-row strong,
+.admin-table-row span {
+  display: block;
+}
+
+.admin-table-row strong {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.admin-table-row span {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.admin-table-row > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-table-row .danger {
+  color: #d12b2b;
 }
 
 .process-section {
@@ -1622,13 +2052,17 @@ button {
   }
 
   .project-grid,
-  .process-grid {
+  .process-grid,
+  .restaurant-grid,
+  .admin-stat-grid,
+  .restaurant-form {
     grid-template-columns: 1fr;
   }
 
   .project-card,
   .project-card.span-wide,
   .project-card.span-compact,
+  .restaurant-form .wide,
   .process-card,
   .about-panel {
     grid-column: 1;
@@ -1638,12 +2072,40 @@ button {
 
   .work-section,
   .process-section,
-  .about-section {
+  .about-section,
+  .listing-shell,
+  .admin-page,
+  .admin-auth-page {
     padding: 54px 16px;
   }
 
-  .project-page {
+  .project-page,
+  .listing-shell,
+  .admin-page,
+  .admin-auth-page {
     padding-top: 106px;
+  }
+
+  .restaurant-card,
+  .admin-panel,
+  .admin-auth-card {
+    width: 100%;
+  }
+
+  .admin-header,
+  .admin-panel-heading,
+  .admin-table-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-header h1 {
+    font-size: 34px;
+  }
+
+  .form-actions,
+  .admin-table-row > div:last-child {
+    flex-wrap: wrap;
   }
 
   .project-card {

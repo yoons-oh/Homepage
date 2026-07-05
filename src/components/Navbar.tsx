@@ -12,19 +12,21 @@ const LANGS = [
 const CONTACT_EMAIL = 'yoonseukoh@gmail.com'
 const CONTACT_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent('홈페이지를 보고 연락드립니다')}&body=${encodeURIComponent('안녕하세요, Yoon님.\n\n홈페이지를 보고 연락드립니다.\n')}`
 
+const navItems = [
+  { key: 'home', href: '/' },
+  { key: 'projects', href: '/projects' },
+  { key: 'apps', href: '/apps' },
+  { key: 'writing', href: '/writing' },
+  { key: 'youtube', href: '/youtube' },
+  { key: 'restaurants', label: '맛집', href: '/restaurants' },
+  { key: 'about', href: '/about' },
+] as const
+
 export default function Navbar() {
   const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const current = LANGS.find((lang) => i18n.language.startsWith(lang.code)) ?? LANGS[0]
-  const navItems = [
-    { key: 'home', href: '/' },
-    { key: 'projects', href: '/projects' },
-    { key: 'apps', href: '/apps' },
-    { key: 'writing', href: '/writing' },
-    { key: 'youtube', href: '/youtube' },
-    { key: 'about', href: '/about' },
-  ] as const
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -49,7 +51,7 @@ export default function Navbar() {
         <div className="nav-links" aria-label="Primary navigation">
           {navItems.map((item) => (
             <a key={item.key} href={item.href}>
-              {t(`nav.${item.key}`)}
+              {t(`nav.${item.key}`, { defaultValue: 'label' in item ? item.label : item.key })}
             </a>
           ))}
         </div>
