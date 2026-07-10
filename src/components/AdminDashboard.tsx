@@ -1,8 +1,8 @@
 import { FirebaseError } from 'firebase/app'
-import { useEffect, useMemo, useState, type FormEvent } from 'react'
+import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react'
 import { onAuthStateChanged, signOut, type User } from 'firebase/auth'
 import { collection, getDocs, query, Timestamp, where } from 'firebase/firestore'
-import { ArrowUpRight, BarChart3, Eye, LogOut, Plus, Save, Trash2 } from 'lucide-react'
+import { ArrowUpRight, BarChart3, Eye, ImagePlus, LogOut, Plus, Save, Trash2, X } from 'lucide-react'
 import { adminEmail, auth, db } from '../lib/firebase'
 import { createRestaurant, fetchAdminRestaurants, removeRestaurant, updateRestaurant } from '../lib/restaurants'
 import { emptyRestaurantForm, type Restaurant, type RestaurantForm } from '../types/restaurant'
@@ -12,6 +12,64 @@ type VisitEvent = {
   visitorId: string
   deviceType: string
   visitedAt?: Timestamp
+}
+
+const imageFields = ['imageUrl1', 'imageUrl2', 'imageUrl3'] as const
+const maxRestaurantImages = imageFields.length
+const maxImageDataLength = 240000
+
+const readFileAsDataUrl = (file: File) =>
+  new Promise<string>((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(String(reader.result ?? ''))
+    reader.onerror = () => reject(new Error('사진을 읽을 수 없습니다.'))
+    reader.readAsDataURL(file)
+  })
+
+const loadImage = (src: string) =>
+  new Promise<HTMLImageElement>((resolve, reject) => {
+    const image = new Image()
+    image.onload = () => resolve(image)
+    image.onerror = () => reject(new Error('사진을 불러올 수 없습니다.'))
+    image.src = src
+  })
+
+const compressRestaurantImage = async (file: File) => {
+  if (!file.type.startsWith('image/')) {
+    throw new Error('이미지 파일만 등록할 수 있습니다.')
+  }
+
+  const source = await readFileAsDataUrl(file)
+  const image = await loadImage(source)
+  let maxSide = 900
+  let quality = 0.74
+
+  for (let attempt = 0; attempt < 10; attempt += 1) {
+    const scale = Math.min(1, maxSide / Math.max(image.width, image.height))
+    const width = Math.max(1, Math.round(image.width * scale))
+    const height = Math.max(1, Math.round(image.height * scale))
+    const canvas = document.createElement('canvas')
+    canvas.width = width
+    canvas.height = height
+    const context = canvas.getContext('2d')
+
+    if (!context) throw new Error('사진을 처리할 수 없습니다.')
+
+    context.fillStyle = '#ffffff'
+    context.fillRect(0, 0, width, height)
+    context.drawImage(image, 0, 0, width, height)
+
+    const dataUrl = canvas.toDataURL('image/webp', quality)
+    if (dataUrl.length <= maxImageDataLength) return dataUrl
+
+    if (quality > 0.5) {
+      quality -= 0.08
+    } else {
+      maxSide = Math.round(maxSide * 0.82)
+    }
+  }
+
+  throw new Error('사진 용량이 큽니다. 조금 더 작은 이미지로 다시 등록해주세요.')
 }
 
 class RequestTimeoutError extends Error {
@@ -92,6 +150,7 @@ export default function AdminDashboard() {
   const [form, setForm] = useState<RestaurantForm>(emptyRestaurantForm)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
+  const [photoBusy, setPhotoBusy] = useState(false)
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
 
@@ -161,6 +220,50 @@ export default function AdminDashboard() {
   const resetForm = () => {
     setForm(emptyRestaurantForm)
     setEditingId(null)
+  }
+
+  const imageValues = imageFields.map((field) => form[field]).filter(Boolean)
+
+  const setImageValues = (values: string[]) => {
+    setForm((current) => ({
+      ...current,
+      imageUrl1: values[0] ?? '',
+      imageUrl2: values[1] ?? '',
+      imageUrl3: values[2] ?? '',
+    }))
+  }
+
+  const handlePhotoSelect = async (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(event.target.files ?? [])
+    event.target.value = ''
+    if (selectedFiles.length === 0) return
+
+    const remainingSlots = maxRestaurantImages - imageValues.length
+    if (remainingSlots <= 0) {
+      setError('사진은 최대 3장까지 등록할 수 있습니다.')
+      return
+    }
+
+    setPhotoBusy(true)
+    setError('')
+    setNotice('')
+
+    try {
+      const files = selectedFiles.slice(0, remainingSlots)
+      const compressedImages = []
+      for (const file of files) {
+        compressedImages.push(await compressRestaurantImage(file))
+      }
+      setImageValues([...imageValues, ...compressedImages].slice(0, maxRestaurantImages))
+    } catch (err) {
+      setError(getErrorMessage(err))
+    } finally {
+      setPhotoBusy(false)
+    }
+  }
+
+  const handlePhotoRemove = (index: number) => {
+    setImageValues(imageValues.filter((_, photoIndex) => photoIndex !== index))
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -292,9 +395,28 @@ export default function AdminDashboard() {
           <input placeholder="추천 메뉴" value={form.recommendedMenu} onChange={(event) => updateField('recommendedMenu', event.target.value)} />
           <input className="wide" placeholder="주소" value={form.address} onChange={(event) => updateField('address', event.target.value)} />
           <input className="wide" placeholder="네이버지도 링크" value={form.naverMapUrl} onChange={(event) => updateField('naverMapUrl', event.target.value)} required />
-          <input className="wide" placeholder="사진 URL 1" value={form.imageUrl1} onChange={(event) => updateField('imageUrl1', event.target.value)} />
-          <input className="wide" placeholder="사진 URL 2" value={form.imageUrl2} onChange={(event) => updateField('imageUrl2', event.target.value)} />
-          <input className="wide" placeholder="사진 URL 3" value={form.imageUrl3} onChange={(event) => updateField('imageUrl3', event.target.value)} />
+          <div className="photo-upload-field">
+            <div className="photo-upload-control">
+              <strong>맛집 사진</strong>
+              <label className="photo-picker-button">
+                <ImagePlus size={14} aria-hidden="true" />
+                {photoBusy ? '사진 처리 중...' : '사진 선택'}
+                <input type="file" accept="image/*" multiple onChange={handlePhotoSelect} disabled={photoBusy || imageValues.length >= maxRestaurantImages} />
+              </label>
+            </div>
+            {imageValues.length > 0 && (
+              <div className="photo-preview-grid">
+                {imageValues.map((url, index) => (
+                  <div className="photo-preview-item" key={`${url.slice(0, 48)}-${index}`}>
+                    <img src={url} alt={`맛집 사진 ${index + 1}`} />
+                    <button type="button" onClick={() => handlePhotoRemove(index)} aria-label={`맛집 사진 ${index + 1} 삭제`}>
+                      <X size={13} aria-hidden="true" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <textarea className="wide" placeholder="메모" value={form.memo} onChange={(event) => updateField('memo', event.target.value)} />
           <input placeholder="태그, 쉼표로 구분" value={form.tags} onChange={(event) => updateField('tags', event.target.value)} />
           <input type="number" placeholder="정렬 순서" value={form.sortOrder} onChange={(event) => updateField('sortOrder', Number(event.target.value))} />
@@ -303,9 +425,9 @@ export default function AdminDashboard() {
             공개
           </label>
           <div className="form-actions">
-            <button type="submit" disabled={busy}>
+            <button type="submit" disabled={busy || photoBusy}>
               {editingId ? <Save size={14} aria-hidden="true" /> : <Plus size={14} aria-hidden="true" />}
-              {busy ? '저장 중...' : editingId ? '수정 저장' : '맛집 추가'}
+              {busy ? '저장 중...' : photoBusy ? '사진 처리 중...' : editingId ? '수정 저장' : '맛집 추가'}
             </button>
             {editingId && <button type="button" onClick={resetForm}>취소</button>}
           </div>
