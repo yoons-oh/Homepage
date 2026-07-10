@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/login
 
-Sitemap: https://homepage-chi-plum.vercel.app/sitemap.xml
+Sitemap: https://www.auto-ajea.site/sitemap.xml
