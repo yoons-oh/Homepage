@@ -792,6 +792,197 @@ button {
   gap: 12px;
 }
 
+.career-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  background: white;
+  padding: 132px 18px 78px;
+  border-top: 1px solid var(--line);
+}
+
+.career-hero {
+  padding: 28px 0 34px;
+}
+
+.career-hero h1 {
+  max-width: 920px;
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 0.98;
+}
+
+.career-hero h1 span {
+  display: block;
+}
+
+.career-hero > p:last-child {
+  max-width: 720px;
+  margin-top: 24px;
+  color: #4b5563;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.78;
+  word-break: keep-all;
+}
+
+.career-skill-panel {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  border: 1px solid var(--line);
+  background: #111217;
+  padding: 22px;
+  color: white;
+}
+
+.career-skill-panel > div {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.career-skill-panel h2 {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.career-skill-panel ul,
+.career-card ul {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.career-skill-panel li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgb(255 255 255 / 0.86);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.career-skill-panel li svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: #8bb8ff;
+}
+
+.career-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.career-capability-grid article {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 20px;
+}
+
+.career-capability-grid svg {
+  color: var(--blue);
+}
+
+.career-capability-grid h2 {
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.career-capability-grid p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.career-timeline {
+  margin-top: 58px;
+}
+
+.career-list {
+  display: grid;
+  gap: 12px;
+}
+
+.career-card {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 28px;
+  border: 1px solid var(--line);
+  background: white;
+  padding: 22px;
+}
+
+.career-card-meta {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.career-card-meta small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.career-card-body h3 {
+  color: var(--ink);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.career-card-body strong {
+  display: block;
+  margin-top: 8px;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.career-card-body p {
+  margin-top: 16px;
+  color: #4b5563;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.72;
+  word-break: keep-all;
+}
+
+.career-card ul {
+  margin-top: 18px;
+}
+
+.career-card li {
+  position: relative;
+  padding-left: 14px;
+  color: #586174;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.62;
+}
+
+.career-card li::before {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--blue);
+  content: '';
+}
+
 .project-card {
   position: relative;
   display: flex;
@@ -1365,6 +1556,50 @@ button {
   color: var(--blue);
   font-size: 12px;
   font-weight: 900;
+}
+
+.admin-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #e4e8f2;
+  background: white;
+  padding: 14px;
+}
+
+.admin-toggle-row strong,
+.admin-toggle-row span {
+  display: block;
+}
+
+.admin-toggle-row strong {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.admin-toggle-row span {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.admin-toggle-row button {
+  min-width: 96px;
+  min-height: 38px;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.admin-toggle-row button:disabled {
+  cursor: wait;
+  opacity: 0.6;
 }
 
 .page-count-list {
@@ -2215,6 +2450,9 @@ button {
 
   .project-grid,
   .process-grid,
+  .career-skill-panel,
+  .career-capability-grid,
+  .career-card,
   .restaurant-grid,
   .admin-stat-grid,
   .restaurant-form {
@@ -2244,6 +2482,7 @@ button {
   .work-section,
   .process-section,
   .about-section,
+  .career-page,
   .listing-shell,
   .admin-page,
   .admin-auth-page {
@@ -2251,10 +2490,19 @@ button {
   }
 
   .project-page,
+  .career-page,
   .listing-shell,
   .admin-page,
   .admin-auth-page {
     padding-top: 106px;
+  }
+
+  .career-hero h1 {
+    font-size: 42px;
+  }
+
+  .career-card {
+    gap: 18px;
   }
 
   .restaurant-card,
@@ -2265,6 +2513,7 @@ button {
 
   .admin-header,
   .admin-panel-heading,
+  .admin-toggle-row,
   .admin-table-row {
     flex-direction: column;
     align-items: stretch;

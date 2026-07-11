@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, Mail } from 'lucide-react'
+import { useCareerVisibility } from '../hooks/useCareerVisibility'
 
 const LANGS = [
   { code: 'en', label: 'EN' },
@@ -12,7 +13,7 @@ const LANGS = [
 const CONTACT_EMAIL = 'yoonseukoh@gmail.com'
 const CONTACT_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent('홈페이지를 보고 연락드립니다')}&body=${encodeURIComponent('안녕하세요, Yoon님.\n\n홈페이지를 보고 연락드립니다.\n')}`
 
-const navItems = [
+const baseNavItems = [
   { key: 'home', href: '/' },
   { key: 'projects', href: '/projects' },
   { key: 'apps', href: '/apps' },
@@ -26,7 +27,15 @@ export default function Navbar() {
   const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
+  const { isOpen: careerOpen } = useCareerVisibility()
   const current = LANGS.find((lang) => i18n.language.startsWith(lang.code)) ?? LANGS[0]
+  const navItems = careerOpen
+    ? [
+        ...baseNavItems.slice(0, 6),
+        { key: 'career', label: '경력', href: '/career' },
+        ...baseNavItems.slice(6),
+      ]
+    : baseNavItems
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)

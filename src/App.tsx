@@ -5,15 +5,18 @@ import HowIWork from './components/HowIWork'
 import Stats from './components/Stats'
 import About from './components/About'
 import AboutPage from './components/AboutPage'
+import CareerPage from './components/CareerPage'
 import RestaurantsPage from './components/RestaurantsPage'
 import AdminLogin from './components/AdminLogin'
 import AdminDashboard from './components/AdminDashboard'
 import Footer from './components/Footer'
+import { useCareerVisibility } from './hooks/useCareerVisibility'
 import { useVisitTracker } from './hooks/useVisitTracker'
 
 function App() {
   const path = window.location.pathname
   const isAboutPage = path === '/about'
+  const isCareerPage = path === '/career'
   const isRestaurantsPage = path === '/restaurants'
   const isAdminLoginPage = path === '/admin/login'
   const isAdminPage = path === '/admin'
@@ -24,6 +27,7 @@ function App() {
     '/youtube': 'youtube',
   }
   const projectFilter = projectPages[path]
+  const { isOpen: careerOpen, loading: careerLoading } = useCareerVisibility()
   useVisitTracker(path)
 
   return (
@@ -36,6 +40,21 @@ function App() {
       ) : isAboutPage ? (
         <>
           <AboutPage />
+          <Footer />
+        </>
+      ) : isCareerPage ? (
+        <>
+          {careerLoading ? (
+            <main className="listing-shell">
+              <div className="empty-state">경력 페이지 상태를 확인하는 중입니다.</div>
+            </main>
+          ) : careerOpen ? (
+            <CareerPage />
+          ) : (
+            <main className="listing-shell">
+              <div className="empty-state">경력 페이지가 닫혀 있습니다.</div>
+            </main>
+          )}
           <Footer />
         </>
       ) : isRestaurantsPage ? (

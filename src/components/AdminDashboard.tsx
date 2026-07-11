@@ -5,6 +5,7 @@ import { collection, getDocs, query, Timestamp, where } from 'firebase/firestore
 import { ArrowUpRight, BarChart3, Eye, ImagePlus, LogOut, Plus, Save, Trash2, X } from 'lucide-react'
 import { adminEmail, auth, db } from '../lib/firebase'
 import { createRestaurant, fetchAdminRestaurants, removeRestaurant, updateRestaurant } from '../lib/restaurants'
+import { fetchCareerSettings, updateCareerSettings } from '../lib/siteSettings'
 import { emptyRestaurantForm, type Restaurant, type RestaurantForm } from '../types/restaurant'
 
 type VisitEvent = {
@@ -151,6 +152,8 @@ export default function AdminDashboard() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
   const [photoBusy, setPhotoBusy] = useState(false)
+  const [careerOpen, setCareerOpen] = useState(false)
+  const [careerBusy, setCareerBusy] = useState(false)
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
 
@@ -185,11 +188,21 @@ export default function AdminDashboard() {
     }
   }
 
+  const refreshCareerSettings = async () => {
+    try {
+      const settings = await withTimeout(fetchCareerSettings(), '경력 페이지 설정 불러오기', 10000)
+      setCareerOpen(settings.isOpen)
+    } catch (err) {
+      setError(getErrorMessage(err))
+    }
+  }
+
   useEffect(() => {
     if (!user) return
     setError('')
     void refreshRestaurants()
     void refreshVisits()
+    void refreshCareerSettings()
   }, [user])
 
   const stats = useMemo(() => {
@@ -264,6 +277,23 @@ export default function AdminDashboard() {
 
   const handlePhotoRemove = (index: number) => {
     setImageValues(imageValues.filter((_, photoIndex) => photoIndex !== index))
+  }
+
+  const handleCareerToggle = async () => {
+    const nextOpen = !careerOpen
+    setCareerBusy(true)
+    setError('')
+    setNotice('')
+
+    try {
+      await withTimeout(updateCareerSettings(nextOpen), '경력 페이지 설정 저장', 15000)
+      setCareerOpen(nextOpen)
+      setNotice(nextOpen ? '경력 페이지를 공개했습니다.' : '경력 페이지를 닫았습니다.')
+    } catch (err) {
+      setError(getErrorMessage(err))
+    } finally {
+      setCareerBusy(false)
+    }
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -352,6 +382,28 @@ export default function AdminDashboard() {
           <span>이번 달</span>
           <strong>{stats.month}</strong>
         </article>
+      </section>
+
+      <section className="admin-panel">
+        <div className="admin-panel-heading">
+          <div>
+            <span>Career page</span>
+            <h2>경력 페이지 공개 설정</h2>
+          </div>
+          <a href="/career" target="_blank" rel="noreferrer">
+            페이지 확인
+            <ArrowUpRight size={13} aria-hidden="true" />
+          </a>
+        </div>
+        <div className="admin-toggle-row">
+          <div>
+            <strong>{careerOpen ? '공개 중' : '닫힘'}</strong>
+            <span>{careerOpen ? '방문자가 경력 페이지를 볼 수 있습니다.' : '방문자가 경력 페이지에 접근할 수 없습니다.'}</span>
+          </div>
+          <button type="button" onClick={handleCareerToggle} disabled={careerBusy}>
+            {careerBusy ? '저장 중...' : careerOpen ? '닫기' : '열기'}
+          </button>
+        </div>
       </section>
 
       <section className="admin-panel">
