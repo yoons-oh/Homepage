@@ -2,8 +2,9 @@ import { ArrowLeft, BriefcaseBusiness, CheckCircle2, Code2, Database, Layers3, S
 
 const coreSkills = [
   'SAP ERP FI/CO/TR/HR 모듈 세팅, 운영 및 ABAP 개발',
-  'e-HR 개발 및 관리, B2BERP/영림원 ERP 개발 및 관리',
-  'ABAP, Java, C#, Mybuilder, Oracle, MS-SQL 기반 업무 시스템 개발',
+  '전자전표시스템, e-HR 개발 및 관리, B2BERP/영림원 ERP 개발 및 관리 경험',
+  'ABAP, Java, C#, Mybuilder, Oracle, MS-SQL',
+  'AI, GPT(Codex), Claude Code 및 VS Code를 활용한 다양한 개발 경험',
 ]
 
 const capabilityGroups = [
