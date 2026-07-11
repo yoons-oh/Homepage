@@ -35,8 +35,8 @@ const careerItems = [
   },
   {
     company: '경동원',
-    period: '2010.11 ~ 재직중',
-    duration: '15년 9개월',
+    period: '2010.11 ~ 2021.09',
+    duration: '10년 11개월',
     role: '경영정보팀 과장 3년차',
     summary: '경동나비엔 외 국내 5개 법인과 해외 3개 법인의 SAP ERP 및 e-HR, 관리 시스템을 설계, 개발, 운영했습니다.',
     tasks: ['SAP ERP FI/CO/TR/HR 운영', 'e-HR 및 기타 관리 시스템 설계/개발/관리', '국내외 법인 업무 프로세스 대응'],
