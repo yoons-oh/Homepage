@@ -141,7 +141,7 @@
       "incruit": { "company": "Incruit KiCom ERP", "period": "2007.06 ~ 2010.07", "duration": "3年2个月", "role": "开发1组 主任", "summary": "负责B2BERP人事、薪资、会计模块，执行税法变更、年末清算和标准化工作。", "tasks": ["人事/薪资/会计模块运营及开发", "适用变更税法", "执行年末清算及标准化"] },
       "kyungdong": { "company": "Kyungdong One", "period": "2010.11 ~ 2021.09", "duration": "10年11个月", "role": "经营信息组 课长", "summary": "为Kyungdong Navien及国内外法人设计、开发并运营SAP ERP、e-HR及管理系统。", "tasks": ["SAP ERP FI/CO/TR/HR运营", "e-HR及管理系统设计/开发/管理", "支持国内外法人业务流程"] },
       "fnf": { "company": "F&F", "period": "2021.11 ~ 2023.09", "duration": "1年11个月", "role": "次长/Part Lead", "summary": "运营F&F、F&CO、F&F上海法人SAP ERP FI/CO，并执行Roll-out和版本升级项目。", "tasks": ["F&F、F&CO、F&F上海法人SAP ERP FI/CO运营", "中国法人SAP Roll-out项目", "F&CO版本升级项目", "F&F Entertainment、F&F Logistics新法人Roll-out"] },
-      "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在职", "duration": "2年11个月", "role": "DT 部长/团队成员", "summary": "运营SAP FI/CO和网页凭证处理(myFinance)，并执行法人设立Roll-out、个人信息加密、SWIFT构建。", "tasks": ["SAP FI/CO及myFinance运营", "Holdings、Nexlab法人设立Roll-out(with SDS)", "SAP个人信息加密及SWIFT构建"] }
+      "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在职", "duration": "2年11个月", "role": "Data Governance 组 部长/团队成员（18年11个月）", "summary": "运营SAP FI/CO和网页凭证处理(myFinance)，并执行法人设立Roll-out、个人信息加密、SWIFT构建。", "tasks": ["SAP FI/CO及myFinance运营", "Holdings、Nexlab法人设立Roll-out(with SDS)", "SAP个人信息加密及SWIFT构建"] }
     }
   },
   "footer": {

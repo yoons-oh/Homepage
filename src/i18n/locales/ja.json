@@ -141,7 +141,7 @@
       "incruit": { "company": "Incruit KiCom ERP", "period": "2007.06 ~ 2010.07", "duration": "3年2か月", "role": "開発1チーム 主任", "summary": "B2BERP人事・給与・会計モジュールを担当し、税法変更、年末調整、標準化業務を行いました。", "tasks": ["人事・給与・会計モジュール運用および開発", "変更税法の適用", "年末調整の実施および標準化"] },
       "kyungdong": { "company": "Kyungdong One", "period": "2010.11 ~ 2021.09", "duration": "10年11か月", "role": "経営情報チーム 課長", "summary": "Kyungdong Navienを含む国内外法人のSAP ERP、e-HR、管理システムを設計・開発・運用しました。", "tasks": ["SAP ERP FI/CO/TR/HR運用", "e-HRおよび管理システム設計・開発・管理", "国内外法人の業務プロセス対応"] },
       "fnf": { "company": "F&F", "period": "2021.11 ~ 2023.09", "duration": "1年11か月", "role": "次長／パート長", "summary": "F&F、F&CO、F&F上海法人のSAP ERP FI/CO運用とロールアウト、バージョンアッププロジェクトを行いました。", "tasks": ["F&F、F&CO、F&F上海法人SAP ERP FI/CO運用", "中国法人SAPロールアウトプロジェクト", "F&COバージョンアッププロジェクト", "F&F Entertainment、F&F Logistics新規法人ロールアウト"] },
-      "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在職中", "duration": "2年11か月", "role": "DT 部長／チームメンバー", "summary": "SAP FI/COとWeb伝票処理(myFinance)を運用し、法人設立ロールアウト、個人情報暗号化、SWIFT構築を行いました。", "tasks": ["SAP FI/COおよびmyFinance運用", "Holdings、Nexlab法人設立ロールアウト(with SDS)", "SAP個人情報暗号化およびSWIFT構築"] }
+      "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在職中", "duration": "2年11か月", "role": "Data Governanceグループ 部長／チームメンバー（18年11か月）", "summary": "SAP FI/COとWeb伝票処理(myFinance)を運用し、法人設立ロールアウト、個人情報暗号化、SWIFT構築を行いました。", "tasks": ["SAP FI/COおよびmyFinance運用", "Holdings、Nexlab法人設立ロールアウト(with SDS)", "SAP個人情報暗号化およびSWIFT構築"] }
     }
   },
   "footer": {
