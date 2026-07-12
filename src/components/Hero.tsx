@@ -16,6 +16,7 @@ const trustItems = [
 
 export default function Hero() {
   const { t } = useTranslation()
+  const contactUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=yoonseukoh@gmail.com&su=${encodeURIComponent(t('contact.email_subject'))}&body=${encodeURIComponent(t('contact.email_body'))}`
 
   return (
     <section id="top" className="portfolio-hero">
@@ -25,12 +26,12 @@ export default function Hero() {
           <p>{t('hero.long_sub')}</p>
         </div>
         <div className="hero-quick-actions">
-          <a className="hero-mail-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=yoonseukoh@gmail.com&su=%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A5%BC%20%EB%B3%B4%EA%B3%A0%20%EC%97%B0%EB%9D%BD%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4" target="_blank" rel="noreferrer">
-            Contact
+          <a className="hero-mail-link" href={contactUrl} target="_blank" rel="noreferrer">
+            {t('hero.contact')}
             <ArrowUpRight size={15} aria-hidden="true" />
           </a>
           <a className="hero-admin-link" href="/admin/login">
-            Admin
+            {t('hero.admin')}
             <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         </div>
@@ -84,8 +85,8 @@ export default function Hero() {
       <div className="portfolio-strip" aria-label="Featured work">
         <a className="strip-summary" href="/projects">
           <BadgeCheck size={18} aria-hidden="true" />
-          <strong>6 live links</strong>
-          <span>Apps, content, writing</span>
+          <strong>{t('hero.strip_count')}</strong>
+          <span>{t('hero.strip_desc')}</span>
         </a>
         {trustItems.map((item) => (
           <a key={item.label} href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>

@@ -1,9 +1,24 @@
 {
+  "common": {
+    "home": "ホーム",
+    "admin": "管理者"
+  },
+  "app": {
+    "career_loading": "経歴ページの状態を確認しています。",
+    "career_closed": "経歴ページは現在閉じられています。"
+  },
+  "contact": {
+    "email_subject": "ホームページを見て連絡します",
+    "email_body": "Yoonさん、こんにちは。\n\nホームページを見て連絡しました。\n"
+  },
   "nav": {
     "home": "ホーム",
     "projects": "プロジェクト",
     "apps": "アプリ",
     "writing": "執筆",
+    "youtube": "YouTube",
+    "restaurants": "グルメ",
+    "career": "経歴",
     "work": "作品",
     "about": "について",
     "contact": "連絡"
@@ -17,6 +32,10 @@
     "long_sub": "ポートフォリオと開発中のWeb/アプリを一か所で素早く確認できる個人テストホームです。",
     "visual_left": "アイデアを素早くアプリにする実験室",
     "visual_right": "アプリ、コンテンツ、執筆が一緒に動く作業空間",
+    "contact": "連絡する",
+    "admin": "管理者",
+    "strip_count": "6件のライブリンク",
+    "strip_desc": "アプリ、コンテンツ、執筆",
     "cta_work": "作品を見る",
     "cta_github": "GitHub"
   },
@@ -30,6 +49,14 @@
     "title": "作ったもの",
     "subtitle": "実際にデプロイされ、実際に使われているアプリ。",
     "description": "Webアプリ、コンテンツチャンネル、連載作品をすぐに開ける作業ボードです。",
+    "page_all_title": "すべてのプロジェクト",
+    "page_all_description": "公開中のアプリ、YouTubeチャンネル、連載作品を一画面で確認できます。",
+    "page_apps_title": "アプリプロジェクト",
+    "page_apps_description": "学習、数学、英語リーディングなど、直接作ってテスト中のWeb/アプリを集めました。",
+    "page_youtube_title": "YouTubeチャンネル",
+    "page_youtube_description": "市場の流れを短くわかりやすく整理するコンテンツチャンネルです。",
+    "page_writing_title": "Web小説連載",
+    "page_writing_description": "ドユンジェという筆名で続けているMunpiaのWeb小説作業です。",
     "launch": "アプリを開く →",
     "code": "コード"
   },
@@ -57,6 +84,65 @@
     "p2": "ここにある全てのアプリはAIとの協働で設計・開発・デプロイしました。",
     "location": "韓国から、グローバルに作っています。",
     "read_more": "紹介文を読む"
+  },
+  "about_page": {
+    "work_link": "作品を見る",
+    "eyebrow": "About Yoon",
+    "headline1": "一緒に作業して見たYoonは、",
+    "headline2": "アイデアを実際の画面まで押し進める人です。",
+    "body1": "Yoonを紹介するなら、まず「素早く作る人」と言いたいです。単に速いだけではなく、作りたいものを実際のリンクや画面で確認してこそ納得するタイプです。アイデアが生まれると、説明で止まらず、アプリを作り、デプロイし、見直し、違和感があればすぐ直します。",
+    "body2": "一緒に作業して最もはっきり感じるのは、基準を持っていることです。カードのアイコンサイズ、画像比率、ボタンのリンク先のような小さく見える部分も見過ごしません。「これは見た目がよくない」と言えるのは、画面を実際のユーザーのように見ているからです。",
+    "body3": "彼はAIを単なる珍しいツールとして使いません。必要なものをより速く試し、不足点を早く見つけ、自分の判断で整える作業方法として使います。だからこのホームページは静的なポートフォリオというより、作っているものを試し続ける個人の作業室に近いです。",
+    "notes_aria": "作業印象",
+    "notes": {
+      "fast": { "title": "素早く作り、実際に公開します", "text": "アイデアを言葉だけで長く持ち続けません。リンク、アイコン、デプロイ先をすぐ集め、実際のページで確認します。" },
+      "detail": { "title": "見た目への感度が高いです", "text": "ただ綺麗というより、画面内のバランスや画像サイズ、使った時の自然さを最後まで見ます。" },
+      "ai": { "title": "AIを作業方法として使います", "text": "完成された答えを待つのではなく、AIとやり取りしながら判断し、方向を絞っていきます。" }
+    },
+    "close": "一文で言えば、Yoonは「考えたことを実際に動く画面まで持っていく人」です。そしてその過程で細部を見過ごしません。"
+  },
+  "restaurants": {
+    "label": "Food list",
+    "title": "グルメリスト",
+    "description": "保存したお店を地域、メニュー、Naver Mapリンクと一緒に整理する個人用リストです。",
+    "filters": "お店フィルター",
+    "all": "すべて",
+    "loading": "お店を読み込み中です。",
+    "empty": "まだ登録されたお店はありません。",
+    "fallback_category": "グルメ",
+    "photo_alt": "{{name}} 写真 {{index}}",
+    "recommended": "おすすめ",
+    "address": "住所",
+    "map_link": "Naver Mapで見る"
+  },
+  "career": {
+    "eyebrow": "SAP ERP Career",
+    "headline1": "SAP ERP FIを中心に",
+    "headline2": "18年間、業務とシステムの間を運用してきました。",
+    "intro": "複数の会社でSAP ERP FI/CO/TR/HR、e-HR、B2BERP、Younglimwon ERPおよび周辺管理システムを運用・開発してきました。会計業務を理解する運用者であり、必要な変更を直接実装できる開発者でもあります。",
+    "skills_aria": "主要スキル",
+    "skills_title": "主要スキル",
+    "skills": {
+      "skill1": "SAP ERP FI/CO/TR/HRモジュール設定、運用、ABAP開発",
+      "skill2": "電子伝票システム、e-HR開発・管理、B2BERP/Younglimwon ERP開発・管理経験",
+      "skill3": "ABAP、Java、C#、Mybuilder、Oracle、MS-SQL",
+      "skill4": "AI、GPT(Codex)、Claude Code、VS Codeを活用した多様な開発経験"
+    },
+    "capabilities_aria": "経歴スキル要約",
+    "capabilities": {
+      "sap": { "title": "SAP ERP運用", "text": "FIを中心にCO、TR、HRまで、会計・資金・人事の業務フローを見ながら運用します。" },
+      "development": { "title": "開発と運用の結合", "text": "ABAPと外部システム開発経験を基に、現場要望を実際のシステム変更へつなげます。" },
+      "data": { "title": "データとインターフェース", "text": "Oracle、MS-SQL、e-HR、管理システム連携を含む業務データの流れを扱います。" }
+    },
+    "timeline_aria": "経歴タイムライン",
+    "timeline_title": "主な経歴",
+    "timeline_description": "SAP ERP運用、ロールアウト、法人構築、会計・人事・資金システム運用経験を会社別に整理しました。",
+    "items": {
+      "incruit": { "company": "Incruit KiCom ERP", "period": "2007.06 ~ 2010.07", "duration": "3年2か月", "role": "開発1チーム 主任", "summary": "B2BERP人事・給与・会計モジュールを担当し、税法変更、年末調整、標準化業務を行いました。", "tasks": ["人事・給与・会計モジュール運用および開発", "変更税法の適用", "年末調整の実施および標準化"] },
+      "kyungdong": { "company": "Kyungdong One", "period": "2010.11 ~ 2021.09", "duration": "10年11か月", "role": "経営情報チーム 課長", "summary": "Kyungdong Navienを含む国内外法人のSAP ERP、e-HR、管理システムを設計・開発・運用しました。", "tasks": ["SAP ERP FI/CO/TR/HR運用", "e-HRおよび管理システム設計・開発・管理", "国内外法人の業務プロセス対応"] },
+      "fnf": { "company": "F&F", "period": "2021.11 ~ 2023.09", "duration": "1年11か月", "role": "次長／パート長", "summary": "F&F、F&CO、F&F上海法人のSAP ERP FI/CO運用とロールアウト、バージョンアッププロジェクトを行いました。", "tasks": ["F&F、F&CO、F&F上海法人SAP ERP FI/CO運用", "中国法人SAPロールアウトプロジェクト", "F&COバージョンアッププロジェクト", "F&F Entertainment、F&F Logistics新規法人ロールアウト"] },
+      "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在職中", "duration": "2年11か月", "role": "DT 部長／チームメンバー", "summary": "SAP FI/COとWeb伝票処理(myFinance)を運用し、法人設立ロールアウト、個人情報暗号化、SWIFT構築を行いました。", "tasks": ["SAP FI/COおよびmyFinance運用", "Holdings、Nexlab法人設立ロールアウト(with SDS)", "SAP個人情報暗号化およびSWIFT構築"] }
+    }
   },
   "footer": {
     "made": "AIで作り、意図を持ってデプロイ。",
@@ -99,5 +185,14 @@
       "name": "ドユンジェ Web小説",
       "desc": "Munpiaで連載中のWeb小説"
     }
+  },
+  "project_meta": {
+    "kids_english": { "tag": "教育 / AI", "status": "公開中", "type": "Webサイト" },
+    "daily_math": { "tag": "子供 / 数学", "status": "公開中", "type": "Webアプリ" },
+    "daily_english": { "tag": "毎日 / 英語", "status": "公開中", "type": "Webアプリ" },
+    "photo_reader": { "tag": "ビジョン / AI", "status": "公開中", "type": "AIツール" },
+    "arrow_way_out": { "tag": "パズル / ゲーム", "status": "公開中", "type": "ゲーム" },
+    "market_snapshot": { "tag": "YouTube / 金融", "status": "チャンネル", "type": "YouTube" },
+    "munpia_novel": { "tag": "小説 / 執筆", "status": "連載", "type": "Web小説" }
   }
 }

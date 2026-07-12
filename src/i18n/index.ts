@@ -14,7 +14,8 @@ i18n
     resources: { en: { translation: en }, ko: { translation: ko }, ja: { translation: ja }, zh: { translation: zh } },
     fallbackLng: 'en',
     detection: {
-      order: ['navigator', 'htmlTag'],
+      order: ['localStorage', 'querystring', 'navigator', 'htmlTag'],
+      lookupLocalStorage: 'i18nextLng',
       caches: ['localStorage'],
     },
     interpolation: { escapeValue: false },

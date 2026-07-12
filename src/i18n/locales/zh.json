@@ -1,9 +1,24 @@
 {
+  "common": {
+    "home": "首页",
+    "admin": "管理"
+  },
+  "app": {
+    "career_loading": "正在检查职业页面状态。",
+    "career_closed": "职业页面当前已关闭。"
+  },
+  "contact": {
+    "email_subject": "通过主页联系您",
+    "email_body": "Yoon，您好。\n\n我看到了您的主页，想与您联系。\n"
+  },
   "nav": {
     "home": "首页",
     "projects": "项目",
     "apps": "应用",
     "writing": "写作",
+    "youtube": "YouTube",
+    "restaurants": "美食",
+    "career": "履历",
     "work": "作品",
     "about": "关于",
     "contact": "联系"
@@ -17,6 +32,10 @@
     "long_sub": "一个个人测试主页，用来集中查看我的作品集和正在开发的网页/应用。",
     "visual_left": "把想法快速变成上线应用的实验室",
     "visual_right": "应用、内容和写作一起推进的工作空间",
+    "contact": "联系",
+    "admin": "管理",
+    "strip_count": "6个在线链接",
+    "strip_desc": "应用、内容、写作",
     "cta_work": "查看作品",
     "cta_github": "GitHub"
   },
@@ -30,6 +49,14 @@
     "title": "我的作品",
     "subtitle": "真实部署、真实使用的应用程序。",
     "description": "一个可快速打开网页应用、内容频道和连载作品的工作看板。",
+    "page_all_title": "全部项目",
+    "page_all_description": "在一个页面查看当前公开的应用、YouTube频道和连载写作。",
+    "page_apps_title": "应用项目",
+    "page_apps_description": "集合学习、数学、英语阅读等亲自制作并测试中的网页/应用。",
+    "page_youtube_title": "YouTube频道",
+    "page_youtube_description": "用简短清晰的方式整理市场动态的内容频道。",
+    "page_writing_title": "网络小说连载",
+    "page_writing_description": "以都允宰为笔名在Munpia持续连载的网络小说作品。",
     "launch": "启动应用 →",
     "code": "代码"
   },
@@ -57,6 +84,65 @@
     "p2": "这里的每个应用都是通过AI协作设计、开发和部署的。",
     "location": "来自韩国，面向全球构建。",
     "read_more": "阅读介绍"
+  },
+  "about_page": {
+    "work_link": "查看作品",
+    "eyebrow": "About Yoon",
+    "headline1": "一起工作时看到的Yoon，",
+    "headline2": "是把想法推进到真实画面的人。",
+    "body1": "如果介绍Yoon，我会先说他是一个“快速把东西做出来的人”。这不只是速度快，而是他需要把想做的东西变成真实链接和真实画面来确认。只要有想法，他不会停在说明阶段，而是制作、部署、查看，再把不自然的地方改掉。",
+    "body2": "一起工作时最明显的是他有标准。卡片里的图标大小、图片比例、按钮链接这样看似小的细节，他也不会随便放过。能说出“这样不好看”的人，说明他像真实用户一样看画面。",
+    "body3": "他并不把AI当成新奇工具，而是把AI作为工作方式使用：更快实验，更快暴露不足，再用自己的判断继续打磨。所以这个主页不像静态作品集，更像一个持续测试和更新的个人工作室。",
+    "notes_aria": "工作印象",
+    "notes": {
+      "fast": { "title": "快速制作并真实上线", "text": "想法不会只停留在话语里。链接、图标、部署地址和真实页面会很快出现，用来实际判断。" },
+      "detail": { "title": "对画面细节很敏感", "text": "他不满足于大概好看，而会检查画面平衡、图片尺寸以及实际使用时是否自然。" },
+      "ai": { "title": "把AI作为工作方式", "text": "他不是等待一个完成答案，而是在与AI往返协作中判断、修正并收窄方向。" }
+    },
+    "close": "一句话概括，Yoon是“能把想法带到真实可运行画面的人”，并且不会忽略过程中的细节。"
+  },
+  "restaurants": {
+    "label": "Food list",
+    "title": "美食列表",
+    "description": "把自己保存的餐厅按地区、菜单和Naver Map链接整理的个人空间。",
+    "filters": "餐厅筛选",
+    "all": "全部",
+    "loading": "正在加载餐厅。",
+    "empty": "还没有注册的餐厅。",
+    "fallback_category": "美食",
+    "photo_alt": "{{name}} 照片 {{index}}",
+    "recommended": "推荐",
+    "address": "地址",
+    "map_link": "在Naver Map查看"
+  },
+  "career": {
+    "eyebrow": "SAP ERP Career",
+    "headline1": "以SAP ERP FI为中心，",
+    "headline2": "18年来在业务和系统之间持续运营。",
+    "intro": "在多家公司运营并开发SAP ERP FI/CO/TR/HR、e-HR、B2BERP、Younglimwon ERP以及周边管理系统。我既是理解会计业务的运营者，也是能直接实现所需变更的开发者。",
+    "skills_aria": "核心能力",
+    "skills_title": "核心能力",
+    "skills": {
+      "skill1": "SAP ERP FI/CO/TR/HR模块设置、运营及ABAP开发",
+      "skill2": "电子凭证系统、e-HR开发管理、B2BERP/Younglimwon ERP开发管理经验",
+      "skill3": "ABAP、Java、C#、Mybuilder、Oracle、MS-SQL",
+      "skill4": "使用AI、GPT(Codex)、Claude Code和VS Code的多种开发经验"
+    },
+    "capabilities_aria": "职业能力摘要",
+    "capabilities": {
+      "sap": { "title": "SAP ERP运营", "text": "以FI为中心，同时理解CO、TR、HR中的会计、资金和人事流程并进行运营。" },
+      "development": { "title": "开发与运营结合", "text": "基于ABAP和外部系统开发经验，把业务需求连接到实际系统变更。" },
+      "data": { "title": "数据与接口", "text": "处理包含Oracle、MS-SQL、e-HR及管理系统集成在内的业务数据流。" }
+    },
+    "timeline_aria": "职业时间线",
+    "timeline_title": "主要履历",
+    "timeline_description": "按公司整理SAP ERP运营、Roll-out、法人构建以及会计/人事/资金系统运营经验。",
+    "items": {
+      "incruit": { "company": "Incruit KiCom ERP", "period": "2007.06 ~ 2010.07", "duration": "3年2个月", "role": "开发1组 主任", "summary": "负责B2BERP人事、薪资、会计模块，执行税法变更、年末清算和标准化工作。", "tasks": ["人事/薪资/会计模块运营及开发", "适用变更税法", "执行年末清算及标准化"] },
+      "kyungdong": { "company": "Kyungdong One", "period": "2010.11 ~ 2021.09", "duration": "10年11个月", "role": "经营信息组 课长", "summary": "为Kyungdong Navien及国内外法人设计、开发并运营SAP ERP、e-HR及管理系统。", "tasks": ["SAP ERP FI/CO/TR/HR运营", "e-HR及管理系统设计/开发/管理", "支持国内外法人业务流程"] },
+      "fnf": { "company": "F&F", "period": "2021.11 ~ 2023.09", "duration": "1年11个月", "role": "次长/Part Lead", "summary": "运营F&F、F&CO、F&F上海法人SAP ERP FI/CO，并执行Roll-out和版本升级项目。", "tasks": ["F&F、F&CO、F&F上海法人SAP ERP FI/CO运营", "中国法人SAP Roll-out项目", "F&CO版本升级项目", "F&F Entertainment、F&F Logistics新法人Roll-out"] },
+      "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在职", "duration": "2年11个月", "role": "DT 部长/团队成员", "summary": "运营SAP FI/CO和网页凭证处理(myFinance)，并执行法人设立Roll-out、个人信息加密、SWIFT构建。", "tasks": ["SAP FI/CO及myFinance运营", "Holdings、Nexlab法人设立Roll-out(with SDS)", "SAP个人信息加密及SWIFT构建"] }
+    }
   },
   "footer": {
     "made": "用AI构建，有目的地部署。",
@@ -99,5 +185,14 @@
       "name": "都允宰 网络小说",
       "desc": "在 Munpia 连载中的网络小说"
     }
+  },
+  "project_meta": {
+    "kids_english": { "tag": "教育 / AI", "status": "在线", "type": "网站" },
+    "daily_math": { "tag": "儿童 / 数学", "status": "在线", "type": "网页应用" },
+    "daily_english": { "tag": "每日 / 英语", "status": "在线", "type": "网页应用" },
+    "photo_reader": { "tag": "视觉 / AI", "status": "在线", "type": "AI工具" },
+    "arrow_way_out": { "tag": "解谜 / 游戏", "status": "在线", "type": "游戏" },
+    "market_snapshot": { "tag": "YouTube / 金融", "status": "频道", "type": "YouTube" },
+    "munpia_novel": { "tag": "小说 / 写作", "status": "连载", "type": "网络小说" }
   }
 }

@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next'
 import { Mail } from 'lucide-react'
 
 const CONTACT_EMAIL = 'yoonseukoh@gmail.com'
-const CONTACT_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent('홈페이지를 보고 연락드립니다')}&body=${encodeURIComponent('안녕하세요, Yoon님.\n\n홈페이지를 보고 연락드립니다.\n')}`
 
 function GithubIcon() {
   return (
@@ -14,6 +13,7 @@ function GithubIcon() {
 
 export default function Footer() {
   const { t } = useTranslation()
+  const contactUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent(t('contact.email_subject'))}&body=${encodeURIComponent(t('contact.email_body'))}`
 
   return (
     <footer id="contact" className="footer-section">
@@ -22,7 +22,7 @@ export default function Footer() {
           yoon<span>.dev</span>
         </strong>
         <p>{t('footer.made')}</p>
-        <a className="footer-email" href={CONTACT_URL} target="_blank" rel="noreferrer">
+        <a className="footer-email" href={contactUrl} target="_blank" rel="noreferrer">
           {CONTACT_EMAIL}
         </a>
       </div>
@@ -31,7 +31,7 @@ export default function Footer() {
           <GithubIcon />
         </a>
         <a
-          href={CONTACT_URL}
+          href={contactUrl}
           target="_blank"
           rel="noreferrer"
           aria-label={`Send email to ${CONTACT_EMAIL}`}

@@ -1,10 +1,24 @@
 {
+  "common": {
+    "home": "Home",
+    "admin": "Admin"
+  },
+  "app": {
+    "career_loading": "Checking career page availability.",
+    "career_closed": "The career page is currently closed."
+  },
+  "contact": {
+    "email_subject": "Contact from your homepage",
+    "email_body": "Hello Yoon,\n\nI saw your homepage and wanted to get in touch.\n"
+  },
   "nav": {
     "home": "Home",
     "projects": "Projects",
     "apps": "Apps",
     "writing": "Writing",
     "youtube": "YouTube",
+    "restaurants": "Food",
+    "career": "Career",
     "work": "Work",
     "about": "About",
     "contact": "Contact"
@@ -18,6 +32,10 @@
     "long_sub": "A personal test home for checking my portfolio and in-progress web/app builds in one place.",
     "visual_left": "A lab for turning ideas into live apps fast",
     "visual_right": "A workspace where apps, content, and writing move together",
+    "contact": "Contact",
+    "admin": "Admin",
+    "strip_count": "6 live links",
+    "strip_desc": "Apps, content, writing",
     "cta_work": "See my work",
     "cta_github": "GitHub"
   },
@@ -67,6 +85,111 @@
     "location": "Based in Korea, building globally.",
     "read_more": "Read intro"
   },
+  "about_page": {
+    "work_link": "See work",
+    "eyebrow": "About Yoon",
+    "headline1": "Working with Yoon,",
+    "headline2": "I see someone who pushes ideas into real screens.",
+    "body1": "If I were introducing Yoon, I would start with this: he builds quickly. Not just fast for speed’s sake, but because he wants to see an idea as a real link, a real screen, and a real deployed result. When something feels worth making, he does not stop at explanation. He builds, deploys, reviews, and fixes what feels off.",
+    "body2": "The clearest thing I have noticed is that he has standards. Icon size, image proportion, card balance, and whether a button points to the right place are not treated as small details to ignore. Being able to say “this does not look right” means he is looking at the screen like a real user.",
+    "body3": "He does not use AI as a novelty. He uses it as a working method: to test faster, reveal weak spots sooner, and refine the result with his own judgment. This site is less a static portfolio and more a personal workshop where live ideas keep getting tested and improved.",
+    "notes_aria": "Working impressions",
+    "notes": {
+      "fast": {
+        "title": "He builds and ships quickly",
+        "text": "Ideas do not stay abstract for long. Links, icons, deployments, and real pages appear fast enough to judge them honestly."
+      },
+      "detail": {
+        "title": "He is sensitive to how things look",
+        "text": "He looks past “pretty enough” and checks balance, image size, and whether the interface feels right in use."
+      },
+      "ai": {
+        "title": "AI is part of his working method",
+        "text": "He does not wait for a finished answer. He keeps shaping, judging, and narrowing the result through active AI collaboration."
+      }
+    },
+    "close": "In one sentence: Yoon is someone who carries an idea all the way to a moving screen, and he does not skip the details on the way."
+  },
+  "restaurants": {
+    "label": "Food list",
+    "title": "Restaurant List",
+    "description": "A personal place to organize saved restaurants with area, menu notes, and Naver Map links.",
+    "filters": "Restaurant filters",
+    "all": "All",
+    "loading": "Loading restaurants.",
+    "empty": "No restaurants have been added yet.",
+    "fallback_category": "Restaurant",
+    "photo_alt": "{{name}} photo {{index}}",
+    "recommended": "Pick",
+    "address": "Address",
+    "map_link": "View on Naver Map"
+  },
+  "career": {
+    "eyebrow": "SAP ERP Career",
+    "headline1": "Centered on SAP ERP FI,",
+    "headline2": "I have operated between business and systems for 18 years.",
+    "intro": "Across multiple companies, I have operated and developed SAP ERP FI/CO/TR/HR, e-HR, B2BERP, Younglimwon ERP, and related management systems. I work as an operator who understands accounting processes and as a developer who can implement the required changes.",
+    "skills_aria": "Core capabilities",
+    "skills_title": "Core Capabilities",
+    "skills": {
+      "skill1": "SAP ERP FI/CO/TR/HR module setup, operation, and ABAP development",
+      "skill2": "Electronic voucher systems, e-HR development/management, and B2BERP/Younglimwon ERP development/management experience",
+      "skill3": "ABAP, Java, C#, Mybuilder, Oracle, MS-SQL",
+      "skill4": "Hands-on experience using AI, GPT(Codex), Claude Code, and VS Code"
+    },
+    "capabilities_aria": "Career capability summary",
+    "capabilities": {
+      "sap": {
+        "title": "SAP ERP Operations",
+        "text": "I operate FI-centered SAP processes while understanding CO, TR, and HR flows across accounting, treasury, and HR."
+      },
+      "development": {
+        "title": "Development plus operations",
+        "text": "With ABAP and external system development experience, I connect business requests to practical system changes."
+      },
+      "data": {
+        "title": "Data and interfaces",
+        "text": "I handle business data flows across Oracle, MS-SQL, e-HR, and management system integrations."
+      }
+    },
+    "timeline_aria": "Career timeline",
+    "timeline_title": "Career History",
+    "timeline_description": "SAP ERP operations, rollouts, legal entity setup, and accounting/HR/treasury system work by company.",
+    "items": {
+      "incruit": {
+        "company": "Incruit KiCom ERP",
+        "period": "2007.06 ~ 2010.07",
+        "duration": "3 years 2 months",
+        "role": "Development Team 1, Assistant Manager",
+        "summary": "Handled B2BERP HR, payroll, and accounting modules, including tax law changes, year-end settlement, and standardization.",
+        "tasks": ["Operated and developed HR/payroll/accounting modules", "Applied changed tax laws", "Performed and standardized year-end settlement"]
+      },
+      "kyungdong": {
+        "company": "Kyungdong One",
+        "period": "2010.11 ~ 2021.09",
+        "duration": "10 years 11 months",
+        "role": "Management Information Team, Manager",
+        "summary": "Designed, developed, and operated SAP ERP, e-HR, and management systems for Kyungdong Navien and multiple domestic and overseas entities.",
+        "tasks": ["Operated SAP ERP FI/CO/TR/HR", "Designed, developed, and managed e-HR and management systems", "Supported domestic and overseas entity processes"]
+      },
+      "fnf": {
+        "company": "F&F",
+        "period": "2021.11 ~ 2023.09",
+        "duration": "1 year 11 months",
+        "role": "Deputy General Manager / Part Lead",
+        "summary": "Operated SAP ERP FI/CO for F&F, F&CO, and F&F Shanghai, and carried out rollout and upgrade projects.",
+        "tasks": ["Operated SAP ERP FI/CO for F&F, F&CO, and F&F Shanghai", "Delivered a China entity SAP rollout", "Delivered an F&CO version upgrade project", "Supported new entity rollouts for F&F Entertainment and F&F Logistics"]
+      },
+      "samsung": {
+        "company": "Samsung Bioepis",
+        "period": "2023.09 ~ Present",
+        "duration": "2 years 11 months",
+        "role": "DT, Department Head / Team Member",
+        "summary": "Operates SAP FI/CO and the myFinance voucher system while supporting entity rollout, personal data encryption, and SWIFT implementation work.",
+        "tasks": ["Operates SAP FI/CO and myFinance", "Supported Holdings and Nexlab entity setup rollout with SDS", "Implemented SAP personal data encryption and SWIFT"]
+      }
+    }
+  },
   "footer": {
     "made": "Built with AI. Deployed with intention.",
     "rights": "All rights reserved."
@@ -108,5 +231,14 @@
       "name": "Doyunjae Web Novel",
       "desc": "Serialized fiction published on Munpia"
     }
+  },
+  "project_meta": {
+    "kids_english": { "tag": "Education / AI", "status": "Live", "type": "Website" },
+    "daily_math": { "tag": "Kids / Math", "status": "Live", "type": "Web App" },
+    "daily_english": { "tag": "Daily / English", "status": "Live", "type": "Web App" },
+    "photo_reader": { "tag": "Vision / AI", "status": "Live", "type": "AI Tool" },
+    "arrow_way_out": { "tag": "Puzzle / Game", "status": "Live", "type": "Game" },
+    "market_snapshot": { "tag": "YouTube / Finance", "status": "Channel", "type": "YouTube" },
+    "munpia_novel": { "tag": "Novel / Writing", "status": "Serial", "type": "Web Novel" }
   }
 }

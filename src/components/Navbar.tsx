@@ -11,7 +11,6 @@ const LANGS = [
   { code: 'zh', label: 'ZH' },
 ]
 const CONTACT_EMAIL = 'yoonseukoh@gmail.com'
-const CONTACT_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent('홈페이지를 보고 연락드립니다')}&body=${encodeURIComponent('안녕하세요, Yoon님.\n\n홈페이지를 보고 연락드립니다.\n')}`
 
 const baseNavItems = [
   { key: 'home', href: '/' },
@@ -19,7 +18,7 @@ const baseNavItems = [
   { key: 'apps', href: '/apps' },
   { key: 'writing', href: '/writing' },
   { key: 'youtube', href: '/youtube' },
-  { key: 'restaurants', label: '맛집', href: '/restaurants' },
+  { key: 'restaurants', label: 'Food', href: '/restaurants' },
   { key: 'about', href: '/about' },
 ] as const
 
@@ -29,10 +28,11 @@ export default function Navbar() {
   const [langOpen, setLangOpen] = useState(false)
   const { isOpen: careerOpen } = useCareerVisibility()
   const current = LANGS.find((lang) => i18n.language.startsWith(lang.code)) ?? LANGS[0]
+  const contactUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent(t('contact.email_subject'))}&body=${encodeURIComponent(t('contact.email_body'))}`
   const navItems = careerOpen
     ? [
         ...baseNavItems.slice(0, 6),
-        { key: 'career', label: '경력', href: '/career' },
+        { key: 'career', label: 'Career', href: '/career' },
         ...baseNavItems.slice(6),
       ]
     : baseNavItems
@@ -100,7 +100,7 @@ export default function Navbar() {
 
           <a
             className="nav-contact"
-            href={CONTACT_URL}
+            href={contactUrl}
             target="_blank"
             rel="noreferrer"
             aria-label={`${t('nav.contact')}: ${CONTACT_EMAIL}`}

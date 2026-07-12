@@ -162,8 +162,8 @@ export default function Projects({ filter = 'all', page = false }: ProjectsProps
               rel="noreferrer"
             >
               <div className="project-topline">
-                <span>{project.tag}</span>
-                <small>{project.status}</small>
+                <span>{t(`project_meta.${project.key}.tag`, { defaultValue: project.tag })}</span>
+                <small>{t(`project_meta.${project.key}.status`, { defaultValue: project.status })}</small>
               </div>
 
               <div className="project-preview" aria-hidden="true">
@@ -176,7 +176,7 @@ export default function Projects({ filter = 'all', page = false }: ProjectsProps
               </div>
 
               <div className="project-content">
-                <span>{project.type}</span>
+                <span>{t(`project_meta.${project.key}.type`, { defaultValue: project.type })}</span>
                 <h3>{t(`project_list.${project.key}.name`)}</h3>
                 <p>{t(`project_list.${project.key}.desc`)}</p>
               </div>

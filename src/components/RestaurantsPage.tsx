@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ArrowUpRight, MapPin, Search, Utensils } from 'lucide-react'
 import { fetchPublicRestaurants } from '../lib/restaurants'
 import type { Restaurant } from '../types/restaurant'
 
 export default function RestaurantsPage() {
+  const { t } = useTranslation()
   const [restaurants, setRestaurants] = useState<Restaurant[]>([])
-  const [category, setCategory] = useState('전체')
+  const [category, setCategory] = useState('all')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -16,32 +18,32 @@ export default function RestaurantsPage() {
 
   const categories = useMemo(() => {
     const values = restaurants.map((item) => item.category).filter(Boolean)
-    return ['전체', ...Array.from(new Set(values))]
+    return ['all', ...Array.from(new Set(values))]
   }, [restaurants])
 
-  const visibleRestaurants = category === '전체'
+  const visibleRestaurants = category === 'all'
     ? restaurants
     : restaurants.filter((item) => item.category === category)
 
   return (
     <main className="listing-shell restaurant-page">
       <div className="section-label">
-        <span>Food list</span>
+        <span>{t('restaurants.label')}</span>
         <a href="/admin/login">
-          Admin
+          {t('common.admin')}
           <ArrowUpRight size={13} aria-hidden="true" />
         </a>
       </div>
 
       <div className="section-title-row">
-        <h2>맛집 리스트</h2>
-        <p>직접 저장한 맛집을 지역, 메뉴, 네이버지도 링크와 함께 정리하는 공간입니다.</p>
+        <h2>{t('restaurants.title')}</h2>
+        <p>{t('restaurants.description')}</p>
       </div>
 
-      <div className="restaurant-toolbar" aria-label="Restaurant filters">
+      <div className="restaurant-toolbar" aria-label={t('restaurants.filters')}>
         {categories.map((item) => (
           <button key={item} type="button" className={category === item ? 'active' : ''} onClick={() => setCategory(item)}>
-            {item}
+            {item === 'all' ? t('restaurants.all') : item}
           </button>
         ))}
       </div>
@@ -49,19 +51,19 @@ export default function RestaurantsPage() {
       {loading ? (
         <div className="empty-state">
           <Search size={22} aria-hidden="true" />
-          맛집을 불러오는 중입니다.
+          {t('restaurants.loading')}
         </div>
       ) : visibleRestaurants.length === 0 ? (
         <div className="empty-state">
           <Utensils size={22} aria-hidden="true" />
-          아직 등록된 맛집이 없습니다.
+          {t('restaurants.empty')}
         </div>
       ) : (
         <div className="restaurant-grid">
           {visibleRestaurants.map((restaurant) => (
             <article className="restaurant-card" key={restaurant.id}>
               <div className="restaurant-card-top">
-                <span>{restaurant.category || '맛집'}</span>
+                <span>{restaurant.category || t('restaurants.fallback_category')}</span>
                 <small>{restaurant.area}</small>
               </div>
               {restaurant.imageUrls.length > 0 && (
@@ -70,7 +72,7 @@ export default function RestaurantsPage() {
                     <img
                       key={`${restaurant.id}-${url}`}
                       src={url}
-                      alt={`${restaurant.name} 사진 ${index + 1}`}
+                      alt={t('restaurants.photo_alt', { name: restaurant.name, index: index + 1 })}
                       loading="lazy"
                     />
                   ))}
@@ -80,11 +82,11 @@ export default function RestaurantsPage() {
               <p>{restaurant.memo}</p>
               <dl>
                 <div>
-                  <dt>추천</dt>
+                  <dt>{t('restaurants.recommended')}</dt>
                   <dd>{restaurant.recommendedMenu || '-'}</dd>
                 </div>
                 <div>
-                  <dt>주소</dt>
+                  <dt>{t('restaurants.address')}</dt>
                   <dd>{restaurant.address || '-'}</dd>
                 </div>
               </dl>
@@ -97,7 +99,7 @@ export default function RestaurantsPage() {
               )}
               <a className="map-link" href={restaurant.naverMapUrl} target="_blank" rel="noreferrer">
                 <MapPin size={15} aria-hidden="true" />
-                네이버지도에서 보기
+                {t('restaurants.map_link')}
                 <ArrowUpRight size={14} aria-hidden="true" />
               </a>
             </article>

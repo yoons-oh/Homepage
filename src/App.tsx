@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Projects, { type ProjectFilter } from './components/Projects'
@@ -14,6 +15,7 @@ import { useCareerVisibility } from './hooks/useCareerVisibility'
 import { useVisitTracker } from './hooks/useVisitTracker'
 
 function App() {
+  const { t } = useTranslation()
   const path = window.location.pathname
   const isAboutPage = path === '/about'
   const isCareerPage = path === '/career'
@@ -46,13 +48,13 @@ function App() {
         <>
           {careerLoading ? (
             <main className="listing-shell">
-              <div className="empty-state">경력 페이지 상태를 확인하는 중입니다.</div>
+              <div className="empty-state">{t('app.career_loading')}</div>
             </main>
           ) : careerOpen ? (
             <CareerPage />
           ) : (
             <main className="listing-shell">
-              <div className="empty-state">경력 페이지가 닫혀 있습니다.</div>
+              <div className="empty-state">{t('app.career_closed')}</div>
             </main>
           )}
           <Footer />
