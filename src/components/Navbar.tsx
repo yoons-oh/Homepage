@@ -14,12 +14,12 @@ const CONTACT_EMAIL = 'yoonseukoh@gmail.com'
 
 const baseNavItems = [
   { key: 'home', href: '/' },
+  { key: 'about', href: '/about' },
   { key: 'projects', href: '/projects' },
   { key: 'apps', href: '/apps' },
-  { key: 'writing', href: '/writing' },
   { key: 'youtube', href: '/youtube' },
+  { key: 'writing', href: '/writing' },
   { key: 'restaurants', label: 'Food', href: '/restaurants' },
-  { key: 'about', href: '/about' },
 ] as const
 
 export default function Navbar() {
@@ -31,9 +31,9 @@ export default function Navbar() {
   const contactUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent(t('contact.email_subject'))}&body=${encodeURIComponent(t('contact.email_body'))}`
   const navItems = careerOpen
     ? [
-        ...baseNavItems.slice(0, 6),
+        ...baseNavItems.slice(0, 2),
         { key: 'career', label: 'Career', href: '/career' },
-        ...baseNavItems.slice(6),
+        ...baseNavItems.slice(2),
       ]
     : baseNavItems
 
