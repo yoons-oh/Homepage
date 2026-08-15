@@ -8,6 +8,7 @@ import About from './components/About'
 import AboutPage from './components/AboutPage'
 import CareerPage from './components/CareerPage'
 import RestaurantsPage from './components/RestaurantsPage'
+import TesterPage from './components/TesterPage'
 import AdminLogin from './components/AdminLogin'
 import AdminDashboard from './components/AdminDashboard'
 import Footer from './components/Footer'
@@ -20,6 +21,7 @@ function App() {
   const isAboutPage = path === '/about'
   const isCareerPage = path === '/career'
   const isRestaurantsPage = path === '/restaurants'
+  const isTesterPage = path === '/testers'
   const isAdminLoginPage = path === '/admin/login'
   const isAdminPage = path === '/admin'
   const projectPages: Partial<Record<string, ProjectFilter>> = {
@@ -62,6 +64,11 @@ function App() {
       ) : isRestaurantsPage ? (
         <>
           <RestaurantsPage />
+          <Footer />
+        </>
+      ) : isTesterPage ? (
+        <>
+          <TesterPage />
           <Footer />
         </>
       ) : projectFilter ? (

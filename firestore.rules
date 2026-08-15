@@ -17,6 +17,34 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
+    match /tester_applications/{applicationId} {
+      allow create: if request.resource.data.keys().hasOnly([
+          'appKey',
+          'name',
+          'email',
+          'device',
+          'memo',
+          'canTest14Days',
+          'status',
+          'createdAt',
+          'updatedAt'
+        ])
+        && request.resource.data.appKey == 'mathmagic'
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 1
+        && request.resource.data.name.size() <= 60
+        && request.resource.data.email is string
+        && request.resource.data.email.size() >= 5
+        && request.resource.data.email.size() <= 120
+        && request.resource.data.device is string
+        && request.resource.data.device.size() <= 40
+        && request.resource.data.memo is string
+        && request.resource.data.memo.size() <= 500
+        && request.resource.data.canTest14Days == true
+        && request.resource.data.status == 'requested';
+      allow read, update, delete: if isAdmin();
+    }
+
     match /visit_events/{eventId} {
       allow create: if request.resource.data.keys().hasOnly([
         'path',

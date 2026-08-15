@@ -1629,6 +1629,227 @@ button {
   grid-column: span 2;
 }
 
+.tester-page {
+  padding-top: 132px;
+}
+
+.tester-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.tester-hero span,
+.tester-form-heading span {
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.tester-hero h1 {
+  margin: 12px 0 14px;
+  max-width: 760px;
+  color: var(--ink);
+  font-size: clamp(2.6rem, 6vw, 5.7rem);
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+.tester-hero p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.tester-flow-card {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.tester-flow-card div {
+  min-height: 88px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f6f8fc;
+}
+
+.tester-flow-card strong {
+  display: inline-grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+
+.tester-flow-card span {
+  display: block;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 850;
+  line-height: 1.45;
+}
+
+.tester-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 24px;
+  align-items: start;
+}
+
+.tester-form,
+.tester-guide {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.tester-form {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+}
+
+.tester-form-heading,
+.tester-guide > div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tester-form-heading h2,
+.tester-guide h2 {
+  margin: 3px 0 0;
+  color: var(--ink);
+  font-size: 1.35rem;
+}
+
+.tester-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.tester-form input,
+.tester-form select,
+.tester-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f8fafc;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  padding: 13px 14px;
+}
+
+.tester-form textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.tester-check {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: flex-start;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.tester-check input {
+  width: 16px;
+  margin-top: 3px;
+}
+
+.tester-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--blue);
+  color: #ffffff;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.tester-form button:disabled {
+  opacity: 0.62;
+  cursor: wait;
+}
+
+.tester-notice {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 12px 13px;
+  border-radius: 12px;
+  font-weight: 850;
+}
+
+.tester-notice.success {
+  border: 1px solid #bdebd0;
+  background: #effaf3;
+  color: #17683a;
+}
+
+.tester-notice.error {
+  border: 1px solid #ffd0d0;
+  background: #fff4f4;
+  color: #b42318;
+}
+
+.tester-guide {
+  padding: 22px;
+}
+
+.tester-guide ol {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.65;
+}
+
+.admin-panel-actions {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tester-row small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .photo-upload-field {
   display: grid;
   grid-column: 1 / -1;
@@ -2455,7 +2676,9 @@ button {
   .career-card,
   .restaurant-grid,
   .admin-stat-grid,
-  .restaurant-form {
+  .restaurant-form,
+  .tester-hero,
+  .tester-layout {
     grid-template-columns: 1fr;
   }
 
@@ -2485,6 +2708,7 @@ button {
   .career-page,
   .listing-shell,
   .admin-page,
+  .tester-page,
   .admin-auth-page {
     padding: 54px 16px;
   }
@@ -2493,6 +2717,7 @@ button {
   .career-page,
   .listing-shell,
   .admin-page,
+  .tester-page,
   .admin-auth-page {
     padding-top: 106px;
   }
@@ -2517,6 +2742,14 @@ button {
   .admin-table-row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .tester-flow-card {
+    grid-template-columns: 1fr;
+  }
+
+  .tester-flow-card > svg {
+    display: none;
   }
 
   .admin-header h1 {

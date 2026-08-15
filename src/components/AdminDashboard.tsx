@@ -2,17 +2,50 @@ import { FirebaseError } from 'firebase/app'
 import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react'
 import { onAuthStateChanged, signOut, type User } from 'firebase/auth'
 import { collection, getDocs, query, Timestamp, where } from 'firebase/firestore'
-import { ArrowUpRight, BarChart3, Eye, ImagePlus, LogOut, Plus, Save, Trash2, X } from 'lucide-react'
+import { ArrowUpRight, BarChart3, Eye, ImagePlus, LogOut, MailCheck, Plus, Save, Trash2, X } from 'lucide-react'
 import { adminEmail, auth, db } from '../lib/firebase'
 import { createRestaurant, fetchAdminRestaurants, removeRestaurant, updateRestaurant } from '../lib/restaurants'
 import { fetchCareerSettings, updateCareerSettings } from '../lib/siteSettings'
+import { fetchTesterApplications, updateTesterApplicationStatus } from '../lib/testers'
 import { emptyRestaurantForm, type Restaurant, type RestaurantForm } from '../types/restaurant'
+import type { TesterApplication, TesterApplicationStatus } from '../types/tester'
 
 type VisitEvent = {
   path: string
   visitorId: string
   deviceType: string
   visitedAt?: Timestamp
+}
+
+const mathMagicTestUrl = import.meta.env.VITE_MATHMAGIC_TEST_URL || ''
+const testerStatusLabels: Record<TesterApplicationStatus, string> = {
+  requested: '신청 접수',
+  registered: 'Play Console 등록',
+  invited: '링크 메일 발송',
+}
+
+const getTesterMailUrl = (tester: TesterApplication) => {
+  const subject = 'MathMagic 테스트 참여 링크 안내'
+  const testUrl = mathMagicTestUrl || '[Play Console opt-in 링크를 여기에 붙여주세요]'
+  const body = [
+    `${tester.name}님, 안녕하세요.`,
+    '',
+    'MathMagic 앱 테스트 참여 신청 감사합니다.',
+    'Google Play Console 테스터 등록을 완료했으니 아래 링크에서 테스트에 참여해 주세요.',
+    '',
+    testUrl,
+    '',
+    '참여 순서:',
+    '1. 링크 접속',
+    '2. 테스트 참여 버튼 선택',
+    '3. Google Play에서 MathMagic 설치',
+    '4. 14일 동안 앱을 유지하고 가끔 실행',
+    '',
+    '감사합니다.',
+    'Yoon Lab',
+  ].join('\n')
+
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(tester.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
 const imageFields = ['imageUrl1', 'imageUrl2', 'imageUrl3'] as const
@@ -147,6 +180,7 @@ export default function AdminDashboard() {
   const [user, setUser] = useState<User | null>(null)
   const [authLoading, setAuthLoading] = useState(true)
   const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+  const [testerApplications, setTesterApplications] = useState<TesterApplication[]>([])
   const [visits, setVisits] = useState<VisitEvent[]>([])
   const [form, setForm] = useState<RestaurantForm>(emptyRestaurantForm)
   const [editingId, setEditingId] = useState<string | null>(null)
@@ -188,6 +222,15 @@ export default function AdminDashboard() {
     }
   }
 
+  const refreshTesterApplications = async () => {
+    try {
+      const items = await withTimeout(fetchTesterApplications(), 'Tester applications loading', 10000)
+      setTesterApplications(items)
+    } catch (err) {
+      setError(getErrorMessage(err))
+    }
+  }
+
   const refreshCareerSettings = async () => {
     try {
       const settings = await withTimeout(fetchCareerSettings(), '경력 페이지 설정 불러오기', 10000)
@@ -201,6 +244,7 @@ export default function AdminDashboard() {
     if (!user) return
     setError('')
     void refreshRestaurants()
+    void refreshTesterApplications()
     void refreshVisits()
     void refreshCareerSettings()
   }, [user])
@@ -327,6 +371,18 @@ export default function AdminDashboard() {
     }
   }
 
+  const handleTesterStatus = async (id: string, status: TesterApplicationStatus) => {
+    setError('')
+    setNotice('')
+    try {
+      await withTimeout(updateTesterApplicationStatus(id, status), 'Tester status saving', 10000)
+      setNotice('테스터 신청 상태를 변경했습니다.')
+      void refreshTesterApplications()
+    } catch (err) {
+      setError(getErrorMessage(err))
+    }
+  }
+
   if (authLoading) {
     return <main className="admin-page"><div className="empty-state">관리자 상태를 확인하는 중입니다.</div></main>
   }
@@ -403,6 +459,56 @@ export default function AdminDashboard() {
           <button type="button" onClick={handleCareerToggle} disabled={careerBusy}>
             {careerBusy ? '저장 중...' : careerOpen ? '닫기' : '열기'}
           </button>
+        </div>
+      </section>
+
+      <section className="admin-panel">
+        <div className="admin-panel-heading">
+          <div>
+            <span>MathMagic testers</span>
+            <h2>테스터 참여 신청</h2>
+          </div>
+          <div className="admin-panel-actions">
+            <a href="/testers" target="_blank" rel="noreferrer">
+              신청 페이지
+              <ArrowUpRight size={13} aria-hidden="true" />
+            </a>
+            <button type="button" onClick={refreshTesterApplications}>새로고침</button>
+          </div>
+        </div>
+        {!mathMagicTestUrl && (
+          <div className="admin-alert">
+            Vercel 환경변수 VITE_MATHMAGIC_TEST_URL에 Play Console opt-in 링크를 등록하면 Gmail 발송 본문에 자동으로 포함됩니다.
+          </div>
+        )}
+        <div className="admin-table">
+          {testerApplications.length === 0 ? (
+            <div className="empty-state">아직 테스터 신청이 없습니다.</div>
+          ) : (
+            testerApplications.map((tester) => (
+              <div className="admin-table-row tester-row" key={tester.id}>
+                <div>
+                  <strong>{tester.name}</strong>
+                  <span>{tester.email} · {tester.device} · {testerStatusLabels[tester.status]}</span>
+                  {tester.memo && <small>{tester.memo}</small>}
+                </div>
+                <div>
+                  <button type="button" onClick={() => handleTesterStatus(tester.id, 'registered')}>
+                    등록 완료
+                  </button>
+                  <a
+                    href={getTesterMailUrl(tester)}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => void handleTesterStatus(tester.id, 'invited')}
+                    title="Gmail로 테스트 링크 보내기"
+                  >
+                    <MailCheck size={14} aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </section>
 
