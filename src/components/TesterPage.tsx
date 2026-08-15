@@ -10,8 +10,6 @@ export default function TesterPage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [submitted, setSubmitted] = useState(false)
-  const normalizedEmail = form.email.trim().toLowerCase()
-  const showGmailWarning = normalizedEmail.length > 0 && !normalizedEmail.endsWith('@gmail.com')
 
   const updateField = <K extends keyof TesterApplicationForm>(key: K, value: TesterApplicationForm[K]) => {
     setForm((current) => ({ ...current, [key]: value }))
@@ -126,9 +124,7 @@ export default function TesterPage() {
               placeholder={t('tester_page.email_placeholder')}
               required
             />
-            <span className={`tester-field-help ${showGmailWarning ? 'error' : ''}`}>
-              {showGmailWarning ? t('tester_page.email_gmail_warning') : t('tester_page.email_gmail_hint')}
-            </span>
+            <span className="tester-field-help">{t('tester_page.email_gmail_hint')}</span>
           </label>
           <label>
             {t('tester_page.device')}
