@@ -13,6 +13,7 @@ import type { TesterApplication, TesterApplicationForm, TesterApplicationStatus 
 
 const testerApplicationsRef = collection(db, 'tester_applications')
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const gmailPattern = /^[^\s@]+@gmail\.com$/
 
 const toTesterApplication = (id: string, data: Record<string, unknown>): TesterApplication => ({
   id,
@@ -30,9 +31,10 @@ const toTesterApplication = (id: string, data: Record<string, unknown>): TesterA
 const normalizeTesterForm = (form: TesterApplicationForm) => {
   const email = form.email.trim().toLowerCase()
 
-  if (!form.name.trim()) throw new Error('Name is required.')
-  if (!emailPattern.test(email)) throw new Error('A valid Google account email is required.')
-  if (!form.canTest14Days) throw new Error('The 14-day testing agreement is required.')
+  if (!form.name.trim()) throw new Error('tester.errors.name_required')
+  if (!emailPattern.test(email)) throw new Error('tester.errors.email_invalid')
+  if (!gmailPattern.test(email)) throw new Error('tester.errors.gmail_required')
+  if (!form.canTest14Days) throw new Error('tester.errors.agreement_required')
 
   return {
     appKey: 'mathmagic',

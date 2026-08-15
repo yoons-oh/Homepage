@@ -116,7 +116,7 @@
     "title": "MathMagic app test request",
     "description": "I am requesting help testing MathMagic as part of preparing for Google Play production access. Leave your email and I will send the test opt-in link after adding you in Play Console.",
     "flow_aria": "Test request flow",
-    "step1": "Share your Google account email",
+    "step1": "Share your Gmail address",
     "step2": "Admin adds you in Play Console",
     "step3": "Install from the email link and test for 14 days",
     "app_intro_aria": "MathMagic app introduction",
@@ -128,14 +128,14 @@
     "point2_title": "What to check",
     "point2_text": "Installation, launch speed, screen layout, button behavior, and repeated-use feel.",
     "point3_title": "Tester requirements",
-    "point3_text": "You need an Android device and Google account, and you should remain opted in for 14 days.",
+    "point3_text": "You need an Android device and Gmail account, and you should remain opted in for 14 days.",
     "form_label": "Test request",
     "form_title": "Test request details",
     "success": "Your test request was received. I will email the link after adding you as a Play Console tester.",
     "error": "Something went wrong while submitting your test request.",
     "name": "Name or nickname",
     "name_placeholder": "Example: Yoon",
-    "email": "Google account email",
+    "email": "Gmail address",
     "email_placeholder": "example@gmail.com",
     "device": "Test device",
     "device_android": "Android phone",
@@ -151,6 +151,14 @@
     "guide2": "After registration, I will email the Play Console opt-in link.",
     "guide3": "Open the link, join the test, and install the app from Google Play.",
     "guide4": "You must remain opted in for 14 days for it to count toward production access."
+  },
+  "tester": {
+    "errors": {
+      "name_required": "Please enter your name or nickname.",
+      "email_invalid": "Please enter a valid email address.",
+      "gmail_required": "A Gmail address is required for Google Play testing.",
+      "agreement_required": "Please agree to remain registered for the 14-day test."
+    }
   },
   "restaurants": {
     "label": "Food list",

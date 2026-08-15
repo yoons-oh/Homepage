@@ -36,6 +36,7 @@ service cloud.firestore {
         && request.resource.data.email is string
         && request.resource.data.email.size() >= 5
         && request.resource.data.email.size() <= 120
+        && request.resource.data.email.matches('^[^@\\s]+@gmail\\.com$')
         && request.resource.data.device is string
         && request.resource.data.device.size() <= 40
         && request.resource.data.memo is string

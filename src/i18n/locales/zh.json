@@ -107,7 +107,7 @@
     "title": "MathMagic应用测试请求",
     "description": "为了准备申请Google Play正式发布权限，诚邀协助测试MathMagic应用。留下邮箱后，我会在Play Console添加测试者，并通过邮件发送测试链接。",
     "flow_aria": "测试请求流程",
-    "step1": "提供Google账号邮箱",
+    "step1": "提供Gmail地址",
     "step2": "管理员在Play Console添加测试者",
     "step3": "通过邮件链接安装并测试14天",
     "app_intro_aria": "MathMagic应用介绍",
@@ -119,14 +119,14 @@
     "point2_title": "检查重点",
     "point2_text": "安装、启动速度、页面显示、按钮动作以及重复使用体验。",
     "point3_title": "测试条件",
-    "point3_text": "需要Android设备和Google账号，并保持14天测试注册状态。",
+    "point3_text": "需要Android设备和Gmail账号，并保持14天测试注册状态。",
     "form_label": "Test request",
     "form_title": "测试请求信息",
     "success": "测试请求已提交。添加为Play Console测试者后，我会通过邮件发送测试链接。",
     "error": "提交测试请求时发生错误。",
     "name": "姓名或昵称",
     "name_placeholder": "例如: Yoon",
-    "email": "Google账号邮箱",
+    "email": "Gmail地址",
     "email_placeholder": "example@gmail.com",
     "device": "测试设备",
     "device_android": "Android手机",
@@ -142,6 +142,14 @@
     "guide2": "添加完成后，将通过邮件发送Play Console opt-in链接。",
     "guide3": "打开链接，加入测试，并从Google Play安装应用。",
     "guide4": "必须连续保持14天opt-in状态，才会计入正式发布申请条件。"
+  },
+  "tester": {
+    "errors": {
+      "name_required": "请输入姓名或昵称。",
+      "email_invalid": "请输入有效的邮箱地址。",
+      "gmail_required": "Google Play测试注册仅支持Gmail地址。",
+      "agreement_required": "请同意保持14天测试注册状态。"
+    }
   },
   "restaurants": {
     "label": "Food list",

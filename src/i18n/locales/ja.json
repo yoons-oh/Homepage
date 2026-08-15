@@ -107,7 +107,7 @@
     "title": "MathMagicアプリのテスト依頼",
     "description": "Google Playの本番公開申請に向けて、MathMagicアプリのテストをお願いしています。メールを残していただければ、Play Consoleに登録後、テストリンクをメールで案内します。",
     "flow_aria": "テスト依頼の流れ",
-    "step1": "Googleアカウントのメール共有",
+    "step1": "Gmailアドレスの共有",
     "step2": "管理者がPlay Consoleに登録",
     "step3": "メールのリンクからインストールし14日間テスト",
     "app_intro_aria": "MathMagicアプリ紹介",
@@ -119,14 +119,14 @@
     "point2_title": "確認ポイント",
     "point2_text": "インストール、起動速度、画面崩れ、ボタン動作、繰り返し使った感触を確認します。",
     "point3_title": "テスト条件",
-    "point3_text": "Android端末とGoogleアカウントが必要で、14日間テスト登録状態を維持する必要があります。",
+    "point3_text": "Android端末とGmailアカウントが必要で、14日間テスト登録状態を維持する必要があります。",
     "form_label": "Test request",
     "form_title": "テスト依頼情報",
     "success": "テスト依頼を受け付けました。Play Consoleに登録後、テストリンクをメールでお送りします。",
     "error": "テスト依頼中にエラーが発生しました。",
     "name": "名前またはニックネーム",
     "name_placeholder": "例: Yoon",
-    "email": "Googleアカウントのメール",
+    "email": "Gmailアドレス",
     "email_placeholder": "example@gmail.com",
     "device": "テスト端末",
     "device_android": "Androidスマートフォン",
@@ -142,6 +142,14 @@
     "guide2": "登録後、Play Consoleのopt-inリンクをメールで案内します。",
     "guide3": "リンクからテスト登録を行い、Google Playでアプリをインストールします。",
     "guide4": "本番公開申請条件に反映されるには14日間opt-in状態を維持する必要があります。"
+  },
+  "tester": {
+    "errors": {
+      "name_required": "名前またはニックネームを入力してください。",
+      "email_invalid": "有効なメールアドレスを入力してください。",
+      "gmail_required": "Google Playテスト登録にはGmailアドレスが必要です。",
+      "agreement_required": "14日間テスト登録状態を維持する項目に同意してください。"
+    }
   },
   "restaurants": {
     "label": "Food list",

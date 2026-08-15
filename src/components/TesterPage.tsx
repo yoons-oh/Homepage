@@ -25,7 +25,8 @@ export default function TesterPage() {
       setSubmitted(true)
       setForm(emptyTesterApplicationForm)
     } catch (err) {
-      setError(err instanceof Error ? err.message : t('tester_page.error'))
+      const message = err instanceof Error ? err.message : ''
+      setError(message.startsWith('tester.errors.') ? t(message) : message || t('tester_page.error'))
     } finally {
       setBusy(false)
     }
