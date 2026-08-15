@@ -129,6 +129,8 @@
     "email": "Gmailアドレス",
     "email_placeholder": "example@gmail.com",
     "email_gmail_hint": "Gmailアドレスを登録してください。",
+    "email_gmail_popup": "Gmailで登録してください。",
+    "email_gmail_popup_close": "確認",
     "device": "テスト端末",
     "device_android": "Androidスマートフォン",
     "device_tablet": "Androidタブレット",

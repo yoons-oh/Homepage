@@ -10,9 +10,16 @@ export default function TesterPage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [showGmailPopup, setShowGmailPopup] = useState(false)
 
   const updateField = <K extends keyof TesterApplicationForm>(key: K, value: TesterApplicationForm[K]) => {
     setForm((current) => ({ ...current, [key]: value }))
+  }
+
+  const handleEmailChange = (value: string) => {
+    updateField('email', value)
+    const email = value.trim().toLowerCase()
+    setShowGmailPopup(email.includes('@') && !email.endsWith('@gmail.com'))
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -120,11 +127,19 @@ export default function TesterPage() {
             <input
               type="email"
               value={form.email}
-              onChange={(event) => updateField('email', event.target.value)}
+              onChange={(event) => handleEmailChange(event.target.value)}
               placeholder={t('tester_page.email_placeholder')}
               required
             />
             <span className="tester-field-help">{t('tester_page.email_gmail_hint')}</span>
+            {showGmailPopup && (
+              <div className="tester-gmail-popup" role="alert">
+                <span>{t('tester_page.email_gmail_popup')}</span>
+                <button type="button" onClick={() => setShowGmailPopup(false)}>
+                  {t('tester_page.email_gmail_popup_close')}
+                </button>
+              </div>
+            )}
           </label>
           <label>
             {t('tester_page.device')}

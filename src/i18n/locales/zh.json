@@ -129,6 +129,8 @@
     "email": "Gmail地址",
     "email_placeholder": "example@gmail.com",
     "email_gmail_hint": "请登记Gmail地址。",
+    "email_gmail_popup": "请使用Gmail登记。",
+    "email_gmail_popup_close": "确认",
     "device": "测试设备",
     "device_android": "Android手机",
     "device_tablet": "Android平板",

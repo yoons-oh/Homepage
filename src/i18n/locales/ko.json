@@ -138,6 +138,8 @@
     "email": "Gmail 주소",
     "email_placeholder": "example@gmail.com",
     "email_gmail_hint": "Gmail을 등록해주세요.",
+    "email_gmail_popup": "Gmail로 등록해주세요.",
+    "email_gmail_popup_close": "확인",
     "device": "테스트 기기",
     "device_android": "Android 휴대폰",
     "device_tablet": "Android 태블릿",

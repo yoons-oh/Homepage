@@ -138,6 +138,8 @@
     "email": "Gmail address",
     "email_placeholder": "example@gmail.com",
     "email_gmail_hint": "Please register a Gmail address.",
+    "email_gmail_popup": "Please register with Gmail.",
+    "email_gmail_popup_close": "OK",
     "device": "Test device",
     "device_android": "Android phone",
     "device_tablet": "Android tablet",

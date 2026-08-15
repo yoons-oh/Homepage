@@ -1863,6 +1863,33 @@ button {
   line-height: 1.45;
 }
 
+.tester-gmail-popup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 12px;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.84rem;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.tester-gmail-popup button {
+  width: auto;
+  min-height: 30px;
+  padding: 0 11px;
+  border: 1px solid #bfdbfe;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
 .tester-check {
   display: flex !important;
   gap: 10px !important;
