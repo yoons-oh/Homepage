@@ -25,13 +25,13 @@ const testerStatusLabels: Record<TesterApplicationStatus, string> = {
 }
 
 const getTesterMailUrl = (tester: TesterApplication) => {
-  const subject = 'MathMagic 테스트 참여 링크 안내'
+  const subject = 'MathMagic 앱 테스트 참여 요청'
   const testUrl = mathMagicTestUrl || '[Play Console opt-in 링크를 여기에 붙여주세요]'
   const body = [
     `${tester.name}님, 안녕하세요.`,
     '',
-    'MathMagic 앱 테스트 참여 신청 감사합니다.',
-    'Google Play Console 테스터 등록을 완료했으니 아래 링크에서 테스트에 참여해 주세요.',
+    'MathMagic 앱 테스트 참여를 요청드립니다.',
+    'Google Play Console 테스터 등록을 완료했으니 아래 링크에서 테스트 참여를 부탁드립니다.',
     '',
     testUrl,
     '',
@@ -376,7 +376,7 @@ export default function AdminDashboard() {
     setNotice('')
     try {
       await withTimeout(updateTesterApplicationStatus(id, status), 'Tester status saving', 10000)
-      setNotice('테스터 신청 상태를 변경했습니다.')
+      setNotice('테스트 참여 요청 상태를 변경했습니다.')
       void refreshTesterApplications()
     } catch (err) {
       setError(getErrorMessage(err))
@@ -466,7 +466,7 @@ export default function AdminDashboard() {
         <div className="admin-panel-heading">
           <div>
             <span>MathMagic testers</span>
-            <h2>테스터 참여 신청</h2>
+            <h2>테스트 참여 요청</h2>
           </div>
           <div className="admin-panel-actions">
             <a href="/testers" target="_blank" rel="noreferrer">
@@ -483,7 +483,7 @@ export default function AdminDashboard() {
         )}
         <div className="admin-table">
           {testerApplications.length === 0 ? (
-            <div className="empty-state">아직 테스터 신청이 없습니다.</div>
+            <div className="empty-state">아직 테스트 참여 요청이 없습니다.</div>
           ) : (
             testerApplications.map((tester) => (
               <div className="admin-table-row tester-row" key={tester.id}>
