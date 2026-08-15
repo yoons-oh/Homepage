@@ -1705,6 +1705,95 @@ button {
   line-height: 1.45;
 }
 
+.tester-app-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.tester-app-card,
+.tester-checkpoints {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.tester-app-card {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px;
+}
+
+.tester-app-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #101827, #2563eb);
+  color: #ffffff;
+}
+
+.tester-app-card span {
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.tester-app-card h2 {
+  margin: 8px 0 10px;
+  color: var(--ink);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1;
+}
+
+.tester-app-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.7;
+}
+
+.tester-checkpoints {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.tester-checkpoints div {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-height: 150px;
+  padding: 20px;
+  border-left: 1px solid var(--line);
+}
+
+.tester-checkpoints div:first-child {
+  border-left: 0;
+}
+
+.tester-checkpoints svg {
+  color: var(--blue);
+}
+
+.tester-checkpoints strong {
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 950;
+}
+
+.tester-checkpoints span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.55;
+}
+
 .tester-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
@@ -2678,6 +2767,7 @@ button {
   .admin-stat-grid,
   .restaurant-form,
   .tester-hero,
+  .tester-app-intro,
   .tester-layout {
     grid-template-columns: 1fr;
   }
@@ -2750,6 +2840,20 @@ button {
 
   .tester-flow-card > svg {
     display: none;
+  }
+
+  .tester-checkpoints {
+    grid-template-columns: 1fr;
+  }
+
+  .tester-checkpoints div {
+    min-height: auto;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .tester-checkpoints div:first-child {
+    border-top: 0;
   }
 
   .admin-header h1 {

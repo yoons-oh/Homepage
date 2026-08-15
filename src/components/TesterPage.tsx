@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ArrowRight, CheckCircle2, Mail, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Calculator, CheckCircle2, Mail, ShieldCheck, Sparkles } from 'lucide-react'
 import { createTesterApplication } from '../lib/testers'
 import { emptyTesterApplicationForm, type TesterApplicationForm } from '../types/tester'
 
@@ -53,6 +53,36 @@ export default function TesterPage() {
           <div>
             <strong>3</strong>
             <span>{t('tester_page.step3')}</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="tester-app-intro" aria-label={t('tester_page.app_intro_aria')}>
+        <article className="tester-app-card">
+          <div className="tester-app-icon">
+            <Calculator size={28} aria-hidden="true" />
+          </div>
+          <div>
+            <span>{t('tester_page.app_label')}</span>
+            <h2>{t('tester_page.app_title')}</h2>
+            <p>{t('tester_page.app_description')}</p>
+          </div>
+        </article>
+        <div className="tester-checkpoints">
+          <div>
+            <Sparkles size={18} aria-hidden="true" />
+            <strong>{t('tester_page.point1_title')}</strong>
+            <span>{t('tester_page.point1_text')}</span>
+          </div>
+          <div>
+            <Sparkles size={18} aria-hidden="true" />
+            <strong>{t('tester_page.point2_title')}</strong>
+            <span>{t('tester_page.point2_text')}</span>
+          </div>
+          <div>
+            <Sparkles size={18} aria-hidden="true" />
+            <strong>{t('tester_page.point3_title')}</strong>
+            <span>{t('tester_page.point3_text')}</span>
           </div>
         </div>
       </section>
