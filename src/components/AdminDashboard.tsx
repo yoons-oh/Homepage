@@ -17,7 +17,6 @@ type VisitEvent = {
   visitedAt?: Timestamp
 }
 
-const mathMagicTestUrl = import.meta.env.VITE_MATHMAGIC_TEST_URL || ''
 const testerStatusLabels: Record<TesterApplicationStatus, string> = {
   requested: '신청 접수',
   registered: 'Play Console 등록',
@@ -26,23 +25,33 @@ const testerStatusLabels: Record<TesterApplicationStatus, string> = {
 
 const getTesterMailUrl = (tester: TesterApplication) => {
   const subject = 'MathMagic 앱 테스트 요청 안내'
-  const testUrl = mathMagicTestUrl || '[Play Console opt-in 링크를 여기에 붙여주세요]'
   const body = [
     `${tester.name}님, 안녕하세요.`,
     '',
-    'MathMagic 앱 테스트를 요청드립니다.',
-    'Google Play Console 테스터 등록을 완료했으니 아래 링크에서 테스트 진행을 부탁드립니다.',
+    '잠깐 시간 내셔서 테스터로 참여해 주시면 정말 감사하겠습니다! 🙏',
     '',
-    testUrl,
+    '📱 MathMagic이란?',
+    '아이들이 덧셈, 뺄셈, 곱셈, 나눗셈을 재미있게 연습할 수 있는 앱입니다.',
+    '별과 코인 보상, 구구단 연습, 8개 언어 지원 기능이 포함되어 있습니다.',
     '',
-    '진행 순서:',
-    '1. 링크 접속',
-    '2. 테스트 등록 버튼 선택',
-    '3. Google Play에서 MathMagic 설치',
-    '4. 14일 동안 앱을 유지하고 가끔 실행',
+    '✅ 참여 방법 (1~2분이면 됩니다)',
+    '1. 아래 링크 클릭',
+    '2. "테스터 되기" 버튼 클릭',
+    '3. 구글 플레이에서 앱 다운로드 후 잠깐 사용해보기',
     '',
-    '감사합니다.',
-    'Yoon Lab',
+    '👉 테스터 참여 링크:',
+    '',
+    'Android에서 참여 : https://play.google.com/store/apps/details?id=app.vercel.daily_math_one.twa',
+    '',
+    '웹에서 참여 : https://play.google.com/apps/testing/app.vercel.daily_math_one.twa',
+    '',
+    '📌 안내사항',
+    '- 안드로이드 기기가 있어야 합니다',
+    '- 별도 비용은 없습니다',
+    '- 14일간 앱이 설치된 상태로 유지해 주시면 됩니다',
+    '- 중간에 불편한 점이 있으시면 편하게 알려주세요',
+    '',
+    '소중한 시간 내주셔서 감사합니다! 😊',
   ].join('\n')
 
   return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(tester.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
@@ -476,11 +485,6 @@ export default function AdminDashboard() {
             <button type="button" onClick={refreshTesterApplications}>새로고침</button>
           </div>
         </div>
-        {!mathMagicTestUrl && (
-          <div className="admin-alert">
-            Vercel 환경변수 VITE_MATHMAGIC_TEST_URL에 Play Console opt-in 링크를 등록하면 Gmail 발송 본문에 자동으로 포함됩니다.
-          </div>
-        )}
         <div className="admin-table">
           {testerApplications.length === 0 ? (
             <div className="empty-state">아직 테스트 요청이 없습니다.</div>
