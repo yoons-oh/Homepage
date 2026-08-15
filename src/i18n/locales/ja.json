@@ -128,6 +128,8 @@
     "name_placeholder": "例: Yoon",
     "email": "Gmailアドレス",
     "email_placeholder": "example@gmail.com",
+    "email_gmail_hint": "Google Playテスト登録のため、Gmailアドレスを登録してください。",
+    "email_gmail_warning": "Gmailアドレスのみ登録できます。例: example@gmail.com",
     "device": "テスト端末",
     "device_android": "Androidスマートフォン",
     "device_tablet": "Androidタブレット",
