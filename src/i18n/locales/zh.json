@@ -252,5 +252,14 @@
     "minimax_h3_video": { "tag": "AI视频 / 本地", "status": "演示", "type": "视频制作" },
     "market_snapshot": { "tag": "YouTube / 金融", "status": "频道", "type": "YouTube" },
     "munpia_novel": { "tag": "小说 / 写作", "status": "连载", "type": "网络小说" }
+  },
+  "project_notes": {
+    "minimax_h3_video": [
+      "在 RTX 3060 笔记本上基于 ComfyUI Windows Portable 构建本地视频生成环境",
+      "配置 MiniMax H3、Qwen3-VL 编码器以及 Video/Audio VAE 模型路径并解决安装错误",
+      "测试 Reference/Image to Video、Text to Video、Reference + Audio to Video 流程",
+      "通过虚拟内存和动态 VRAM 加载调整提升运行稳定性",
+      "对比提示词结构与画面质量，检查实际生成结果"
+    ]
   }
 }

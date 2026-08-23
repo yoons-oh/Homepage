@@ -298,5 +298,14 @@
     "minimax_h3_video": { "tag": "AI 영상 / 로컬", "status": "결과물", "type": "영상 제작" },
     "market_snapshot": { "tag": "유튜브 / 금융", "status": "채널", "type": "유튜브" },
     "munpia_novel": { "tag": "웹소설 / 글쓰기", "status": "연재", "type": "웹소설" }
+  },
+  "project_notes": {
+    "minimax_h3_video": [
+      "RTX 3060 노트북에서 ComfyUI Windows Portable 기반 로컬 영상 생성 환경 구축",
+      "MiniMax H3, Qwen3-VL 인코더, Video/Audio VAE 모델 경로 구성과 오류 해결",
+      "Reference/Image to Video, Text to Video, Reference + Audio to Video 흐름 테스트",
+      "가상메모리와 동적 VRAM 로딩을 조정하며 모델 실행 안정화",
+      "프롬프트 구조와 결과 품질을 비교하며 실제 생성 영상을 검토"
+    ]
   }
 }

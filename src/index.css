@@ -1184,6 +1184,34 @@ button {
   color: rgb(255 255 255 / 0.68);
 }
 
+.project-notes {
+  display: grid;
+  gap: 7px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-notes li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.project-notes li::before {
+  position: absolute;
+  top: 0.58em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--blue);
+  content: '';
+}
+
 .project-arrow {
   position: absolute;
   right: 16px;

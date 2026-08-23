@@ -100,6 +100,7 @@ const projects = [
     type: 'AI Video',
     accent: 'sky',
     video: '/videos/minimax-h3-demo.mp4',
+    notesKey: 'project_notes.minimax_h3_video',
     media: 'video',
     span: 'wide',
   },
@@ -163,6 +164,8 @@ export default function Projects({ filter = 'all', page = false }: ProjectsProps
       {!page && <div id="apps" className="anchor-offset" aria-hidden="true" />}
       <motion.div className="project-grid" variants={wrap} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }}>
         {visibleProjects.map((project) => {
+          const notesKey = 'notesKey' in project && typeof project.notesKey === 'string' ? project.notesKey : null
+          const notes = notesKey ? (t(notesKey, { returnObjects: true }) as string[]) : []
           const content = (
             <>
               <div className="project-topline">
@@ -195,6 +198,13 @@ export default function Projects({ filter = 'all', page = false }: ProjectsProps
                 <span>{t(`project_meta.${project.key}.type`, { defaultValue: project.type })}</span>
                 <h3>{t(`project_list.${project.key}.name`)}</h3>
                 <p>{t(`project_list.${project.key}.desc`)}</p>
+                {Array.isArray(notes) && notes.length > 0 && (
+                  <ul className="project-notes">
+                    {notes.map((note) => (
+                      <li key={note}>{note}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               {'video' in project ? (

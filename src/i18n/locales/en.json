@@ -298,5 +298,14 @@
     "minimax_h3_video": { "tag": "AI Video / Local", "status": "Demo", "type": "Video Creation" },
     "market_snapshot": { "tag": "YouTube / Finance", "status": "Channel", "type": "YouTube" },
     "munpia_novel": { "tag": "Novel / Writing", "status": "Serial", "type": "Web Novel" }
+  },
+  "project_notes": {
+    "minimax_h3_video": [
+      "Built a local video generation setup with ComfyUI Windows Portable on an RTX 3060 laptop",
+      "Configured MiniMax H3, Qwen3-VL encoders, and Video/Audio VAE model paths while resolving setup errors",
+      "Tested Reference/Image to Video, Text to Video, and Reference + Audio to Video flows",
+      "Stabilized execution with virtual memory and dynamic VRAM loading adjustments",
+      "Reviewed generated output while comparing prompt structure and visual quality"
+    ]
   }
 }

@@ -252,5 +252,14 @@
     "minimax_h3_video": { "tag": "AI動画 / ローカル", "status": "デモ", "type": "動画制作" },
     "market_snapshot": { "tag": "YouTube / 金融", "status": "チャンネル", "type": "YouTube" },
     "munpia_novel": { "tag": "小説 / 執筆", "status": "連載", "type": "Web小説" }
+  },
+  "project_notes": {
+    "minimax_h3_video": [
+      "RTX 3060ノートPCでComfyUI Windows Portableベースのローカル動画生成環境を構築",
+      "MiniMax H3、Qwen3-VLエンコーダー、Video/Audio VAEのモデルパスを構成しエラーを解決",
+      "Reference/Image to Video、Text to Video、Reference + Audio to Videoの流れをテスト",
+      "仮想メモリと動的VRAMロードを調整して実行を安定化",
+      "プロンプト構造と画質を比較しながら生成結果を検証"
+    ]
   }
 }
