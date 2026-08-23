@@ -92,6 +92,18 @@ const projects = [
     span: 'standard',
   },
   {
+    key: 'minimax_h3_video',
+    category: 'lab',
+    tag: 'AI Video / Local',
+    url: '/videos/minimax-h3-demo.mp4',
+    status: 'Demo',
+    type: 'AI Video',
+    accent: 'sky',
+    video: '/videos/minimax-h3-demo.mp4',
+    media: 'video',
+    span: 'wide',
+  },
+  {
     key: 'market_snapshot',
     category: 'youtube',
     tag: 'YouTube / Finance',
@@ -151,7 +163,60 @@ export default function Projects({ filter = 'all', page = false }: ProjectsProps
       {!page && <div id="apps" className="anchor-offset" aria-hidden="true" />}
       <motion.div className="project-grid" variants={wrap} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }}>
         {visibleProjects.map((project) => {
-          return (
+          const content = (
+            <>
+              <div className="project-topline">
+                <span>{t(`project_meta.${project.key}.tag`, { defaultValue: project.tag })}</span>
+                <small>{t(`project_meta.${project.key}.status`, { defaultValue: project.status })}</small>
+              </div>
+
+              <div className="project-preview" aria-hidden={'video' in project ? undefined : true}>
+                <div className="preview-window">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                {'video' in project ? (
+                  <video
+                    src={project.video}
+                    className="project-video"
+                    controls
+                    muted
+                    playsInline
+                    preload="metadata"
+                    aria-label={t(`project_list.${project.key}.name`)}
+                  />
+                ) : (
+                  <img src={project.image} alt="" className="project-image" />
+                )}
+              </div>
+
+              <div className="project-content">
+                <span>{t(`project_meta.${project.key}.type`, { defaultValue: project.type })}</span>
+                <h3>{t(`project_list.${project.key}.name`)}</h3>
+                <p>{t(`project_list.${project.key}.desc`)}</p>
+              </div>
+
+              {'video' in project ? (
+                <a className="project-arrow project-video-link" href={project.url} target="_blank" rel="noreferrer" aria-label={t(`project_list.${project.key}.name`)}>
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              ) : (
+                <ArrowUpRight className="project-arrow" size={15} aria-hidden="true" />
+              )}
+            </>
+          )
+
+          return 'video' in project ? (
+            <motion.article
+              className={`project-card ${project.accent} span-${project.span} media-${project.media}`}
+              id={!page && project.key === 'munpia_novel' ? 'writing' : undefined}
+              key={project.key}
+              variants={item}
+            >
+              {content}
+            </motion.article>
+          ) : (
             <motion.a
               className={`project-card ${project.accent} span-${project.span} media-${project.media}`}
               href={project.url}
@@ -161,27 +226,7 @@ export default function Projects({ filter = 'all', page = false }: ProjectsProps
               target="_blank"
               rel="noreferrer"
             >
-              <div className="project-topline">
-                <span>{t(`project_meta.${project.key}.tag`, { defaultValue: project.tag })}</span>
-                <small>{t(`project_meta.${project.key}.status`, { defaultValue: project.status })}</small>
-              </div>
-
-              <div className="project-preview" aria-hidden="true">
-                <div className="preview-window">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <img src={project.image} alt="" className="project-image" />
-              </div>
-
-              <div className="project-content">
-                <span>{t(`project_meta.${project.key}.type`, { defaultValue: project.type })}</span>
-                <h3>{t(`project_list.${project.key}.name`)}</h3>
-                <p>{t(`project_list.${project.key}.desc`)}</p>
-              </div>
-
-              <ArrowUpRight className="project-arrow" size={15} aria-hidden="true" />
+              {content}
             </motion.a>
           )
         })}

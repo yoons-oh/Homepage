@@ -35,8 +35,8 @@
     "visual_right": "应用、内容和写作一起推进的工作空间",
     "contact": "联系",
     "admin": "管理",
-    "strip_count": "6个在线链接",
-    "strip_desc": "应用、内容、写作",
+    "strip_count": "8个项目",
+    "strip_desc": "应用、内容、写作、AI视频",
     "cta_work": "查看作品",
     "cta_github": "GitHub"
   },
@@ -51,7 +51,7 @@
     "subtitle": "真实部署、真实使用的应用程序。",
     "description": "一个可快速打开网页应用、内容频道和连载作品的工作看板。",
     "page_all_title": "全部项目",
-    "page_all_description": "在一个页面查看当前公开的应用、YouTube频道和连载写作。",
+    "page_all_description": "在一个页面查看当前公开的应用、YouTube频道、连载写作和AI视频制作成果。",
     "page_apps_title": "应用项目",
     "page_apps_description": "集合学习、数学、英语阅读等亲自制作并测试中的网页/应用。",
     "page_youtube_title": "YouTube频道",
@@ -234,6 +234,10 @@
       "name": "Arrow Way Out",
       "desc": "点击箭头打开道路的方向解谜游戏"
     },
+    "minimax_h3_video": {
+      "name": "MiniMax H3 视频制作",
+      "desc": "在本地 ComfyUI 环境中使用 MiniMax H3 进行的 AI 视频生成测试"
+    },
     "munpia_novel": {
       "name": "都允宰 网络小说",
       "desc": "在 Munpia 连载中的网络小说"
@@ -245,6 +249,7 @@
     "daily_english": { "tag": "每日 / 英语", "status": "在线", "type": "网页应用" },
     "photo_reader": { "tag": "视觉 / AI", "status": "在线", "type": "AI工具" },
     "arrow_way_out": { "tag": "解谜 / 游戏", "status": "在线", "type": "游戏" },
+    "minimax_h3_video": { "tag": "AI视频 / 本地", "status": "演示", "type": "视频制作" },
     "market_snapshot": { "tag": "YouTube / 金融", "status": "频道", "type": "YouTube" },
     "munpia_novel": { "tag": "小说 / 写作", "status": "连载", "type": "网络小说" }
   }

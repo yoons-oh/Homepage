@@ -35,8 +35,8 @@
     "visual_right": "A workspace where apps, content, and writing move together",
     "contact": "Contact",
     "admin": "Admin",
-    "strip_count": "6 live links",
-    "strip_desc": "Apps, content, writing",
+    "strip_count": "8 projects",
+    "strip_desc": "Apps, content, writing, AI video",
     "cta_work": "See my work",
     "cta_github": "GitHub"
   },
@@ -51,7 +51,7 @@
     "subtitle": "Real apps, actually deployed, actually used.",
     "description": "A working board for quickly opening my web apps, content channel, and serialized writing.",
     "page_all_title": "All projects",
-    "page_all_description": "A single view of the apps, YouTube channel, and serialized writing currently live.",
+    "page_all_description": "A single view of the apps, YouTube channel, serialized writing, and AI video work currently public.",
     "page_apps_title": "App projects",
     "page_apps_description": "Web and app experiments for learning, math, English practice, and AI reading.",
     "page_youtube_title": "YouTube channel",
@@ -280,6 +280,10 @@
       "name": "Arrow Way Out",
       "desc": "A direction puzzle game where you tap to open the way"
     },
+    "minimax_h3_video": {
+      "name": "MiniMax H3 Video Creation",
+      "desc": "AI video generation test built with MiniMax H3 in a local ComfyUI setup"
+    },
     "munpia_novel": {
       "name": "Doyunjae Web Novel",
       "desc": "Serialized fiction published on Munpia"
@@ -291,6 +295,7 @@
     "daily_english": { "tag": "Daily / English", "status": "Live", "type": "Web App" },
     "photo_reader": { "tag": "Vision / AI", "status": "Live", "type": "AI Tool" },
     "arrow_way_out": { "tag": "Puzzle / Game", "status": "Live", "type": "Game" },
+    "minimax_h3_video": { "tag": "AI Video / Local", "status": "Demo", "type": "Video Creation" },
     "market_snapshot": { "tag": "YouTube / Finance", "status": "Channel", "type": "YouTube" },
     "munpia_novel": { "tag": "Novel / Writing", "status": "Serial", "type": "Web Novel" }
   }

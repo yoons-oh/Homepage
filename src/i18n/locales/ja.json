@@ -35,8 +35,8 @@
     "visual_right": "アプリ、コンテンツ、執筆が一緒に動く作業空間",
     "contact": "連絡する",
     "admin": "管理者",
-    "strip_count": "6件のライブリンク",
-    "strip_desc": "アプリ、コンテンツ、執筆",
+    "strip_count": "8件のプロジェクト",
+    "strip_desc": "アプリ、コンテンツ、執筆、AI動画",
     "cta_work": "作品を見る",
     "cta_github": "GitHub"
   },
@@ -51,7 +51,7 @@
     "subtitle": "実際にデプロイされ、実際に使われているアプリ。",
     "description": "Webアプリ、コンテンツチャンネル、連載作品をすぐに開ける作業ボードです。",
     "page_all_title": "すべてのプロジェクト",
-    "page_all_description": "公開中のアプリ、YouTubeチャンネル、連載作品を一画面で確認できます。",
+    "page_all_description": "公開中のアプリ、YouTubeチャンネル、連載作品、AI動画制作結果を一画面で確認できます。",
     "page_apps_title": "アプリプロジェクト",
     "page_apps_description": "学習、数学、英語リーディングなど、直接作ってテスト中のWeb/アプリを集めました。",
     "page_youtube_title": "YouTubeチャンネル",
@@ -234,6 +234,10 @@
       "name": "Arrow Way Out",
       "desc": "タップして道を開く方向パズルゲーム"
     },
+    "minimax_h3_video": {
+      "name": "MiniMax H3 動画制作",
+      "desc": "ローカルのComfyUI環境でMiniMax H3を使ったAI動画生成テスト"
+    },
     "munpia_novel": {
       "name": "ドユンジェ Web小説",
       "desc": "Munpiaで連載中のWeb小説"
@@ -245,6 +249,7 @@
     "daily_english": { "tag": "毎日 / 英語", "status": "公開中", "type": "Webアプリ" },
     "photo_reader": { "tag": "ビジョン / AI", "status": "公開中", "type": "AIツール" },
     "arrow_way_out": { "tag": "パズル / ゲーム", "status": "公開中", "type": "ゲーム" },
+    "minimax_h3_video": { "tag": "AI動画 / ローカル", "status": "デモ", "type": "動画制作" },
     "market_snapshot": { "tag": "YouTube / 金融", "status": "チャンネル", "type": "YouTube" },
     "munpia_novel": { "tag": "小説 / 執筆", "status": "連載", "type": "Web小説" }
   }

@@ -35,8 +35,8 @@
     "visual_right": "앱, 콘텐츠, 글쓰기를 함께 움직이는 작업 공간",
     "contact": "연락하기",
     "admin": "관리자",
-    "strip_count": "6개 라이브 링크",
-    "strip_desc": "앱, 콘텐츠, 글쓰기",
+    "strip_count": "8개 프로젝트",
+    "strip_desc": "앱, 콘텐츠, 글쓰기, AI 영상",
     "cta_work": "작업물 보기",
     "cta_github": "GitHub"
   },
@@ -51,7 +51,7 @@
     "subtitle": "실제로 배포하고, 실제로 사용하는 것들.",
     "description": "테스트 중인 앱, 콘텐츠 채널, 연재 작업을 빠르게 열어볼 수 있는 작업 보드입니다.",
     "page_all_title": "모든 프로젝트",
-    "page_all_description": "앱, 유튜브 채널, 웹소설까지 현재 공개된 작업을 한 화면에서 확인합니다.",
+    "page_all_description": "앱, 유튜브 채널, 웹소설, AI 영상 제작 결과까지 현재 공개된 작업을 한 화면에서 확인합니다.",
     "page_apps_title": "앱 프로젝트",
     "page_apps_description": "학습, 수학, 영어 리딩처럼 직접 만들고 테스트 중인 웹/앱만 모았습니다.",
     "page_youtube_title": "유튜브 채널",
@@ -280,6 +280,10 @@
       "name": "Arrow Way Out",
       "desc": "탭해서 길을 여는 방향 퍼즐 게임"
     },
+    "minimax_h3_video": {
+      "name": "MiniMax H3 영상 제작",
+      "desc": "ComfyUI 로컬 환경에서 MiniMax H3로 만든 AI 영상 생성 테스트"
+    },
     "munpia_novel": {
       "name": "도윤재 웹소설 연재",
       "desc": "문피아에서 연재 중인 웹소설 작업"
@@ -291,6 +295,7 @@
     "daily_english": { "tag": "매일 / 영어", "status": "운영 중", "type": "웹앱" },
     "photo_reader": { "tag": "비전 / AI", "status": "운영 중", "type": "AI 도구" },
     "arrow_way_out": { "tag": "퍼즐 / 게임", "status": "운영 중", "type": "게임" },
+    "minimax_h3_video": { "tag": "AI 영상 / 로컬", "status": "결과물", "type": "영상 제작" },
     "market_snapshot": { "tag": "유튜브 / 금융", "status": "채널", "type": "유튜브" },
     "munpia_novel": { "tag": "웹소설 / 글쓰기", "status": "연재", "type": "웹소설" }
   }
