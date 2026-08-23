@@ -15,6 +15,7 @@
     "home": "Home",
     "projects": "Projects",
     "apps": "Apps",
+    "ai_video": "AI Video",
     "testers": "Test Request",
     "writing": "Writing",
     "youtube": "YouTube",
@@ -242,6 +243,99 @@
         "tasks": ["Operates SAP FI/CO and myFinance", "Supported Holdings and Nexlab entity setup rollout with SDS", "Implemented SAP personal data encryption and SWIFT"]
       }
     }
+  },
+  "ai_video": {
+    "eyebrow": "MiniMax H3 / ComfyUI local test",
+    "title": "Creating local AI video with MiniMax H3 on an RTX 3060 laptop",
+    "intro": "To reduce the cost and waiting time of cloud video generation, I configured ComfyUI Windows Portable and the MiniMax H3 local model on a Lenovo ThinkBook 16p Gen 3, then tested image, text, and reference-audio video generation flows.",
+    "video_label": "MiniMax H3 locally generated result video",
+    "video_caption": "A roughly 15-second night city sports car driving video generated with the ComfyUI and MiniMax H3 Text to Video workflow.",
+    "goals_title": "Test Goals",
+    "goals": {
+      "image": "Verify Reference/Image to Video from a single still image",
+      "text": "Generate a scene from prompt-only Text to Video",
+      "audio": "Check whether a person image and MP3 reference audio can produce a singing video"
+    },
+    "environment_title": "Environment",
+    "environment": {
+      "laptop": { "label": "Laptop", "value": "Lenovo ThinkBook 16p Gen 3" },
+      "cpu": { "label": "CPU", "value": "AMD Ryzen 9 6900HX" },
+      "gpu": { "label": "GPU", "value": "RTX 3060 Laptop GPU" },
+      "memory": { "label": "Memory", "value": "32GB RAM + virtual memory" },
+      "os": { "label": "OS", "value": "Windows 11" },
+      "runtime": { "label": "Runtime", "value": "ComfyUI Windows Portable" },
+      "model": { "label": "Model", "value": "MiniMax H3 local model" }
+    },
+    "timeline_title": "Work Process",
+    "timeline_description": "A practical record from setup and model placement through workflow tests, audio trial and error, stability work, and final output review.",
+    "timeline": {
+      "setup": {
+        "title": "Built the local ComfyUI setup",
+        "text": "Organized diffusion_models, text_encoders, and vae folders, then placed MiniMax H3, Qwen3-VL encoders, and Video/Audio VAE models in the expected locations."
+      },
+      "reference": {
+        "title": "Tested Reference/Image to Video",
+        "text": "Resolved missing model and node errors, then checked whether character and person movement could be generated naturally from reference images."
+      },
+      "text": {
+        "title": "Expanded to Text to Video",
+        "text": "Built prompts for a red sports car driving through a night city and iterated details such as manual shifting, drifting, and FPV drone-style camera movement."
+      },
+      "audio": {
+        "title": "Tested MP3 reference audio",
+        "text": "Tried generating a singing video with a person image and Korean MP3, and confirmed that reference audio is treated more like a generation condition than a direct audio copy."
+      },
+      "stability": {
+        "title": "Stabilized memory and execution",
+        "text": "Expanded Windows virtual memory and validated the pipeline from 5 seconds and 0.3MP upward because the roughly 20GB model required dynamic VRAM loading."
+      },
+      "result": {
+        "title": "Reviewed the result",
+        "text": "Generated a 640x480, 24fps, roughly 15-second sports car video. The car body and night lighting were stable, while fast movement softened background details."
+      }
+    },
+    "lessons_title": "Lessons Learned",
+    "lessons_description": "Local video generation depended less on one command and more on understanding paths, memory, and workflow structure.",
+    "lessons": {
+      "models": {
+        "title": "Model paths",
+        "text": "Nested folders or swapped diffusion/text encoder/VAE locations made models disappear from selection lists. A full ComfyUI restart was required after moving files."
+      },
+      "resolution": {
+        "title": "Resolution and duration",
+        "text": "Increasing duration and resolution together made troubleshooting difficult. The stable path was 0.3MP first, then 0.5MP and 0.7MP later."
+      },
+      "audio": {
+        "title": "Reference audio",
+        "text": "ref_audio did not preserve the original MP3 as-is. Keeping the original music is safer as a post-production step after H3 video generation."
+      },
+      "progress": {
+        "title": "57% stall",
+        "text": "When the UI stayed at 57% but the sampler showed 0/4, the workflow was still initializing the model through dynamic VRAM loading rather than actually sampling."
+      },
+      "workflow": {
+        "title": "Workflow structure",
+        "text": "audio_vae was a required model input, not just an output-audio connector. Removing audio is safer after export by stripping the audio track."
+      }
+    },
+    "workflow_title": "Recommended Flow",
+    "workflow": {
+      "start": "Start with 5 seconds, 0.3MP, 24fps, and 4 steps to confirm the pipeline works.",
+      "duration": "After a successful output, increase duration to 10 seconds before increasing resolution.",
+      "resolution": "Once duration is stable, move from 0.5MP to 0.7MP only if needed.",
+      "audio": "For MP3-based videos, split audio into 5-10 second sections, remove H3 output audio, and merge the original audio in editing.",
+      "finish": "If lip-sync accuracy matters, post-process the H3 result with a dedicated lip-sync tool."
+    },
+    "result_title": "Result Details",
+    "result_points": [
+      "File: MiniMax_H3_00005_.mp4",
+      "Duration: about 15.08 seconds",
+      "Resolution: 640x480, 4:3",
+      "Frame rate: 24fps",
+      "Codec: H.264 video, AAC 32kHz stereo audio",
+      "File size: about 2.5MB"
+    ],
+    "conclusion": "MiniMax H3 could run locally on an RTX 3060 laptop when settings were conservative and RAM plus virtual memory were prepared. For original music, precise Korean lyrics, and lip-sync, the most stable approach is to separate video generation from audio and final post-production."
   },
   "footer": {
     "made": "Built with AI. Deployed with intention.",

@@ -15,6 +15,7 @@
     "home": "홈",
     "projects": "프로젝트",
     "apps": "앱",
+    "ai_video": "AI 영상",
     "testers": "테스트 요청",
     "writing": "글쓰기",
     "youtube": "유튜브",
@@ -242,6 +243,99 @@
         "tasks": ["SAP FI/CO 운영 및 웹전표처리(myFinance) 운영", "홀딩스, 넥스랩 법인 설립 Roll-out 프로젝트 수행(with SDS)", "개인정보 암호화 SAP 및 SWIFT 구축"]
       }
     }
+  },
+  "ai_video": {
+    "eyebrow": "MiniMax H3 / ComfyUI local test",
+    "title": "RTX 3060 노트북에서 MiniMax H3로 로컬 AI 영상을 생성한 기록",
+    "intro": "클라우드 영상 생성 서비스의 비용과 대기시간을 줄이기 위해, Lenovo ThinkBook 16p Gen 3 노트북에 ComfyUI Windows Portable과 MiniMax H3 로컬 모델을 구성하고 이미지, 텍스트, 참조 오디오 기반 영상 생성을 직접 테스트했습니다.",
+    "video_label": "MiniMax H3 로컬 생성 결과 영상",
+    "video_caption": "ComfyUI와 MiniMax H3 Text to Video 워크플로우로 생성한 약 15초 분량의 심야 도심 스포츠카 주행 영상입니다.",
+    "goals_title": "테스트 목표",
+    "goals": {
+      "image": "이미지 한 장을 움직이는 영상으로 만드는 Reference/Image to Video 검증",
+      "text": "이미지 없이 프롬프트만으로 장면을 만드는 Text to Video 검증",
+      "audio": "인물 이미지와 MP3 참조 오디오를 활용한 노래 영상 생성 가능성 확인"
+    },
+    "environment_title": "사용 환경",
+    "environment": {
+      "laptop": { "label": "노트북", "value": "Lenovo ThinkBook 16p Gen 3" },
+      "cpu": { "label": "CPU", "value": "AMD Ryzen 9 6900HX" },
+      "gpu": { "label": "GPU", "value": "RTX 3060 Laptop GPU" },
+      "memory": { "label": "메모리", "value": "32GB RAM + 가상메모리" },
+      "os": { "label": "OS", "value": "Windows 11" },
+      "runtime": { "label": "실행 환경", "value": "ComfyUI Windows Portable" },
+      "model": { "label": "모델", "value": "MiniMax H3 local model" }
+    },
+    "timeline_title": "작업 과정",
+    "timeline_description": "설치, 모델 구성, 워크플로우 테스트, 오디오 시행착오, 최종 결과물 확인까지 실제 작업 순서대로 정리했습니다.",
+    "timeline": {
+      "setup": {
+        "title": "ComfyUI 로컬 환경 구성",
+        "text": "Portable 버전을 기준으로 diffusion_models, text_encoders, vae 폴더를 정리하고 MiniMax H3, Qwen3-VL 계열 인코더, Video/Audio VAE 모델을 배치했습니다."
+      },
+      "reference": {
+        "title": "Reference/Image to Video 테스트",
+        "text": "참조 이미지 기반 워크플로우에서 누락 모델과 노드 오류를 해결한 뒤, 인물과 캐릭터 움직임이 자연스럽게 생성되는지 확인했습니다."
+      },
+      "text": {
+        "title": "Text to Video 워크플로우 확장",
+        "text": "심야 도심을 달리는 붉은 스포츠카 장면을 프롬프트로 구성하고, 수동기어, 드리프트, FPV 드론 촬영 같은 세부 동작을 단계적으로 실험했습니다."
+      },
+      "audio": {
+        "title": "MP3 참조 오디오 실험",
+        "text": "인물 이미지와 한국어 MP3를 연결해 노래 영상 생성을 시도했지만, 원본 음원이 그대로 복사되지 않고 모델이 새 오디오를 생성한다는 한계를 확인했습니다."
+      },
+      "stability": {
+        "title": "메모리와 실행 안정화",
+        "text": "약 20GB급 모델을 제한된 VRAM에서 동적으로 로딩하기 위해 Windows 가상메모리를 확장하고, 5초·0.3MP부터 시작해 길이와 해상도를 하나씩 높이는 방식으로 안정성을 확인했습니다."
+      },
+      "result": {
+        "title": "결과물 검토",
+        "text": "최종적으로 640x480, 24fps, 약 15초 길이의 스포츠카 주행 영상을 생성했고, 차체와 야간 조명은 안정적이지만 빠른 이동에서는 배경과 세부 묘사가 흐려지는 점을 확인했습니다."
+      }
+    },
+    "lessons_title": "시행착오와 정리",
+    "lessons_description": "로컬 영상 생성은 모델 설치보다도 경로, 메모리, 워크플로우 구조를 정확히 이해하는 것이 중요했습니다.",
+    "lessons": {
+      "models": {
+        "title": "모델 경로",
+        "text": "파일이 한 단계 더 중첩되거나 diffusion_models, text_encoders, vae 위치가 바뀌면 모델 목록에 나타나지 않았습니다. 이동 후 ComfyUI 완전 재시작이 필요했습니다."
+      },
+      "resolution": {
+        "title": "해상도와 길이",
+        "text": "Duration과 해상도를 동시에 높이면 어느 설정이 문제인지 알기 어려웠습니다. 0.3MP에서 정상 동작을 확인한 뒤 0.5MP, 0.7MP로 올리는 방식이 안정적이었습니다."
+      },
+      "audio": {
+        "title": "참조 오디오",
+        "text": "ref_audio는 원본 MP3를 복사하는 기능이 아니라 생성 조건에 가까웠습니다. 원본 음원 보존은 H3 출력 후 FFmpeg나 편집 프로그램으로 합성하는 방식이 더 안전했습니다."
+      },
+      "progress": {
+        "title": "57% 정체 현상",
+        "text": "UI가 57%에 머물러도 실제 샘플러가 0/4라면 모델 초기화 단계일 수 있었습니다. CUDA 오류가 없으면 실패가 아니라 동적 VRAM 로딩 중일 가능성이 큽니다."
+      },
+      "workflow": {
+        "title": "워크플로우 구조",
+        "text": "audio_vae는 단순 오디오 저장 연결이 아니라 H3 노드의 필수 입력이었습니다. 소리를 없애려면 노드를 끊기보다 출력 후 오디오 트랙을 제거하는 편이 안전했습니다."
+      }
+    },
+    "workflow_title": "현재 기준 권장 흐름",
+    "workflow": {
+      "start": "5초, 0.3MP, 24fps, Steps 4로 먼저 정상 출력 여부를 확인합니다.",
+      "duration": "정상 출력 후에는 해상도보다 Duration만 먼저 10초로 늘립니다.",
+      "resolution": "길이가 안정되면 0.5MP, 필요 시 0.7MP 순서로 해상도를 올립니다.",
+      "audio": "MP3 기반 영상은 5~10초 단위로 자르고, H3 출력 오디오는 제거한 뒤 원본 음원을 후편집으로 합성합니다.",
+      "finish": "입 모양 정확도가 중요하면 H3 결과물을 립싱크 전용 도구로 다시 후처리합니다."
+    },
+    "result_title": "결과물 정보",
+    "result_points": [
+      "파일명: MiniMax_H3_00005_.mp4",
+      "재생시간: 약 15.08초",
+      "해상도: 640x480, 4:3",
+      "프레임 속도: 24fps",
+      "코덱: H.264 video, AAC 32kHz stereo audio",
+      "파일 크기: 약 2.5MB"
+    ],
+    "conclusion": "MiniMax H3는 RTX 3060 노트북에서도 조건을 낮추고 RAM과 가상메모리를 충분히 확보하면 로컬 실행이 가능했습니다. 다만 원본 음원 보존, 정확한 한국어 가사, 립싱크는 H3 하나로 끝내기보다 영상 생성과 후편집을 분리하는 방식이 가장 안정적이었습니다."
   },
   "footer": {
     "made": "AI로 만들고, 의도를 담아 배포합니다.",

@@ -15,6 +15,7 @@
     "home": "首页",
     "projects": "项目",
     "apps": "应用",
+    "ai_video": "AI视频",
     "testers": "测试请求",
     "writing": "写作",
     "youtube": "YouTube",
@@ -196,6 +197,66 @@
       "fnf": { "company": "F&F", "period": "2021.11 ~ 2023.09", "duration": "1年11个月", "role": "次长/Part Lead", "summary": "运营F&F、F&CO、F&F上海法人SAP ERP FI/CO，并执行Roll-out和版本升级项目。", "tasks": ["F&F、F&CO、F&F上海法人SAP ERP FI/CO运营", "中国法人SAP Roll-out项目", "F&CO版本升级项目", "F&F Entertainment、F&F Logistics新法人Roll-out"] },
       "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在职", "duration": "2年11个月", "role": "Data Governance 组 部长/团队成员（18年11个月）", "summary": "运营SAP FI/CO和网页凭证处理(myFinance)，并执行法人设立Roll-out、个人信息加密、SWIFT构建。", "tasks": ["SAP FI/CO及myFinance运营", "Holdings、Nexlab法人设立Roll-out(with SDS)", "SAP个人信息加密及SWIFT构建"] }
     }
+  },
+  "ai_video": {
+    "eyebrow": "MiniMax H3 / ComfyUI local test",
+    "title": "在 RTX 3060 笔记本上用 MiniMax H3 生成本地 AI 视频的记录",
+    "intro": "为了减少云端视频生成服务的费用和等待时间，我在 Lenovo ThinkBook 16p Gen 3 上配置了 ComfyUI Windows Portable 与 MiniMax H3 本地模型，并测试了基于图像、文本和参考音频的视频生成流程。",
+    "video_label": "MiniMax H3 本地生成结果视频",
+    "video_caption": "使用 ComfyUI 与 MiniMax H3 Text to Video 工作流生成的约15秒夜间城市跑车行驶视频。",
+    "goals_title": "测试目标",
+    "goals": {
+      "image": "验证用一张图片生成动态视频的 Reference/Image to Video",
+      "text": "验证无需图片、仅用提示词生成场景的 Text to Video",
+      "audio": "确认人物图片与 MP3 参考音频生成唱歌视频的可行性"
+    },
+    "environment_title": "使用环境",
+    "environment": {
+      "laptop": { "label": "笔记本", "value": "Lenovo ThinkBook 16p Gen 3" },
+      "cpu": { "label": "CPU", "value": "AMD Ryzen 9 6900HX" },
+      "gpu": { "label": "GPU", "value": "RTX 3060 Laptop GPU" },
+      "memory": { "label": "内存", "value": "32GB RAM + 虚拟内存" },
+      "os": { "label": "系统", "value": "Windows 11" },
+      "runtime": { "label": "运行环境", "value": "ComfyUI Windows Portable" },
+      "model": { "label": "模型", "value": "MiniMax H3 local model" }
+    },
+    "timeline_title": "工作过程",
+    "timeline_description": "按照实际顺序整理了安装、模型配置、工作流测试、音频试错、稳定性调整和最终结果检查。",
+    "timeline": {
+      "setup": { "title": "构建 ComfyUI 本地环境", "text": "整理 diffusion_models、text_encoders、vae 文件夹，并放置 MiniMax H3、Qwen3-VL 编码器以及 Video/Audio VAE 模型。" },
+      "reference": { "title": "测试 Reference/Image to Video", "text": "解决缺失模型和节点错误后，确认人物与角色动作是否能从参考图片自然生成。" },
+      "text": { "title": "扩展到 Text to Video", "text": "用提示词构建夜间城市红色跑车行驶场景，并逐步测试手动换挡、漂移、FPV无人机视角等细节。" },
+      "audio": { "title": "MP3 参考音频实验", "text": "尝试用人物图片和韩语 MP3 生成唱歌视频，并确认参考音频更像生成条件，而不是原音复制。" },
+      "stability": { "title": "内存与执行稳定化", "text": "为约20GB模型的动态 VRAM 加载扩展 Windows 虚拟内存，并从5秒、0.3MP开始逐步验证。" },
+      "result": { "title": "结果检查", "text": "最终生成 640x480、24fps、约15秒的跑车视频。车体和夜间灯光较稳定，但快速移动时背景细节会变软。" }
+    },
+    "lessons_title": "试错总结",
+    "lessons_description": "本地视频生成不仅是安装模型，更重要的是理解路径、内存和工作流结构。",
+    "lessons": {
+      "models": { "title": "模型路径", "text": "文件夹层级或模型位置不正确会导致模型不显示。移动文件后需要完全重启 ComfyUI。" },
+      "resolution": { "title": "分辨率和长度", "text": "同时提高 Duration 和分辨率会让问题定位变难。先从0.3MP验证，再到0.5MP、0.7MP更稳定。" },
+      "audio": { "title": "参考音频", "text": "ref_audio 不会原样保留 MP3。保留原音更适合在 H3 输出后通过剪辑重新合成。" },
+      "progress": { "title": "57%停滞", "text": "UI停在57%而采样器为0/4时，可能还在动态 VRAM 加载初始化阶段，并不是实际生成卡住。" },
+      "workflow": { "title": "工作流结构", "text": "audio_vae 是必需模型输入。要去除声音，最好导出后删除音轨，而不是断开节点。" }
+    },
+    "workflow_title": "推荐流程",
+    "workflow": {
+      "start": "先用5秒、0.3MP、24fps、Steps 4确认能正常输出。",
+      "duration": "正常输出后，先把 Duration 增加到10秒，再提高分辨率。",
+      "resolution": "时长稳定后再尝试0.5MP，必要时再到0.7MP。",
+      "audio": "MP3 视频按5到10秒切分，去除 H3 输出音频，再在后期合成原音。",
+      "finish": "如果需要准确口型，使用专用 lip-sync 工具进行后处理。"
+    },
+    "result_title": "结果信息",
+    "result_points": [
+      "文件名: MiniMax_H3_00005_.mp4",
+      "时长: 约15.08秒",
+      "分辨率: 640x480, 4:3",
+      "帧率: 24fps",
+      "编码: H.264 video, AAC 32kHz stereo audio",
+      "文件大小: 约2.5MB"
+    ],
+    "conclusion": "在降低设置并准备足够 RAM 与虚拟内存的情况下，MiniMax H3 可以在 RTX 3060 笔记本上本地运行。但原音保留、准确韩语歌词和口型同步，更稳定的方式是把视频生成和后期音频处理分开。"
   },
   "footer": {
     "made": "用AI构建，有目的地部署。",

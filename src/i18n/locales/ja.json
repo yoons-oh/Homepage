@@ -15,6 +15,7 @@
     "home": "ホーム",
     "projects": "プロジェクト",
     "apps": "アプリ",
+    "ai_video": "AI動画",
     "testers": "テスト依頼",
     "writing": "執筆",
     "youtube": "YouTube",
@@ -196,6 +197,66 @@
       "fnf": { "company": "F&F", "period": "2021.11 ~ 2023.09", "duration": "1年11か月", "role": "次長／パート長", "summary": "F&F、F&CO、F&F上海法人のSAP ERP FI/CO運用とロールアウト、バージョンアッププロジェクトを行いました。", "tasks": ["F&F、F&CO、F&F上海法人SAP ERP FI/CO運用", "中国法人SAPロールアウトプロジェクト", "F&COバージョンアッププロジェクト", "F&F Entertainment、F&F Logistics新規法人ロールアウト"] },
       "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在職中", "duration": "2年11か月", "role": "Data Governanceグループ 部長／チームメンバー（18年11か月）", "summary": "SAP FI/COとWeb伝票処理(myFinance)を運用し、法人設立ロールアウト、個人情報暗号化、SWIFT構築を行いました。", "tasks": ["SAP FI/COおよびmyFinance運用", "Holdings、Nexlab法人設立ロールアウト(with SDS)", "SAP個人情報暗号化およびSWIFT構築"] }
     }
+  },
+  "ai_video": {
+    "eyebrow": "MiniMax H3 / ComfyUI local test",
+    "title": "RTX 3060ノートPCでMiniMax H3のローカルAI動画を生成した記録",
+    "intro": "クラウド動画生成サービスの費用と待ち時間を減らすため、Lenovo ThinkBook 16p Gen 3にComfyUI Windows PortableとMiniMax H3ローカルモデルを構成し、画像・テキスト・参照音声ベースの動画生成をテストしました。",
+    "video_label": "MiniMax H3ローカル生成結果動画",
+    "video_caption": "ComfyUIとMiniMax H3のText to Videoワークフローで生成した、約15秒の夜間都市スポーツカー走行動画です。",
+    "goals_title": "テスト目標",
+    "goals": {
+      "image": "1枚の画像から動く動画を作るReference/Image to Videoの検証",
+      "text": "画像なしでプロンプトだけからシーンを作るText to Videoの検証",
+      "audio": "人物画像とMP3参照音声を使った歌唱動画生成の可能性確認"
+    },
+    "environment_title": "使用環境",
+    "environment": {
+      "laptop": { "label": "ノートPC", "value": "Lenovo ThinkBook 16p Gen 3" },
+      "cpu": { "label": "CPU", "value": "AMD Ryzen 9 6900HX" },
+      "gpu": { "label": "GPU", "value": "RTX 3060 Laptop GPU" },
+      "memory": { "label": "メモリ", "value": "32GB RAM + 仮想メモリ" },
+      "os": { "label": "OS", "value": "Windows 11" },
+      "runtime": { "label": "実行環境", "value": "ComfyUI Windows Portable" },
+      "model": { "label": "モデル", "value": "MiniMax H3 local model" }
+    },
+    "timeline_title": "作業プロセス",
+    "timeline_description": "セットアップ、モデル配置、ワークフローテスト、音声の試行錯誤、安定化、結果確認までを実作業順に整理しました。",
+    "timeline": {
+      "setup": { "title": "ComfyUIローカル環境構築", "text": "diffusion_models、text_encoders、vaeフォルダを整理し、MiniMax H3、Qwen3-VL系エンコーダー、Video/Audio VAEモデルを配置しました。" },
+      "reference": { "title": "Reference/Image to Videoテスト", "text": "不足モデルやノードエラーを解消し、参照画像から人物やキャラクターの動きが自然に生成されるか確認しました。" },
+      "text": { "title": "Text to Videoへ拡張", "text": "夜の都市を走る赤いスポーツカーのプロンプトを作り、マニュアルシフト、ドリフト、FPVドローン風カメラなどを段階的に試しました。" },
+      "audio": { "title": "MP3参照音声実験", "text": "人物画像と韓国語MP3で歌唱動画を試しましたが、参照音声は原音コピーではなく生成条件に近いことを確認しました。" },
+      "stability": { "title": "メモリと実行安定化", "text": "約20GB級モデルの動的VRAMロードに備え、Windows仮想メモリを拡張し、5秒・0.3MPから段階的に検証しました。" },
+      "result": { "title": "結果確認", "text": "640x480、24fps、約15秒のスポーツカー動画を生成し、車体と夜間照明は安定する一方で高速移動時の背景細部はやや甘くなることを確認しました。" }
+    },
+    "lessons_title": "試行錯誤の整理",
+    "lessons_description": "ローカル動画生成では、モデルのインストールだけでなく、パス、メモリ、ワークフロー構造の理解が重要でした。",
+    "lessons": {
+      "models": { "title": "モデルパス", "text": "フォルダ階層や配置先が違うとモデル一覧に出ません。移動後はComfyUIの完全再起動が必要でした。" },
+      "resolution": { "title": "解像度と長さ", "text": "Durationと解像度を同時に上げると原因特定が難しく、0.3MPから0.5MP、0.7MPへ上げる手順が安定しました。" },
+      "audio": { "title": "参照音声", "text": "ref_audioはMP3をそのまま保持する機能ではありません。原音はH3出力後に編集で合成する方が安全でした。" },
+      "progress": { "title": "57%停止表示", "text": "UIが57%でもサンプラーが0/4なら、実生成ではなく動的VRAMロード中の初期化である可能性がありました。" },
+      "workflow": { "title": "ワークフロー構造", "text": "audio_vaeは必須モデル入力でした。音声を消す場合は接続を切らず、出力後に音声トラックを削除する方が安全でした。" }
+    },
+    "workflow_title": "推奨フロー",
+    "workflow": {
+      "start": "まず5秒、0.3MP、24fps、Steps 4で正常出力を確認します。",
+      "duration": "正常出力後、解像度より先にDurationだけ10秒へ伸ばします。",
+      "resolution": "長さが安定したら0.5MP、必要に応じて0.7MPへ上げます。",
+      "audio": "MP3ベース動画は5〜10秒単位に分割し、H3出力音声を除去して原音を後編集で合成します。",
+      "finish": "リップシンク精度が重要な場合は専用ツールで後処理します。"
+    },
+    "result_title": "結果情報",
+    "result_points": [
+      "ファイル名: MiniMax_H3_00005_.mp4",
+      "再生時間: 約15.08秒",
+      "解像度: 640x480, 4:3",
+      "フレームレート: 24fps",
+      "コーデック: H.264 video, AAC 32kHz stereo audio",
+      "ファイルサイズ: 約2.5MB"
+    ],
+    "conclusion": "MiniMax H3は、設定を控えめにしRAMと仮想メモリを確保すればRTX 3060ノートPCでもローカル実行できました。原音保持、正確な韓国語歌詞、リップシンクは動画生成と後編集を分けるのが最も安定しました。"
   },
   "footer": {
     "made": "AIで作り、意図を持ってデプロイ。",

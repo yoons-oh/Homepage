@@ -17,6 +17,7 @@ const baseNavItems = [
   { key: 'about', href: '/about' },
   { key: 'projects', href: '/projects' },
   { key: 'apps', href: '/apps' },
+  { key: 'ai_video', label: 'AI Video', href: '/ai-video' },
   { key: 'testers', label: 'Testers', href: '/testers' },
   { key: 'youtube', href: '/youtube' },
   { key: 'writing', href: '/writing' },
