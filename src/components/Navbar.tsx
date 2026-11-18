@@ -1,47 +1,77 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronDown, Mail } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Menu, X } from 'lucide-react'
 import { useCareerVisibility } from '../hooks/useCareerVisibility'
+import { usePath } from '../lib/route'
 
 const LANGS = [
-  { code: 'en', label: 'EN' },
   { code: 'ko', label: 'KO' },
+  { code: 'en', label: 'EN' },
   { code: 'ja', label: 'JA' },
   { code: 'zh', label: 'ZH' },
 ]
 const CONTACT_EMAIL = 'yoonseukoh@gmail.com'
 
-const baseNavItems = [
-  { key: 'home', href: '/' },
-  { key: 'about', href: '/about' },
-  { key: 'projects', href: '/projects' },
-  { key: 'apps', href: '/apps' },
-  { key: 'ai_video', label: 'AI Video', href: '/ai-video' },
-  { key: 'testers', label: 'Testers', href: '/testers' },
-  { key: 'youtube', href: '/youtube' },
-  { key: 'writing', href: '/writing' },
-  { key: 'restaurants', label: 'Food', href: '/restaurants' },
-] as const
+type NavChild = { key: string; href: string; fallback: string }
+type NavGroup = { key: string; href: string; fallback: string; children?: NavChild[] }
+
+function buildGroups(careerOpen: boolean): NavGroup[] {
+  return [
+    {
+      key: 'work',
+      href: '/projects',
+      fallback: 'Work',
+      children: [
+        { key: 'all', href: '/projects', fallback: 'All' },
+        { key: 'apps', href: '/apps', fallback: 'Apps' },
+        { key: 'youtube', href: '/youtube', fallback: 'YouTube' },
+        { key: 'instagram', href: '/instagram', fallback: 'Instagram' },
+        { key: 'writing', href: '/writing', fallback: 'Writing' },
+      ],
+    },
+    {
+      key: 'lab',
+      href: '/ai-video',
+      fallback: 'Lab',
+      children: [
+        { key: 'ai_video', href: '/ai-video', fallback: 'AI Video' },
+        { key: 'testers', href: '/testers', fallback: 'Testers' },
+      ],
+    },
+    {
+      key: 'about',
+      href: '/about',
+      fallback: 'About',
+      children: careerOpen
+        ? [
+            { key: 'about', href: '/about', fallback: 'About' },
+            { key: 'career', href: '/career', fallback: 'Career' },
+          ]
+        : undefined,
+    },
+    { key: 'restaurants', href: '/restaurants', fallback: 'Food' },
+  ]
+}
 
 export default function Navbar() {
   const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const { isOpen: careerOpen } = useCareerVisibility()
-  const current = LANGS.find((lang) => i18n.language.startsWith(lang.code)) ?? LANGS[0]
+  const path = usePath()
+  const groups = buildGroups(careerOpen)
+  const current = LANGS.find((lang) => i18n.language?.startsWith(lang.code)) ?? LANGS[1]
   const contactUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}&su=${encodeURIComponent(t('contact.email_subject'))}&body=${encodeURIComponent(t('contact.email_body'))}`
-  const navItems = careerOpen
-    ? [
-        ...baseNavItems.slice(0, 2),
-        { key: 'career', label: 'Career', href: '/career' },
-        ...baseNavItems.slice(2),
-      ]
-    : baseNavItems
+  const label = (key: string, fallback: string) => t(`nav.${key}`, { defaultValue: fallback })
+  const isActive = (group: NavGroup) =>
+    group.href === path || (group.children ?? []).some((child) => child.href === path)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
-    window.addEventListener('scroll', onScroll)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -51,35 +81,54 @@ export default function Navbar() {
     return () => document.removeEventListener('click', close)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
   return (
-    <nav className={`nav-bar ${scrolled ? 'is-scrolled' : ''}`}>
-      <div className="nav-inner">
-        <a className="brand-mark" href="/" aria-label="Yoon home">
-          <span className="brand-symbol">Y</span>
-          <span className="brand-text">Yoon Lab</span>
+    <nav className={`rn-nav ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className="rn-nav-inner">
+        <a className="rn-brand" href="/" aria-label="Yoon Lab home">
+          <span className="rn-brand-symbol">Y</span>
+          <span className="rn-brand-text">Yoon Lab</span>
         </a>
 
-        <div className="nav-links" aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <a key={item.key} href={item.href}>
-              {t(`nav.${item.key}`, { defaultValue: 'label' in item ? item.label : item.key })}
-            </a>
+        <div className="rn-links" aria-label="Primary navigation">
+          {groups.map((group) => (
+            <div className={`rn-link-group ${isActive(group) ? 'is-active' : ''}`} key={group.key}>
+              <a href={group.href} className="rn-link">
+                {label(group.key, group.fallback)}
+                {group.children && <ChevronDown size={13} aria-hidden="true" />}
+              </a>
+              {group.children && (
+                <div className="rn-dropdown">
+                  {group.children.map((child) => (
+                    <a key={child.href} href={child.href} className={child.href === path ? 'is-current' : ''}>
+                      {label(child.key, child.fallback)}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
-        <div className="nav-actions">
-          <div className="lang-switch" onClick={(event) => event.stopPropagation()}>
-            <button type="button" onClick={() => setLangOpen((value) => !value)}>
+        <div className="rn-actions">
+          <div className="rn-lang" onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={() => setLangOpen((value) => !value)} aria-label="Language">
               {current.label}
               <ChevronDown size={12} aria-hidden="true" />
             </button>
             <AnimatePresence>
               {langOpen && (
                 <motion.div
-                  className="lang-menu"
-                  initial={{ opacity: 0, y: 4 }}
+                  className="rn-lang-menu"
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
+                  exit={{ opacity: 0, y: 6 }}
                   transition={{ duration: 0.14 }}
                 >
                   {LANGS.map((lang) => (
@@ -100,18 +149,54 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <a
-            className="nav-contact"
-            href={contactUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`${t('nav.contact')}: ${CONTACT_EMAIL}`}
-            title={`Send email to ${CONTACT_EMAIL}`}
-          >
-            <Mail size={13} aria-hidden="true" />
+          <a className="rn-contact" href={contactUrl} target="_blank" rel="noreferrer" title={CONTACT_EMAIL}>
+            {t('hero.contact')}
+            <ArrowUpRight size={14} aria-hidden="true" />
           </a>
+
+          <button
+            type="button"
+            className="rn-menu-button"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((value) => !value)}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="rn-sheet"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.2 }}
+          >
+            {groups.map((group) => (
+              <div className="rn-sheet-group" key={group.key}>
+                <a href={group.href} className="rn-sheet-title">
+                  {label(group.key, group.fallback)}
+                </a>
+                {group.children && (
+                  <div className="rn-sheet-children">
+                    {group.children.map((child) => (
+                      <a key={child.href} href={child.href} className={child.href === path ? 'is-current' : ''}>
+                        {label(child.key, child.fallback)}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            <a className="rn-sheet-contact" href={contactUrl} target="_blank" rel="noreferrer">
+              {t('hero.contact')} · {CONTACT_EMAIL}
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }

@@ -23,7 +23,10 @@
     "career": "経歴",
     "work": "作品",
     "about": "について",
-    "contact": "連絡"
+    "contact": "連絡",
+    "all": "すべて",
+    "lab": "ラボ",
+    "instagram": "Instagram"
   },
   "hero": {
     "badge": "AIネイティブ開発者",
@@ -39,7 +42,26 @@
     "strip_count": "8件のプロジェクト",
     "strip_desc": "アプリ、コンテンツ、執筆、AI動画",
     "cta_work": "作品を見る",
-    "cta_github": "GitHub"
+    "cta_github": "GitHub",
+    "title1": "アイデアを",
+    "title2": "すぐにアプリへ。",
+    "scene_hint": "カードをクリックするとすぐに開きます",
+    "open_project": "開く",
+    "chapter_title": "{{count}}つの作品、ひとつのラボ",
+    "scroll": "スクロールして見る",
+    "prism_title1": "ひとつのアイデアが、",
+    "prism_title2": "いくつもの成果に。",
+    "prism_sub": "AIと一緒にアプリを作り、映像を試し、市場をまとめ、小説を書いています。Yoon Labはそのすべてが集まる場所です。",
+    "prism_hint": "マウスを上下に動かすと光の角度が変わります",
+    "domain_count": "{{count}}件",
+    "gen_title1": "AIと一緒に、",
+    "gen_title2": "考えをかたちに。",
+    "gen_steps_label": "粒子がつくる形",
+    "shape_identity": "Yoon Lab",
+    "shape_think": "AIと考え",
+    "shape_apps": "アプリを作り",
+    "shape_video": "映像を作り",
+    "shape_write": "物語を書く"
   },
   "floating": {
     "idea": "アイデア",
@@ -56,11 +78,13 @@
     "page_apps_title": "アプリプロジェクト",
     "page_apps_description": "学習、数学、英語リーディングなど、直接作ってテスト中のWeb/アプリを集めました。",
     "page_youtube_title": "YouTubeチャンネル",
-    "page_youtube_description": "市場の流れを短くわかりやすく整理するコンテンツチャンネルです。",
+    "page_youtube_description": "市場のまとめ、ひとりで挑戦する記録、夜に聴く昔話まで、自分で運営しているYouTubeチャンネルです。",
     "page_writing_title": "Web小説連載",
     "page_writing_description": "ドユンジェという筆名で続けているMunpiaのWeb小説作業です。",
     "launch": "アプリを開く →",
-    "code": "コード"
+    "code": "コード",
+    "page_instagram_title": "Instagram",
+    "page_instagram_description": "株・投資の話題とショッピング情報を発信しているInstagramアカウントです。"
   },
   "how": {
     "title": "作業方法",
@@ -97,9 +121,18 @@
     "body3": "彼はAIを単なる珍しいツールとして使いません。必要なものをより速く試し、不足点を早く見つけ、自分の判断で整える作業方法として使います。だからこのホームページは静的なポートフォリオというより、作っているものを試し続ける個人の作業室に近いです。",
     "notes_aria": "作業印象",
     "notes": {
-      "fast": { "title": "素早く作り、実際に公開します", "text": "アイデアを言葉だけで長く持ち続けません。リンク、アイコン、デプロイ先をすぐ集め、実際のページで確認します。" },
-      "detail": { "title": "見た目への感度が高いです", "text": "ただ綺麗というより、画面内のバランスや画像サイズ、使った時の自然さを最後まで見ます。" },
-      "ai": { "title": "AIを作業方法として使います", "text": "完成された答えを待つのではなく、AIとやり取りしながら判断し、方向を絞っていきます。" }
+      "fast": {
+        "title": "素早く作り、実際に公開します",
+        "text": "アイデアを言葉だけで長く持ち続けません。リンク、アイコン、デプロイ先をすぐ集め、実際のページで確認します。"
+      },
+      "detail": {
+        "title": "見た目への感度が高いです",
+        "text": "ただ綺麗というより、画面内のバランスや画像サイズ、使った時の自然さを最後まで見ます。"
+      },
+      "ai": {
+        "title": "AIを作業方法として使います",
+        "text": "完成された答えを待つのではなく、AIとやり取りしながら判断し、方向を絞っていきます。"
+      }
     },
     "close": "一文で言えば、Yoonは「考えたことを実際に動く画面まで持っていく人」です。そしてその過程で細部を見過ごしません。"
   },
@@ -184,18 +217,72 @@
     },
     "capabilities_aria": "経歴スキル要約",
     "capabilities": {
-      "sap": { "title": "SAP ERP運用", "text": "FIを中心にCO、TR、HRまで、会計・資金・人事の業務フローを見ながら運用します。" },
-      "development": { "title": "開発と運用の結合", "text": "ABAPと外部システム開発経験を基に、現場要望を実際のシステム変更へつなげます。" },
-      "data": { "title": "データとインターフェース", "text": "Oracle、MS-SQL、e-HR、管理システム連携を含む業務データの流れを扱います。" }
+      "sap": {
+        "title": "SAP ERP運用",
+        "text": "FIを中心にCO、TR、HRまで、会計・資金・人事の業務フローを見ながら運用します。"
+      },
+      "development": {
+        "title": "開発と運用の結合",
+        "text": "ABAPと外部システム開発経験を基に、現場要望を実際のシステム変更へつなげます。"
+      },
+      "data": {
+        "title": "データとインターフェース",
+        "text": "Oracle、MS-SQL、e-HR、管理システム連携を含む業務データの流れを扱います。"
+      }
     },
     "timeline_aria": "経歴タイムライン",
     "timeline_title": "主な経歴",
     "timeline_description": "SAP ERP運用、ロールアウト、法人構築、会計・人事・資金システム運用経験を会社別に整理しました。",
     "items": {
-      "incruit": { "company": "Incruit KiCom ERP", "period": "2007.06 ~ 2010.07", "duration": "3年2か月", "role": "開発1チーム 主任", "summary": "B2BERP人事・給与・会計モジュールを担当し、税法変更、年末調整、標準化業務を行いました。", "tasks": ["人事・給与・会計モジュール運用および開発", "変更税法の適用", "年末調整の実施および標準化"] },
-      "kyungdong": { "company": "Kyungdong One", "period": "2010.11 ~ 2021.09", "duration": "10年11か月", "role": "経営情報チーム 課長", "summary": "Kyungdong Navienを含む国内外法人のSAP ERP、e-HR、管理システムを設計・開発・運用しました。", "tasks": ["SAP ERP FI/CO/TR/HR運用", "e-HRおよび管理システム設計・開発・管理", "国内外法人の業務プロセス対応"] },
-      "fnf": { "company": "F&F", "period": "2021.11 ~ 2023.09", "duration": "1年11か月", "role": "次長／パート長", "summary": "F&F、F&CO、F&F上海法人のSAP ERP FI/CO運用とロールアウト、バージョンアッププロジェクトを行いました。", "tasks": ["F&F、F&CO、F&F上海法人SAP ERP FI/CO運用", "中国法人SAPロールアウトプロジェクト", "F&COバージョンアッププロジェクト", "F&F Entertainment、F&F Logistics新規法人ロールアウト"] },
-      "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在職中", "duration": "2年11か月", "role": "Data Governanceグループ 部長／チームメンバー（18年11か月）", "summary": "SAP FI/COとWeb伝票処理(myFinance)を運用し、法人設立ロールアウト、個人情報暗号化、SWIFT構築を行いました。", "tasks": ["SAP FI/COおよびmyFinance運用", "Holdings、Nexlab法人設立ロールアウト(with SDS)", "SAP個人情報暗号化およびSWIFT構築"] }
+      "incruit": {
+        "company": "Incruit KiCom ERP",
+        "period": "2007.06 ~ 2010.07",
+        "duration": "3年2か月",
+        "role": "開発1チーム 主任",
+        "summary": "B2BERP人事・給与・会計モジュールを担当し、税法変更、年末調整、標準化業務を行いました。",
+        "tasks": [
+          "人事・給与・会計モジュール運用および開発",
+          "変更税法の適用",
+          "年末調整の実施および標準化"
+        ]
+      },
+      "kyungdong": {
+        "company": "Kyungdong One",
+        "period": "2010.11 ~ 2021.09",
+        "duration": "10年11か月",
+        "role": "経営情報チーム 課長",
+        "summary": "Kyungdong Navienを含む国内外法人のSAP ERP、e-HR、管理システムを設計・開発・運用しました。",
+        "tasks": [
+          "SAP ERP FI/CO/TR/HR運用",
+          "e-HRおよび管理システム設計・開発・管理",
+          "国内外法人の業務プロセス対応"
+        ]
+      },
+      "fnf": {
+        "company": "F&F",
+        "period": "2021.11 ~ 2023.09",
+        "duration": "1年11か月",
+        "role": "次長／パート長",
+        "summary": "F&F、F&CO、F&F上海法人のSAP ERP FI/CO運用とロールアウト、バージョンアッププロジェクトを行いました。",
+        "tasks": [
+          "F&F、F&CO、F&F上海法人SAP ERP FI/CO運用",
+          "中国法人SAPロールアウトプロジェクト",
+          "F&COバージョンアッププロジェクト",
+          "F&F Entertainment、F&F Logistics新規法人ロールアウト"
+        ]
+      },
+      "samsung": {
+        "company": "Samsung Bioepis",
+        "period": "2023.09 ~ 在職中",
+        "duration": "2年11か月",
+        "role": "Data Governanceグループ 部長／チームメンバー（18年11か月）",
+        "summary": "SAP FI/COとWeb伝票処理(myFinance)を運用し、法人設立ロールアウト、個人情報暗号化、SWIFT構築を行いました。",
+        "tasks": [
+          "SAP FI/COおよびmyFinance運用",
+          "Holdings、Nexlab法人設立ロールアウト(with SDS)",
+          "SAP個人情報暗号化およびSWIFT構築"
+        ]
+      }
     }
   },
   "ai_video": {
@@ -212,32 +299,86 @@
     },
     "environment_title": "使用環境",
     "environment": {
-      "laptop": { "label": "ノートPC", "value": "Lenovo ThinkBook 16p Gen 3" },
-      "cpu": { "label": "CPU", "value": "AMD Ryzen 9 6900HX" },
-      "gpu": { "label": "GPU", "value": "RTX 3060 Laptop GPU" },
-      "memory": { "label": "メモリ", "value": "32GB RAM + 仮想メモリ" },
-      "os": { "label": "OS", "value": "Windows 11" },
-      "runtime": { "label": "実行環境", "value": "ComfyUI Windows Portable" },
-      "model": { "label": "モデル", "value": "MiniMax H3 local model" }
+      "laptop": {
+        "label": "ノートPC",
+        "value": "Lenovo ThinkBook 16p Gen 3"
+      },
+      "cpu": {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 6900HX"
+      },
+      "gpu": {
+        "label": "GPU",
+        "value": "RTX 3060 Laptop GPU"
+      },
+      "memory": {
+        "label": "メモリ",
+        "value": "32GB RAM + 仮想メモリ"
+      },
+      "os": {
+        "label": "OS",
+        "value": "Windows 11"
+      },
+      "runtime": {
+        "label": "実行環境",
+        "value": "ComfyUI Windows Portable"
+      },
+      "model": {
+        "label": "モデル",
+        "value": "MiniMax H3 local model"
+      }
     },
     "timeline_title": "作業プロセス",
     "timeline_description": "セットアップ、モデル配置、ワークフローテスト、音声の試行錯誤、安定化、結果確認までを実作業順に整理しました。",
     "timeline": {
-      "setup": { "title": "ComfyUIローカル環境構築", "text": "diffusion_models、text_encoders、vaeフォルダを整理し、MiniMax H3、Qwen3-VL系エンコーダー、Video/Audio VAEモデルを配置しました。" },
-      "reference": { "title": "Reference/Image to Videoテスト", "text": "不足モデルやノードエラーを解消し、参照画像から人物やキャラクターの動きが自然に生成されるか確認しました。" },
-      "text": { "title": "Text to Videoへ拡張", "text": "夜の都市を走る赤いスポーツカーのプロンプトを作り、マニュアルシフト、ドリフト、FPVドローン風カメラなどを段階的に試しました。" },
-      "audio": { "title": "MP3参照音声実験", "text": "人物画像と韓国語MP3で歌唱動画を試しましたが、参照音声は原音コピーではなく生成条件に近いことを確認しました。" },
-      "stability": { "title": "メモリと実行安定化", "text": "約20GB級モデルの動的VRAMロードに備え、Windows仮想メモリを拡張し、5秒・0.3MPから段階的に検証しました。" },
-      "result": { "title": "結果確認", "text": "640x480、24fps、約15秒のスポーツカー動画を生成し、車体と夜間照明は安定する一方で高速移動時の背景細部はやや甘くなることを確認しました。" }
+      "setup": {
+        "title": "ComfyUIローカル環境構築",
+        "text": "diffusion_models、text_encoders、vaeフォルダを整理し、MiniMax H3、Qwen3-VL系エンコーダー、Video/Audio VAEモデルを配置しました。"
+      },
+      "reference": {
+        "title": "Reference/Image to Videoテスト",
+        "text": "不足モデルやノードエラーを解消し、参照画像から人物やキャラクターの動きが自然に生成されるか確認しました。"
+      },
+      "text": {
+        "title": "Text to Videoへ拡張",
+        "text": "夜の都市を走る赤いスポーツカーのプロンプトを作り、マニュアルシフト、ドリフト、FPVドローン風カメラなどを段階的に試しました。"
+      },
+      "audio": {
+        "title": "MP3参照音声実験",
+        "text": "人物画像と韓国語MP3で歌唱動画を試しましたが、参照音声は原音コピーではなく生成条件に近いことを確認しました。"
+      },
+      "stability": {
+        "title": "メモリと実行安定化",
+        "text": "約20GB級モデルの動的VRAMロードに備え、Windows仮想メモリを拡張し、5秒・0.3MPから段階的に検証しました。"
+      },
+      "result": {
+        "title": "結果確認",
+        "text": "640x480、24fps、約15秒のスポーツカー動画を生成し、車体と夜間照明は安定する一方で高速移動時の背景細部はやや甘くなることを確認しました。"
+      }
     },
     "lessons_title": "試行錯誤の整理",
     "lessons_description": "ローカル動画生成では、モデルのインストールだけでなく、パス、メモリ、ワークフロー構造の理解が重要でした。",
     "lessons": {
-      "models": { "title": "モデルパス", "text": "フォルダ階層や配置先が違うとモデル一覧に出ません。移動後はComfyUIの完全再起動が必要でした。" },
-      "resolution": { "title": "解像度と長さ", "text": "Durationと解像度を同時に上げると原因特定が難しく、0.3MPから0.5MP、0.7MPへ上げる手順が安定しました。" },
-      "audio": { "title": "参照音声", "text": "ref_audioはMP3をそのまま保持する機能ではありません。原音はH3出力後に編集で合成する方が安全でした。" },
-      "progress": { "title": "57%停止表示", "text": "UIが57%でもサンプラーが0/4なら、実生成ではなく動的VRAMロード中の初期化である可能性がありました。" },
-      "workflow": { "title": "ワークフロー構造", "text": "audio_vaeは必須モデル入力でした。音声を消す場合は接続を切らず、出力後に音声トラックを削除する方が安全でした。" }
+      "models": {
+        "title": "モデルパス",
+        "text": "フォルダ階層や配置先が違うとモデル一覧に出ません。移動後はComfyUIの完全再起動が必要でした。"
+      },
+      "resolution": {
+        "title": "解像度と長さ",
+        "text": "Durationと解像度を同時に上げると原因特定が難しく、0.3MPから0.5MP、0.7MPへ上げる手順が安定しました。"
+      },
+      "audio": {
+        "title": "参照音声",
+        "text": "ref_audioはMP3をそのまま保持する機能ではありません。原音はH3出力後に編集で合成する方が安全でした。"
+      },
+      "progress": {
+        "title": "57%停止表示",
+        "text": "UIが57%でもサンプラーが0/4なら、実生成ではなく動的VRAMロード中の初期化である可能性がありました。"
+      },
+      "workflow": {
+        "title": "ワークフロー構造",
+        "text": "audio_vaeは必須モデル入力でした。音声を消す場合は接続を切らず、出力後に音声トラックを削除する方が安全でした。"
+      }
     },
     "workflow_title": "推奨フロー",
     "workflow": {
@@ -302,17 +443,85 @@
     "munpia_novel": {
       "name": "ドユンジェ Web小説",
       "desc": "Munpiaで連載中のWeb小説"
+    },
+    "honja_haebollae": {
+      "name": "혼자 해볼래（ひとりでやってみる）",
+      "desc": "ひとりで実際にやってみて記録するYouTubeチャンネル"
+    },
+    "dalbam_yadam": {
+      "name": "달밤의 야담꾼（月夜の語り部）",
+      "desc": "夜に聴きたい朝鮮の昔話・野談を届けるYouTubeチャンネル"
+    },
+    "ig_yoons1822": {
+      "name": "@yoons1822",
+      "desc": "株・投資について発信するInstagramアカウント"
+    },
+    "ig_yoons0818": {
+      "name": "@yoons_0818",
+      "desc": "ショッピング情報を紹介するInstagramアカウント"
     }
   },
   "project_meta": {
-    "kids_english": { "tag": "教育 / AI", "status": "公開中", "type": "Webサイト" },
-    "daily_math": { "tag": "子供 / 数学", "status": "公開中", "type": "Webアプリ" },
-    "daily_english": { "tag": "毎日 / 英語", "status": "公開中", "type": "Webアプリ" },
-    "photo_reader": { "tag": "ビジョン / AI", "status": "公開中", "type": "AIツール" },
-    "arrow_way_out": { "tag": "パズル / ゲーム", "status": "公開中", "type": "ゲーム" },
-    "minimax_h3_video": { "tag": "AI動画 / ローカル", "status": "デモ", "type": "動画制作" },
-    "market_snapshot": { "tag": "YouTube / 金融", "status": "チャンネル", "type": "YouTube" },
-    "munpia_novel": { "tag": "小説 / 執筆", "status": "連載", "type": "Web小説" }
+    "kids_english": {
+      "tag": "教育 / AI",
+      "status": "公開中",
+      "type": "Webサイト"
+    },
+    "daily_math": {
+      "tag": "子供 / 数学",
+      "status": "公開中",
+      "type": "Webアプリ"
+    },
+    "daily_english": {
+      "tag": "毎日 / 英語",
+      "status": "公開中",
+      "type": "Webアプリ"
+    },
+    "photo_reader": {
+      "tag": "ビジョン / AI",
+      "status": "公開中",
+      "type": "AIツール"
+    },
+    "arrow_way_out": {
+      "tag": "パズル / ゲーム",
+      "status": "公開中",
+      "type": "ゲーム"
+    },
+    "minimax_h3_video": {
+      "tag": "AI動画 / ローカル",
+      "status": "デモ",
+      "type": "動画制作"
+    },
+    "market_snapshot": {
+      "tag": "YouTube / 金融",
+      "status": "チャンネル",
+      "type": "YouTube"
+    },
+    "munpia_novel": {
+      "tag": "小説 / 執筆",
+      "status": "連載",
+      "type": "Web小説"
+    },
+    "honja_haebollae": {
+      "tag": "YouTube / チャレンジ",
+      "status": "チャンネル",
+      "type": "YouTube"
+    },
+    "dalbam_yadam": {
+      "tag": "YouTube / 物語",
+      "status": "チャンネル",
+      "type": "YouTube"
+    },
+    "ig_yoons1822": {
+      "tag": "Instagram / 投資",
+      "status": "アカウント",
+      "type": "Instagram"
+    },
+    "ig_yoons0818": {
+      "tag": "Instagram / ショッピング",
+      "status": "アカウント",
+      "type": "Instagram"
+    }
   },
   "project_notes": {
     "minimax_h3_video": [

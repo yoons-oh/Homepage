@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../lib/firebase'
+import { IS_MOCK } from '../lib/mock'
 
 const getDeviceType = () => {
   const width = window.innerWidth
@@ -20,7 +21,7 @@ const getVisitorId = () => {
 
 export function useVisitTracker(path: string) {
   useEffect(() => {
-    if (path.startsWith('/admin')) return
+    if (IS_MOCK || path.startsWith('/admin')) return
 
     const today = new Date().toISOString().slice(0, 10)
     const sessionKey = `visit:${today}:${path}`

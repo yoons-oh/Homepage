@@ -39,6 +39,7 @@ export default function Footer() {
         >
           <Mail size={18} aria-hidden="true" />
         </a>
+        <a className="footer-admin" href="/admin/login">{t('hero.admin')}</a>
         <span>© 2026 yoon.dev</span>
       </div>
     </footer>

@@ -9,6 +9,7 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import { db } from './firebase'
+import { IS_MOCK } from './mock'
 import type { TesterApplication, TesterApplicationForm, TesterApplicationStatus } from '../types/tester'
 
 const testerApplicationsRef = collection(db, 'tester_applications')
@@ -49,6 +50,10 @@ const normalizeTesterForm = (form: TesterApplicationForm) => {
 }
 
 export async function createTesterApplication(form: TesterApplicationForm) {
+  if (IS_MOCK) {
+    normalizeTesterForm(form)
+    return
+  }
   await addDoc(testerApplicationsRef, {
     ...normalizeTesterForm(form),
     createdAt: serverTimestamp(),

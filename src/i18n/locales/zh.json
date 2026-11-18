@@ -23,7 +23,10 @@
     "career": "履历",
     "work": "作品",
     "about": "关于",
-    "contact": "联系"
+    "contact": "联系",
+    "all": "全部",
+    "lab": "实验室",
+    "instagram": "Instagram"
   },
   "hero": {
     "badge": "AI原生开发者",
@@ -39,7 +42,26 @@
     "strip_count": "8个项目",
     "strip_desc": "应用、内容、写作、AI视频",
     "cta_work": "查看作品",
-    "cta_github": "GitHub"
+    "cta_github": "GitHub",
+    "title1": "把想法",
+    "title2": "直接变成应用。",
+    "scene_hint": "点击卡片即可直接打开",
+    "open_project": "打开",
+    "chapter_title": "{{count}} 个作品，一个实验室",
+    "scroll": "向下滚动浏览",
+    "prism_title1": "一个想法，",
+    "prism_title2": "多种成果。",
+    "prism_sub": "我和 AI 一起做应用、尝试视频、整理市场、写小说。Yoon Lab 汇集了这一切。",
+    "prism_hint": "上下移动鼠标即可改变光的角度",
+    "domain_count": "{{count}} 个",
+    "gen_title1": "与 AI 一起，",
+    "gen_title2": "让想法成形。",
+    "gen_steps_label": "粒子组成的形状",
+    "shape_identity": "Yoon Lab",
+    "shape_think": "与 AI 思考",
+    "shape_apps": "做应用",
+    "shape_video": "做视频",
+    "shape_write": "写故事"
   },
   "floating": {
     "idea": "想法",
@@ -56,11 +78,13 @@
     "page_apps_title": "应用项目",
     "page_apps_description": "集合学习、数学、英语阅读等亲自制作并测试中的网页/应用。",
     "page_youtube_title": "YouTube频道",
-    "page_youtube_description": "用简短清晰的方式整理市场动态的内容频道。",
+    "page_youtube_description": "我亲自运营的 YouTube 频道：市场速览、独自挑战记录，以及夜晚聆听的古老故事。",
     "page_writing_title": "网络小说连载",
     "page_writing_description": "以都允宰为笔名在Munpia持续连载的网络小说作品。",
     "launch": "启动应用 →",
-    "code": "代码"
+    "code": "代码",
+    "page_instagram_title": "Instagram",
+    "page_instagram_description": "分享股票投资心得和购物信息的 Instagram 账号。"
   },
   "how": {
     "title": "工作方式",
@@ -97,9 +121,18 @@
     "body3": "他并不把AI当成新奇工具，而是把AI作为工作方式使用：更快实验，更快暴露不足，再用自己的判断继续打磨。所以这个主页不像静态作品集，更像一个持续测试和更新的个人工作室。",
     "notes_aria": "工作印象",
     "notes": {
-      "fast": { "title": "快速制作并真实上线", "text": "想法不会只停留在话语里。链接、图标、部署地址和真实页面会很快出现，用来实际判断。" },
-      "detail": { "title": "对画面细节很敏感", "text": "他不满足于大概好看，而会检查画面平衡、图片尺寸以及实际使用时是否自然。" },
-      "ai": { "title": "把AI作为工作方式", "text": "他不是等待一个完成答案，而是在与AI往返协作中判断、修正并收窄方向。" }
+      "fast": {
+        "title": "快速制作并真实上线",
+        "text": "想法不会只停留在话语里。链接、图标、部署地址和真实页面会很快出现，用来实际判断。"
+      },
+      "detail": {
+        "title": "对画面细节很敏感",
+        "text": "他不满足于大概好看，而会检查画面平衡、图片尺寸以及实际使用时是否自然。"
+      },
+      "ai": {
+        "title": "把AI作为工作方式",
+        "text": "他不是等待一个完成答案，而是在与AI往返协作中判断、修正并收窄方向。"
+      }
     },
     "close": "一句话概括，Yoon是“能把想法带到真实可运行画面的人”，并且不会忽略过程中的细节。"
   },
@@ -184,18 +217,72 @@
     },
     "capabilities_aria": "职业能力摘要",
     "capabilities": {
-      "sap": { "title": "SAP ERP运营", "text": "以FI为中心，同时理解CO、TR、HR中的会计、资金和人事流程并进行运营。" },
-      "development": { "title": "开发与运营结合", "text": "基于ABAP和外部系统开发经验，把业务需求连接到实际系统变更。" },
-      "data": { "title": "数据与接口", "text": "处理包含Oracle、MS-SQL、e-HR及管理系统集成在内的业务数据流。" }
+      "sap": {
+        "title": "SAP ERP运营",
+        "text": "以FI为中心，同时理解CO、TR、HR中的会计、资金和人事流程并进行运营。"
+      },
+      "development": {
+        "title": "开发与运营结合",
+        "text": "基于ABAP和外部系统开发经验，把业务需求连接到实际系统变更。"
+      },
+      "data": {
+        "title": "数据与接口",
+        "text": "处理包含Oracle、MS-SQL、e-HR及管理系统集成在内的业务数据流。"
+      }
     },
     "timeline_aria": "职业时间线",
     "timeline_title": "主要履历",
     "timeline_description": "按公司整理SAP ERP运营、Roll-out、法人构建以及会计/人事/资金系统运营经验。",
     "items": {
-      "incruit": { "company": "Incruit KiCom ERP", "period": "2007.06 ~ 2010.07", "duration": "3年2个月", "role": "开发1组 主任", "summary": "负责B2BERP人事、薪资、会计模块，执行税法变更、年末清算和标准化工作。", "tasks": ["人事/薪资/会计模块运营及开发", "适用变更税法", "执行年末清算及标准化"] },
-      "kyungdong": { "company": "Kyungdong One", "period": "2010.11 ~ 2021.09", "duration": "10年11个月", "role": "经营信息组 课长", "summary": "为Kyungdong Navien及国内外法人设计、开发并运营SAP ERP、e-HR及管理系统。", "tasks": ["SAP ERP FI/CO/TR/HR运营", "e-HR及管理系统设计/开发/管理", "支持国内外法人业务流程"] },
-      "fnf": { "company": "F&F", "period": "2021.11 ~ 2023.09", "duration": "1年11个月", "role": "次长/Part Lead", "summary": "运营F&F、F&CO、F&F上海法人SAP ERP FI/CO，并执行Roll-out和版本升级项目。", "tasks": ["F&F、F&CO、F&F上海法人SAP ERP FI/CO运营", "中国法人SAP Roll-out项目", "F&CO版本升级项目", "F&F Entertainment、F&F Logistics新法人Roll-out"] },
-      "samsung": { "company": "Samsung Bioepis", "period": "2023.09 ~ 在职", "duration": "2年11个月", "role": "Data Governance 组 部长/团队成员（18年11个月）", "summary": "运营SAP FI/CO和网页凭证处理(myFinance)，并执行法人设立Roll-out、个人信息加密、SWIFT构建。", "tasks": ["SAP FI/CO及myFinance运营", "Holdings、Nexlab法人设立Roll-out(with SDS)", "SAP个人信息加密及SWIFT构建"] }
+      "incruit": {
+        "company": "Incruit KiCom ERP",
+        "period": "2007.06 ~ 2010.07",
+        "duration": "3年2个月",
+        "role": "开发1组 主任",
+        "summary": "负责B2BERP人事、薪资、会计模块，执行税法变更、年末清算和标准化工作。",
+        "tasks": [
+          "人事/薪资/会计模块运营及开发",
+          "适用变更税法",
+          "执行年末清算及标准化"
+        ]
+      },
+      "kyungdong": {
+        "company": "Kyungdong One",
+        "period": "2010.11 ~ 2021.09",
+        "duration": "10年11个月",
+        "role": "经营信息组 课长",
+        "summary": "为Kyungdong Navien及国内外法人设计、开发并运营SAP ERP、e-HR及管理系统。",
+        "tasks": [
+          "SAP ERP FI/CO/TR/HR运营",
+          "e-HR及管理系统设计/开发/管理",
+          "支持国内外法人业务流程"
+        ]
+      },
+      "fnf": {
+        "company": "F&F",
+        "period": "2021.11 ~ 2023.09",
+        "duration": "1年11个月",
+        "role": "次长/Part Lead",
+        "summary": "运营F&F、F&CO、F&F上海法人SAP ERP FI/CO，并执行Roll-out和版本升级项目。",
+        "tasks": [
+          "F&F、F&CO、F&F上海法人SAP ERP FI/CO运营",
+          "中国法人SAP Roll-out项目",
+          "F&CO版本升级项目",
+          "F&F Entertainment、F&F Logistics新法人Roll-out"
+        ]
+      },
+      "samsung": {
+        "company": "Samsung Bioepis",
+        "period": "2023.09 ~ 在职",
+        "duration": "2年11个月",
+        "role": "Data Governance 组 部长/团队成员（18年11个月）",
+        "summary": "运营SAP FI/CO和网页凭证处理(myFinance)，并执行法人设立Roll-out、个人信息加密、SWIFT构建。",
+        "tasks": [
+          "SAP FI/CO及myFinance运营",
+          "Holdings、Nexlab法人设立Roll-out(with SDS)",
+          "SAP个人信息加密及SWIFT构建"
+        ]
+      }
     }
   },
   "ai_video": {
@@ -212,32 +299,86 @@
     },
     "environment_title": "使用环境",
     "environment": {
-      "laptop": { "label": "笔记本", "value": "Lenovo ThinkBook 16p Gen 3" },
-      "cpu": { "label": "CPU", "value": "AMD Ryzen 9 6900HX" },
-      "gpu": { "label": "GPU", "value": "RTX 3060 Laptop GPU" },
-      "memory": { "label": "内存", "value": "32GB RAM + 虚拟内存" },
-      "os": { "label": "系统", "value": "Windows 11" },
-      "runtime": { "label": "运行环境", "value": "ComfyUI Windows Portable" },
-      "model": { "label": "模型", "value": "MiniMax H3 local model" }
+      "laptop": {
+        "label": "笔记本",
+        "value": "Lenovo ThinkBook 16p Gen 3"
+      },
+      "cpu": {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 6900HX"
+      },
+      "gpu": {
+        "label": "GPU",
+        "value": "RTX 3060 Laptop GPU"
+      },
+      "memory": {
+        "label": "内存",
+        "value": "32GB RAM + 虚拟内存"
+      },
+      "os": {
+        "label": "系统",
+        "value": "Windows 11"
+      },
+      "runtime": {
+        "label": "运行环境",
+        "value": "ComfyUI Windows Portable"
+      },
+      "model": {
+        "label": "模型",
+        "value": "MiniMax H3 local model"
+      }
     },
     "timeline_title": "工作过程",
     "timeline_description": "按照实际顺序整理了安装、模型配置、工作流测试、音频试错、稳定性调整和最终结果检查。",
     "timeline": {
-      "setup": { "title": "构建 ComfyUI 本地环境", "text": "整理 diffusion_models、text_encoders、vae 文件夹，并放置 MiniMax H3、Qwen3-VL 编码器以及 Video/Audio VAE 模型。" },
-      "reference": { "title": "测试 Reference/Image to Video", "text": "解决缺失模型和节点错误后，确认人物与角色动作是否能从参考图片自然生成。" },
-      "text": { "title": "扩展到 Text to Video", "text": "用提示词构建夜间城市红色跑车行驶场景，并逐步测试手动换挡、漂移、FPV无人机视角等细节。" },
-      "audio": { "title": "MP3 参考音频实验", "text": "尝试用人物图片和韩语 MP3 生成唱歌视频，并确认参考音频更像生成条件，而不是原音复制。" },
-      "stability": { "title": "内存与执行稳定化", "text": "为约20GB模型的动态 VRAM 加载扩展 Windows 虚拟内存，并从5秒、0.3MP开始逐步验证。" },
-      "result": { "title": "结果检查", "text": "最终生成 640x480、24fps、约15秒的跑车视频。车体和夜间灯光较稳定，但快速移动时背景细节会变软。" }
+      "setup": {
+        "title": "构建 ComfyUI 本地环境",
+        "text": "整理 diffusion_models、text_encoders、vae 文件夹，并放置 MiniMax H3、Qwen3-VL 编码器以及 Video/Audio VAE 模型。"
+      },
+      "reference": {
+        "title": "测试 Reference/Image to Video",
+        "text": "解决缺失模型和节点错误后，确认人物与角色动作是否能从参考图片自然生成。"
+      },
+      "text": {
+        "title": "扩展到 Text to Video",
+        "text": "用提示词构建夜间城市红色跑车行驶场景，并逐步测试手动换挡、漂移、FPV无人机视角等细节。"
+      },
+      "audio": {
+        "title": "MP3 参考音频实验",
+        "text": "尝试用人物图片和韩语 MP3 生成唱歌视频，并确认参考音频更像生成条件，而不是原音复制。"
+      },
+      "stability": {
+        "title": "内存与执行稳定化",
+        "text": "为约20GB模型的动态 VRAM 加载扩展 Windows 虚拟内存，并从5秒、0.3MP开始逐步验证。"
+      },
+      "result": {
+        "title": "结果检查",
+        "text": "最终生成 640x480、24fps、约15秒的跑车视频。车体和夜间灯光较稳定，但快速移动时背景细节会变软。"
+      }
     },
     "lessons_title": "试错总结",
     "lessons_description": "本地视频生成不仅是安装模型，更重要的是理解路径、内存和工作流结构。",
     "lessons": {
-      "models": { "title": "模型路径", "text": "文件夹层级或模型位置不正确会导致模型不显示。移动文件后需要完全重启 ComfyUI。" },
-      "resolution": { "title": "分辨率和长度", "text": "同时提高 Duration 和分辨率会让问题定位变难。先从0.3MP验证，再到0.5MP、0.7MP更稳定。" },
-      "audio": { "title": "参考音频", "text": "ref_audio 不会原样保留 MP3。保留原音更适合在 H3 输出后通过剪辑重新合成。" },
-      "progress": { "title": "57%停滞", "text": "UI停在57%而采样器为0/4时，可能还在动态 VRAM 加载初始化阶段，并不是实际生成卡住。" },
-      "workflow": { "title": "工作流结构", "text": "audio_vae 是必需模型输入。要去除声音，最好导出后删除音轨，而不是断开节点。" }
+      "models": {
+        "title": "模型路径",
+        "text": "文件夹层级或模型位置不正确会导致模型不显示。移动文件后需要完全重启 ComfyUI。"
+      },
+      "resolution": {
+        "title": "分辨率和长度",
+        "text": "同时提高 Duration 和分辨率会让问题定位变难。先从0.3MP验证，再到0.5MP、0.7MP更稳定。"
+      },
+      "audio": {
+        "title": "参考音频",
+        "text": "ref_audio 不会原样保留 MP3。保留原音更适合在 H3 输出后通过剪辑重新合成。"
+      },
+      "progress": {
+        "title": "57%停滞",
+        "text": "UI停在57%而采样器为0/4时，可能还在动态 VRAM 加载初始化阶段，并不是实际生成卡住。"
+      },
+      "workflow": {
+        "title": "工作流结构",
+        "text": "audio_vae 是必需模型输入。要去除声音，最好导出后删除音轨，而不是断开节点。"
+      }
     },
     "workflow_title": "推荐流程",
     "workflow": {
@@ -302,17 +443,85 @@
     "munpia_novel": {
       "name": "都允宰 网络小说",
       "desc": "在 Munpia 连载中的网络小说"
+    },
+    "honja_haebollae": {
+      "name": "혼자 해볼래（自己试试看）",
+      "desc": "亲自尝试并记录过程的 YouTube 频道"
+    },
+    "dalbam_yadam": {
+      "name": "달밤의 야담꾼（月夜说书人）",
+      "desc": "讲述适合夜晚聆听的韩国古代民间故事的 YouTube 频道"
+    },
+    "ig_yoons1822": {
+      "name": "@yoons1822",
+      "desc": "分享股票与投资内容的 Instagram 账号"
+    },
+    "ig_yoons0818": {
+      "name": "@yoons_0818",
+      "desc": "介绍购物信息的 Instagram 账号"
     }
   },
   "project_meta": {
-    "kids_english": { "tag": "教育 / AI", "status": "在线", "type": "网站" },
-    "daily_math": { "tag": "儿童 / 数学", "status": "在线", "type": "网页应用" },
-    "daily_english": { "tag": "每日 / 英语", "status": "在线", "type": "网页应用" },
-    "photo_reader": { "tag": "视觉 / AI", "status": "在线", "type": "AI工具" },
-    "arrow_way_out": { "tag": "解谜 / 游戏", "status": "在线", "type": "游戏" },
-    "minimax_h3_video": { "tag": "AI视频 / 本地", "status": "演示", "type": "视频制作" },
-    "market_snapshot": { "tag": "YouTube / 金融", "status": "频道", "type": "YouTube" },
-    "munpia_novel": { "tag": "小说 / 写作", "status": "连载", "type": "网络小说" }
+    "kids_english": {
+      "tag": "教育 / AI",
+      "status": "在线",
+      "type": "网站"
+    },
+    "daily_math": {
+      "tag": "儿童 / 数学",
+      "status": "在线",
+      "type": "网页应用"
+    },
+    "daily_english": {
+      "tag": "每日 / 英语",
+      "status": "在线",
+      "type": "网页应用"
+    },
+    "photo_reader": {
+      "tag": "视觉 / AI",
+      "status": "在线",
+      "type": "AI工具"
+    },
+    "arrow_way_out": {
+      "tag": "解谜 / 游戏",
+      "status": "在线",
+      "type": "游戏"
+    },
+    "minimax_h3_video": {
+      "tag": "AI视频 / 本地",
+      "status": "演示",
+      "type": "视频制作"
+    },
+    "market_snapshot": {
+      "tag": "YouTube / 金融",
+      "status": "频道",
+      "type": "YouTube"
+    },
+    "munpia_novel": {
+      "tag": "小说 / 写作",
+      "status": "连载",
+      "type": "网络小说"
+    },
+    "honja_haebollae": {
+      "tag": "YouTube / 挑战",
+      "status": "频道",
+      "type": "YouTube"
+    },
+    "dalbam_yadam": {
+      "tag": "YouTube / 故事",
+      "status": "频道",
+      "type": "YouTube"
+    },
+    "ig_yoons1822": {
+      "tag": "Instagram / 投资",
+      "status": "账号",
+      "type": "Instagram"
+    },
+    "ig_yoons0818": {
+      "tag": "Instagram / 购物",
+      "status": "账号",
+      "type": "Instagram"
+    }
   },
   "project_notes": {
     "minimax_h3_video": [

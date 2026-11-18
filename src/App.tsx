@@ -1,9 +1,8 @@
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Projects, { type ProjectFilter } from './components/Projects'
-import HowIWork from './components/HowIWork'
-import Stats from './components/Stats'
 import About from './components/About'
 import AboutPage from './components/AboutPage'
 import CareerPage from './components/CareerPage'
@@ -15,10 +14,11 @@ import AdminDashboard from './components/AdminDashboard'
 import Footer from './components/Footer'
 import { useCareerVisibility } from './hooks/useCareerVisibility'
 import { useVisitTracker } from './hooks/useVisitTracker'
+import { usePath } from './lib/route'
 
 function App() {
   const { t } = useTranslation()
-  const path = window.location.pathname
+  const path = usePath()
   const isAboutPage = path === '/about'
   const isCareerPage = path === '/career'
   const isRestaurantsPage = path === '/restaurants'
@@ -31,13 +31,20 @@ function App() {
     '/apps': 'apps',
     '/writing': 'writing',
     '/youtube': 'youtube',
+    '/instagram': 'instagram',
   }
   const projectFilter = projectPages[path]
   const { isOpen: careerOpen, loading: careerLoading } = useCareerVisibility()
   useVisitTracker(path)
+  // every public page uses the dark theme; admin screens stay light
+  const isDark = !isAdminLoginPage && !isAdminPage
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('theme-dark', isDark)
+  }, [isDark])
 
   return (
-    <div className="site-shell">
+    <div className={`site-shell ${isDark ? 'is-dark' : ''}`}>
       <Navbar />
       {isAdminLoginPage ? (
         <AdminLogin />
@@ -87,8 +94,6 @@ function App() {
         <>
           <Hero />
           <Projects />
-          <HowIWork />
-          <Stats />
           <About />
           <Footer />
         </>

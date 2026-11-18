@@ -23,7 +23,10 @@
     "career": "Career",
     "work": "Work",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "all": "All",
+    "lab": "Lab",
+    "instagram": "Instagram"
   },
   "hero": {
     "badge": "AI-Native Developer",
@@ -39,7 +42,26 @@
     "strip_count": "8 projects",
     "strip_desc": "Apps, content, writing, AI video",
     "cta_work": "See my work",
-    "cta_github": "GitHub"
+    "cta_github": "GitHub",
+    "title1": "From idea",
+    "title2": "to live app.",
+    "scene_hint": "Click any card to open it",
+    "open_project": "Open",
+    "chapter_title": "{{count}} projects, one lab",
+    "scroll": "Scroll to explore",
+    "prism_title1": "One idea,",
+    "prism_title2": "many kinds of work.",
+    "prism_sub": "I build apps with AI, experiment with video, summarize markets and write fiction. Yoon Lab is where all of it lands.",
+    "prism_hint": "Move your mouse up and down to bend the light",
+    "domain_count": "{{count}} live",
+    "gen_title1": "With AI,",
+    "gen_title2": "ideas take shape.",
+    "gen_steps_label": "Shapes formed by the particles",
+    "shape_identity": "Yoon Lab",
+    "shape_think": "Think with AI",
+    "shape_apps": "Build apps",
+    "shape_video": "Make videos",
+    "shape_write": "Write stories"
   },
   "floating": {
     "idea": "Idea",
@@ -56,11 +78,13 @@
     "page_apps_title": "App projects",
     "page_apps_description": "Web and app experiments for learning, math, English practice, and AI reading.",
     "page_youtube_title": "YouTube channel",
-    "page_youtube_description": "Short, clear market notes published as a focused content channel.",
+    "page_youtube_description": "The YouTube channels I run: quick market recaps, trying things solo, and old stories for the night.",
     "page_writing_title": "Serialized writing",
     "page_writing_description": "Web novel work published on Munpia under the pen name Doyunjae.",
     "launch": "Open",
-    "code": "Code"
+    "code": "Code",
+    "page_instagram_title": "Instagram",
+    "page_instagram_description": "Instagram accounts where I share stock investing notes and shopping finds."
   },
   "how": {
     "title": "How I work",
@@ -216,7 +240,11 @@
         "duration": "3 years 2 months",
         "role": "Development Team 1, Assistant Manager",
         "summary": "Handled B2BERP HR, payroll, and accounting modules, including tax law changes, year-end settlement, and standardization.",
-        "tasks": ["Operated and developed HR/payroll/accounting modules", "Applied changed tax laws", "Performed and standardized year-end settlement"]
+        "tasks": [
+          "Operated and developed HR/payroll/accounting modules",
+          "Applied changed tax laws",
+          "Performed and standardized year-end settlement"
+        ]
       },
       "kyungdong": {
         "company": "Kyungdong One",
@@ -224,7 +252,11 @@
         "duration": "10 years 11 months",
         "role": "Management Information Team, Manager",
         "summary": "Designed, developed, and operated SAP ERP, e-HR, and management systems for Kyungdong Navien and multiple domestic and overseas entities.",
-        "tasks": ["Operated SAP ERP FI/CO/TR/HR", "Designed, developed, and managed e-HR and management systems", "Supported domestic and overseas entity processes"]
+        "tasks": [
+          "Operated SAP ERP FI/CO/TR/HR",
+          "Designed, developed, and managed e-HR and management systems",
+          "Supported domestic and overseas entity processes"
+        ]
       },
       "fnf": {
         "company": "F&F",
@@ -232,7 +264,12 @@
         "duration": "1 year 11 months",
         "role": "Deputy General Manager / Part Lead",
         "summary": "Operated SAP ERP FI/CO for F&F, F&CO, and F&F Shanghai, and carried out rollout and upgrade projects.",
-        "tasks": ["Operated SAP ERP FI/CO for F&F, F&CO, and F&F Shanghai", "Delivered a China entity SAP rollout", "Delivered an F&CO version upgrade project", "Supported new entity rollouts for F&F Entertainment and F&F Logistics"]
+        "tasks": [
+          "Operated SAP ERP FI/CO for F&F, F&CO, and F&F Shanghai",
+          "Delivered a China entity SAP rollout",
+          "Delivered an F&CO version upgrade project",
+          "Supported new entity rollouts for F&F Entertainment and F&F Logistics"
+        ]
       },
       "samsung": {
         "company": "Samsung Bioepis",
@@ -240,7 +277,11 @@
         "duration": "2 years 11 months",
         "role": "Data Governance Group, Department Head / Team Member (18 years 11 months)",
         "summary": "Operates SAP FI/CO and the myFinance voucher system while supporting entity rollout, personal data encryption, and SWIFT implementation work.",
-        "tasks": ["Operates SAP FI/CO and myFinance", "Supported Holdings and Nexlab entity setup rollout with SDS", "Implemented SAP personal data encryption and SWIFT"]
+        "tasks": [
+          "Operates SAP FI/CO and myFinance",
+          "Supported Holdings and Nexlab entity setup rollout with SDS",
+          "Implemented SAP personal data encryption and SWIFT"
+        ]
       }
     }
   },
@@ -258,13 +299,34 @@
     },
     "environment_title": "Environment",
     "environment": {
-      "laptop": { "label": "Laptop", "value": "Lenovo ThinkBook 16p Gen 3" },
-      "cpu": { "label": "CPU", "value": "AMD Ryzen 9 6900HX" },
-      "gpu": { "label": "GPU", "value": "RTX 3060 Laptop GPU" },
-      "memory": { "label": "Memory", "value": "32GB RAM + virtual memory" },
-      "os": { "label": "OS", "value": "Windows 11" },
-      "runtime": { "label": "Runtime", "value": "ComfyUI Windows Portable" },
-      "model": { "label": "Model", "value": "MiniMax H3 local model" }
+      "laptop": {
+        "label": "Laptop",
+        "value": "Lenovo ThinkBook 16p Gen 3"
+      },
+      "cpu": {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 6900HX"
+      },
+      "gpu": {
+        "label": "GPU",
+        "value": "RTX 3060 Laptop GPU"
+      },
+      "memory": {
+        "label": "Memory",
+        "value": "32GB RAM + virtual memory"
+      },
+      "os": {
+        "label": "OS",
+        "value": "Windows 11"
+      },
+      "runtime": {
+        "label": "Runtime",
+        "value": "ComfyUI Windows Portable"
+      },
+      "model": {
+        "label": "Model",
+        "value": "MiniMax H3 local model"
+      }
     },
     "timeline_title": "Work Process",
     "timeline_description": "A practical record from setup and model placement through workflow tests, audio trial and error, stability work, and final output review.",
@@ -381,17 +443,85 @@
     "munpia_novel": {
       "name": "Doyunjae Web Novel",
       "desc": "Serialized fiction published on Munpia"
+    },
+    "honja_haebollae": {
+      "name": "혼자 해볼래 (Try It Solo)",
+      "desc": "A YouTube channel about trying things on my own and recording them"
+    },
+    "dalbam_yadam": {
+      "name": "달밤의 야담꾼 (Moonlit Storyteller)",
+      "desc": "A YouTube channel of old Korean folk tales to enjoy at night"
+    },
+    "ig_yoons1822": {
+      "name": "@yoons1822",
+      "desc": "An Instagram account about stocks and investing"
+    },
+    "ig_yoons0818": {
+      "name": "@yoons_0818",
+      "desc": "An Instagram account sharing shopping finds"
     }
   },
   "project_meta": {
-    "kids_english": { "tag": "Education / AI", "status": "Live", "type": "Website" },
-    "daily_math": { "tag": "Kids / Math", "status": "Live", "type": "Web App" },
-    "daily_english": { "tag": "Daily / English", "status": "Live", "type": "Web App" },
-    "photo_reader": { "tag": "Vision / AI", "status": "Live", "type": "AI Tool" },
-    "arrow_way_out": { "tag": "Puzzle / Game", "status": "Live", "type": "Game" },
-    "minimax_h3_video": { "tag": "AI Video / Local", "status": "Demo", "type": "Video Creation" },
-    "market_snapshot": { "tag": "YouTube / Finance", "status": "Channel", "type": "YouTube" },
-    "munpia_novel": { "tag": "Novel / Writing", "status": "Serial", "type": "Web Novel" }
+    "kids_english": {
+      "tag": "Education / AI",
+      "status": "Live",
+      "type": "Website"
+    },
+    "daily_math": {
+      "tag": "Kids / Math",
+      "status": "Live",
+      "type": "Web App"
+    },
+    "daily_english": {
+      "tag": "Daily / English",
+      "status": "Live",
+      "type": "Web App"
+    },
+    "photo_reader": {
+      "tag": "Vision / AI",
+      "status": "Live",
+      "type": "AI Tool"
+    },
+    "arrow_way_out": {
+      "tag": "Puzzle / Game",
+      "status": "Live",
+      "type": "Game"
+    },
+    "minimax_h3_video": {
+      "tag": "AI Video / Local",
+      "status": "Demo",
+      "type": "Video Creation"
+    },
+    "market_snapshot": {
+      "tag": "YouTube / Finance",
+      "status": "Channel",
+      "type": "YouTube"
+    },
+    "munpia_novel": {
+      "tag": "Novel / Writing",
+      "status": "Serial",
+      "type": "Web Novel"
+    },
+    "honja_haebollae": {
+      "tag": "YouTube / Solo",
+      "status": "Channel",
+      "type": "YouTube"
+    },
+    "dalbam_yadam": {
+      "tag": "YouTube / Stories",
+      "status": "Channel",
+      "type": "YouTube"
+    },
+    "ig_yoons1822": {
+      "tag": "Instagram / Investing",
+      "status": "Account",
+      "type": "Instagram"
+    },
+    "ig_yoons0818": {
+      "tag": "Instagram / Shopping",
+      "status": "Account",
+      "type": "Instagram"
+    }
   },
   "project_notes": {
     "minimax_h3_video": [

@@ -1,140 +1,29 @@
+import { useState, type PointerEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { motion, type Variants } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
-import kidsEnglishIcon from '../assets/project-icons/kids-english.png'
-import dailyMathIcon from '../assets/project-icons/daily-math.png'
-import dailyEnglishIcon from '../assets/project-icons/daily-english.png'
-import photoReaderIcon from '../assets/project-icons/english-photo-reader.png'
-import arrowWayOutIcon from '../assets/project-icons/arrow-way-out.png'
-import marketSnapshotIcon from '../assets/project-icons/market-snapshot.png'
-import munpiaNovelIcon from '../assets/project-icons/munpia-novel.png'
+import { domains, isExternal, projects, type Project, type ProjectFilter } from '../lib/projects'
 
-export type ProjectFilter = 'all' | 'apps' | 'youtube' | 'writing'
+export type { ProjectFilter }
 
 const pageCopy = {
-  all: {
-    title: 'projects.page_all_title',
-    description: 'projects.page_all_description',
-  },
-  apps: {
-    title: 'projects.page_apps_title',
-    description: 'projects.page_apps_description',
-  },
-  youtube: {
-    title: 'projects.page_youtube_title',
-    description: 'projects.page_youtube_description',
-  },
-  writing: {
-    title: 'projects.page_writing_title',
-    description: 'projects.page_writing_description',
-  },
+  all: { title: 'projects.page_all_title', description: 'projects.page_all_description' },
+  apps: { title: 'projects.page_apps_title', description: 'projects.page_apps_description' },
+  youtube: { title: 'projects.page_youtube_title', description: 'projects.page_youtube_description' },
+  instagram: { title: 'projects.page_instagram_title', description: 'projects.page_instagram_description' },
+  writing: { title: 'projects.page_writing_title', description: 'projects.page_writing_description' },
 } as const
 
-const projects = [
-  {
-    key: 'kids_english',
-    category: 'apps',
-    tag: 'Education / AI',
-    url: 'https://english-topaz-five.vercel.app/',
-    status: 'Live',
-    type: 'Website',
-    accent: 'blue',
-    image: kidsEnglishIcon,
-    media: 'banner',
-    span: 'standard',
-  },
-  {
-    key: 'daily_math',
-    category: 'apps',
-    tag: 'Kids / Math',
-    url: 'https://daily-math-one.vercel.app/auth',
-    status: 'Live',
-    type: 'Web App',
-    accent: 'ink',
-    image: dailyMathIcon,
-    media: 'banner',
-    span: 'wide',
-  },
-  {
-    key: 'daily_english',
-    category: 'apps',
-    tag: 'Daily / English',
-    url: 'https://daily-english-yoons.vercel.app/login',
-    status: 'Live',
-    type: 'Web App',
-    accent: 'sky',
-    image: dailyEnglishIcon,
-    media: 'app',
-    span: 'compact',
-  },
-  {
-    key: 'photo_reader',
-    category: 'apps',
-    tag: 'Vision / AI',
-    url: 'https://english-photo-reader.vercel.app/',
-    status: 'Live',
-    type: 'AI Tool',
-    accent: 'mint',
-    image: photoReaderIcon,
-    media: 'app',
-    span: 'standard',
-  },
-  {
-    key: 'arrow_way_out',
-    category: 'apps',
-    tag: 'Puzzle / Game',
-    url: 'https://arrow-way-out.vercel.app/',
-    status: 'Live',
-    type: 'Game',
-    accent: 'paper',
-    image: arrowWayOutIcon,
-    media: 'banner',
-    span: 'standard',
-  },
-  {
-    key: 'market_snapshot',
-    category: 'youtube',
-    tag: 'YouTube / Finance',
-    url: 'https://www.youtube.com/channel/UC7QwAF2w5n0hMpWLdwymDAA',
-    status: 'Channel',
-    type: 'YouTube',
-    accent: 'paper',
-    image: marketSnapshotIcon,
-    media: 'banner',
-    span: 'standard',
-  },
-  {
-    key: 'minimax_h3_video',
-    category: 'lab',
-    tag: 'AI Video / Local',
-    url: '/ai-video',
-    status: 'Demo',
-    type: 'AI Video',
-    accent: 'sky',
-    video: '/videos/minimax-h3-demo.mp4',
-    notesKey: 'project_notes.minimax_h3_video',
-    media: 'video',
-    span: 'wide',
-  },
-  {
-    key: 'munpia_novel',
-    category: 'writing',
-    tag: 'Novel / Writing',
-    url: 'https://novel.munpia.com/580908',
-    status: 'Serial',
-    type: 'Web Novel',
-    accent: 'ink',
-    image: munpiaNovelIcon,
-    media: 'cover',
-    span: 'standard',
-  },
+const tabs: { filter: ProjectFilter; href: string; key: string; fallback: string }[] = [
+  { filter: 'all', href: '/projects', key: 'all', fallback: 'All' },
+  { filter: 'apps', href: '/apps', key: 'apps', fallback: 'Apps' },
+  { filter: 'youtube', href: '/youtube', key: 'youtube', fallback: 'YouTube' },
+  { filter: 'instagram', href: '/instagram', key: 'instagram', fallback: 'Instagram' },
+  { filter: 'writing', href: '/writing', key: 'writing', fallback: 'Writing' },
 ]
 
-const wrap: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } }
-const item: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.38 } },
-}
+// apps lead the list; the rest follow
+const groupOrder = ['apps', 'ai_video', 'youtube', 'instagram', 'writing'] as const
 
 type ProjectsProps = {
   filter?: ProjectFilter
@@ -143,103 +32,88 @@ type ProjectsProps = {
 
 export default function Projects({ filter = 'all', page = false }: ProjectsProps) {
   const { t } = useTranslation()
-  const visibleProjects = filter === 'all' ? projects : projects.filter((project) => project.category === filter)
+  const [hovered, setHovered] = useState<Project | null>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const px = useSpring(x, { stiffness: 260, damping: 28 })
+  const py = useSpring(y, { stiffness: 260, damping: 28 })
   const copy = pageCopy[filter]
 
-  return (
-    <section id="work" className={`work-section ${page ? 'project-page' : ''}`}>
-      <div className="section-label">
-        <span>{t('projects.subtitle')}</span>
-        <a href="https://github.com/yoons-oh" target="_blank" rel="noreferrer">
-          GitHub
-          <ArrowUpRight size={13} aria-hidden="true" />
-        </a>
-      </div>
+  const groups = groupOrder
+    .map((key) => domains.find((domain) => domain.key === key)!)
+    .filter((domain) => filter === 'all' || domain.category === filter)
+    .map((domain) => ({ domain, items: projects.filter((project) => project.category === domain.category) }))
 
-      <div className="section-title-row">
+  const onMove = (event: PointerEvent<HTMLElement>) => {
+    x.set(event.clientX)
+    y.set(event.clientY)
+  }
+
+  return (
+    <section id="work" className={`wx-section ${page ? 'is-page' : ''}`} onPointerMove={onMove}>
+      <header className="wx-head">
         <h2>{t(page ? copy.title : 'projects.title')}</h2>
         <p>{t(page ? copy.description : 'projects.description')}</p>
-      </div>
+      </header>
 
-      {!page && <div id="apps" className="anchor-offset" aria-hidden="true" />}
-      <motion.div className="project-grid" variants={wrap} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }}>
-        {visibleProjects.map((project) => {
-          const notesKey = 'notesKey' in project && typeof project.notesKey === 'string' ? project.notesKey : null
-          const notes = notesKey ? (t(notesKey, { returnObjects: true }) as string[]) : []
-          const content = (
-            <>
-              <div className="project-topline">
-                <span>{t(`project_meta.${project.key}.tag`, { defaultValue: project.tag })}</span>
-                <small>{t(`project_meta.${project.key}.status`, { defaultValue: project.status })}</small>
-              </div>
+      {page && (
+        <div className="wx-tabs">
+          {tabs.map((tab) => (
+            <a key={tab.href} href={tab.href} className={filter === tab.filter ? 'is-active' : ''} aria-current={filter === tab.filter ? 'page' : undefined}>
+              {t(`nav.${tab.key}`, { defaultValue: tab.fallback })}
+            </a>
+          ))}
+        </div>
+      )}
 
-              <div className="project-preview" aria-hidden={'video' in project ? undefined : true}>
-                <div className="preview-window">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                {'video' in project ? (
-                  <video
-                    src={project.video}
-                    className="project-video"
-                    controls
-                    muted
-                    playsInline
-                    preload="metadata"
-                    aria-label={t(`project_list.${project.key}.name`)}
-                  />
-                ) : (
-                  <img src={project.image} alt="" className="project-image" />
-                )}
-              </div>
+      {groups.map(({ domain, items }) => (
+        <div className="wx-group" key={domain.key} style={{ ['--c' as string]: domain.color }}>
+          <h3 className="wx-group-title">
+            <i aria-hidden="true" />
+            {t(`nav.${domain.key}`)}
+            <small>{items.length}</small>
+          </h3>
+          <ul>
+            {items.map((project) => {
+              const name = t(`project_list.${project.key}.name`)
+              const external = isExternal(project.url)
+              return (
+                <li key={project.key}>
+                  <a
+                    className="wx-row"
+                    href={project.url}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noreferrer' : undefined}
+                    onPointerEnter={(event) => event.pointerType === 'mouse' && setHovered(project)}
+                    onPointerLeave={() => setHovered(null)}
+                    onFocus={() => setHovered(null)}
+                  >
+                    <span className="wx-name">{name}</span>
+                    <span className="wx-desc">{t(`project_list.${project.key}.desc`)}</span>
+                    <span className="wx-type">{t(`project_meta.${project.key}.type`, { defaultValue: project.type })}</span>
+                    <span className="wx-status">{t(`project_meta.${project.key}.status`, { defaultValue: project.status })}</span>
+                    {project.image && <img className="wx-thumb" src={project.image} alt="" loading="lazy" />}
+                    <ArrowUpRight className="wx-arrow" size={20} aria-hidden="true" />
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      ))}
 
-              <div className="project-content">
-                <span>{t(`project_meta.${project.key}.type`, { defaultValue: project.type })}</span>
-                <h3>{t(`project_list.${project.key}.name`)}</h3>
-                <p>{t(`project_list.${project.key}.desc`)}</p>
-                {Array.isArray(notes) && notes.length > 0 && (
-                  <ul className="project-notes">
-                    {notes.map((note) => (
-                      <li key={note}>{note}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              {'video' in project ? (
-                <a className="project-arrow project-video-link" href={project.url} target="_blank" rel="noreferrer" aria-label={t(`project_list.${project.key}.name`)}>
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </a>
-              ) : (
-                <ArrowUpRight className="project-arrow" size={15} aria-hidden="true" />
-              )}
-            </>
-          )
-
-          return 'video' in project ? (
-            <motion.article
-              className={`project-card ${project.accent} span-${project.span} media-${project.media}`}
-              id={!page && project.key === 'munpia_novel' ? 'writing' : undefined}
-              key={project.key}
-              variants={item}
-            >
-              {content}
-            </motion.article>
-          ) : (
-            <motion.a
-              className={`project-card ${project.accent} span-${project.span} media-${project.media}`}
-              href={project.url}
-              id={!page && project.key === 'munpia_novel' ? 'writing' : undefined}
-              key={project.key}
-              variants={item}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {content}
-            </motion.a>
-          )
-        })}
+      <motion.div
+        className="wx-preview"
+        style={{ x: px, y: py }}
+        animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.88 }}
+        transition={{ duration: 0.22 }}
+        aria-hidden="true"
+      >
+        {hovered?.video ? (
+          <video key={hovered.key} src={hovered.video} autoPlay muted loop playsInline />
+        ) : hovered?.image ? (
+          <img key={hovered.key} src={hovered.image} alt="" />
+        ) : null}
       </motion.div>
     </section>
   )

@@ -11,6 +11,7 @@ import {
   where,
 } from 'firebase/firestore'
 import { db } from './firebase'
+import { IS_MOCK, mockRestaurants } from './mock'
 import type { Restaurant, RestaurantForm } from '../types/restaurant'
 
 const restaurantsRef = collection(db, 'restaurants')
@@ -57,6 +58,7 @@ const toPayload = (form: RestaurantForm) => ({
 })
 
 export async function fetchPublicRestaurants() {
+  if (IS_MOCK) return mockRestaurants
   const snapshot = await getDocs(query(restaurantsRef, where('isVisible', '==', true)))
   return snapshot.docs
     .map((item) => toRestaurant(item.id, item.data()))

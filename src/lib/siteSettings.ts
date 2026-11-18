@@ -1,5 +1,6 @@
 import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore'
 import { db } from './firebase'
+import { IS_MOCK } from './mock'
 
 const careerSettingsRef = doc(db, 'site_settings', 'career')
 
@@ -8,6 +9,7 @@ export type CareerSettings = {
 }
 
 export async function fetchCareerSettings(): Promise<CareerSettings> {
+  if (IS_MOCK) return { isOpen: true }
   const snapshot = await getDoc(careerSettingsRef)
   if (!snapshot.exists()) return { isOpen: false }
 
